@@ -8,18 +8,21 @@ With all necessary data without the price.
 Each Entry should have (optional Data in extra brackets e.g. " (Af/VR/DX/Macro/...)"):
 
 Entry                 Description of data
-1. Full Name          Brand + Focal Length + Apeture + (Af/VR/DX/Macro/...), e.g. "Nikon 8-15mm 1:3.5-4.5E ED AF-S VR"
-2. Focal Length Start millimeter
-3. Focal Length End   millimeter
+1. Full Lens Name     Brand + Focal Length + Apeture + (Af/VR/DX/Macro/...), e.g. "Nikon 8-15mm 1:3.5-4.5E ED AF-S VR"
+2. Focal Length Start Millimeter
+3. Focal Length End   Millimeter
 4. Apeture Start      e.g. 2,8
 5. Apeture End        e.g. 4
-6. Magnification      e.g. 0.11x
-7. Filtersize         millimeter
-8. AF                 AF, AF-S, MF?
-9. VR                 VR? + (Generation)
-10. FX/DX             DX or FX Lens?
-11. Weight            gramm
-12. Size              Width x Length
+6. Filtersize         Millimeter
+7. Magnification      e.g. 0.11x
+8. Magnification      e.g. 0,11
+9. Magnification      e.g. 1:4
+10. Mount	      e.g. Nikon F
+11. Sensor	      e.g. Full-Frame / Crop
+12. Weight            Gramm
+13. Size              Diagramm x Length 
+
+
 
 ## Task List
 - [ ] \(Must-Have)    Create UML graphs and keep them updated
@@ -27,8 +30,11 @@ Entry                 Description of data
 - [ ] \(Must-Have)    Got all necessary data from the most Nikon F compatible lenses
 - [ ] \(Must-Have)    Made a nice GUI for filtering and comparing the lenses (perhaps something like on "geizhals.de") 
 - [ ] \(Should-Have)  Got all necessary data from all the Nikon F compatible lenses
+- [ ] \(Should-Have)  Data of Autofocus (AF,AF-S,MF) and Vibration Reduction
 - [ ] \(NiceTo-Have)  Move from Excel to a real database (e.g. Wide-Column?)
 - [ ] \(NiceTo-Have)  Complete standalone program.
+- [ ] \(NiceTo-Have)  Not only Nikon F lenses, but all Lenses compatible to Nikon F (e.g. with adapter the Pentax Lenses)
+- [ ] \(SuperNiceTo-Have)  Not only NIkon F and Nikon F lenses, but all Lenses every made.
 
 ## Motivation
 I really enjoy comparing all the lenses out there.
