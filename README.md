@@ -34,7 +34,7 @@ Entry                 Description of data
 - [ ] \(NiceTo-Have)  Move from Excel to a real database (e.g. Wide-Column?)
 - [ ] \(NiceTo-Have)  Complete standalone program.
 - [ ] \(NiceTo-Have)  Not only Nikon F lenses, but all Lenses compatible to Nikon F (e.g. with adapter the Pentax Lenses)
-- [ ] \(SuperNiceTo-Have)  Not only NIkon F and Nikon F lenses, but all Lenses every made.
+- [ ] \(SuperNiceTo-Have)  Not only Nikon F Lenses and Nikon F compatible lenses, but all Lenses every made.
 
 ## Motivation
 I really enjoy comparing all the lenses out there.
