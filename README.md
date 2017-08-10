@@ -31,10 +31,12 @@ Entry                 Description of data
 - [ ] \(Must-Have)    Made a nice GUI for filtering and comparing the lenses (perhaps something like on "geizhals.de") 
 - [ ] \(Should-Have)  Got all necessary data from all the Nikon F compatible lenses
 - [ ] \(Should-Have)  Data of Autofocus (AF,AF-S,MF) and Vibration Reduction
+- [ ] \(Should-Have)  A Sheet with a Table where you can compare (from the ResultTable) selected lenses.
 - [ ] \(NiceTo-Have)  Move from Excel to a real database (e.g. Wide-Column?)
 - [ ] \(NiceTo-Have)  Complete standalone program.
 - [ ] \(NiceTo-Have)  Not only Nikon F lenses, but all Lenses compatible to Nikon F (e.g. with adapter the Pentax Lenses)
-- [ ] \(SuperNiceTo-Have)  Not only Nikon F Lenses and Nikon F compatible lenses, but all Lenses every made.
+- [ ] \(NiceTo-Have)  Sheet with a Table with alle the lenses someone ownes, to see how much you can do with them and if you really need a new lens.
+- [ ] \(NiceTo-Have)  Not only Nikon F Lenses and Nikon F compatible lenses, but all Lenses every made.
 
 ## Motivation
 I really enjoy comparing all the lenses out there.
