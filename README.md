@@ -48,7 +48,7 @@ Also I want to practice how to document a project well so everybody could unders
 TODO
 
 ## Installation
-TODO
+To see or edit the UML diagrams go to [draw.io](https://draw.io).
 
 ## Tests
 TODO
