@@ -23,6 +23,7 @@ Entry                 Description of data
 
 
 ## Task List
+- [ ] \(!!!!!!!!!)----Split RawDataTable to really RawDataTable and PreparedDataTable?
 - [ ] \(Must-Have)----(Never done) Create UML graphs and keep them updated
 - [ ] \(Must-Have)----Complete README file
 - [x] \(Must-Have)----Got all necessary data from the most Nikon F compatible lenses
