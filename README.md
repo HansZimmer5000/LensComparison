@@ -9,16 +9,16 @@ Each Entry should have (optional Data in extra brackets e.g. " (Af/VR/DX/Macro/.
 
 Entry                 Description of data
 1. Full Lens Name-----Brand + Focal Length + Apeture + (Af/VR/DX/Macro/...), e.g. "Nikon 8-15mm 1:3.5-4.5E ED AF-S VR"
-2. Focal Length Start-Millimeter
+2. Focal Length Start--Millimeter
 3. Focal Length End---Millimeter
-4. Apeture Start------e.g. 2,8
+4. Apeture Start-------e.g. 2,8
 5. Apeture End--------e.g. 4
-6. Filtersize---------Millimeter
-7. Magnification------e.g. 0.11x or 0,11 or 1:4
-8. Mount--------------e.g. Nikon F
-9. Sensor-------------e.g. Full-Frame / Crop
-10. Weight------------Gramm
-11. Size--------------Diagramm x Length 
+6. Filtersize------------Millimeter
+7. Magnification--------e.g. 0.11x or 0,11 or 1:4
+8. Mount----------------e.g. Nikon F
+9. Sensor--------------e.g. Full-Frame / Crop
+10. Weight-------------Gramm
+11. Size----------------Diagramm x Length 
 
 
 
