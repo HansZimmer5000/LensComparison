@@ -17,7 +17,7 @@ Entry                 Description of data
 7. Magnification------e.g. 0.11x or 0,11 or 1:4
 8. Mount--------------e.g. Nikon F
 9. Sensor--------------e.g. Full-Frame / Crop
-10. Weight--------------Gramm
+10. Weight-------------Gramm
 11. Size-----------------Diagramm x Length 
 
 
