@@ -1,5 +1,7 @@
 # NikonLensComparison
 
+Due to exchange semester the project is on pause.
+
 ## Overview
 This project is about comparing all Nikon F Lenses, ever.
 With all necessary data without the price.
