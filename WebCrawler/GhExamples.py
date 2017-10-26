@@ -1,4 +1,4 @@
-# TODO: Is this too much or is it relevant for this small project?
+#  Is this too much or is it relevant for this small project? - too much, but I am too lazy to do something that might has not a big impact at all. So I just do some of these tests.
 # 1) No data: Run your TESTDATA cases on blank or default data. See if proper error messages are generated.
 # 2) Valid data set: Create it to check if the application is functioning as per requirements and valid input data is properly saved in database or files.
 # 3) Invalid data set: Prepare invalid data set to check application behavior for negative values, alphanumeric string inputs.
@@ -57,6 +57,18 @@ TESTDATA_DICT_WITH_EVERYTHING3 = {
 	'Abmessungen (ØxL): ': '83x111mm'
 }
 
+TESTDATA_DICT_WITH_MISSING_INFO1 = {
+	'title=""': 'Canon Objektiv CN-E 35mm T1.5 L F schwarz (9139B001)', \
+	'Brennweite: ': '35mm', \
+	'Lichtstärke: ': '1:1.5', \
+	'Filterdurchmesser: ': "", \
+	'Abbildungsmaßstab: ': "", \
+ 	'Objektivbajonett: ': 'Canon EF', \
+	'Sensorkompatibilität: ': 'APS-C/ Kleinbild', \
+ 	'Gewicht: ': '',\
+	'Abmessungen (ØxL): ': ''		
+}
+
 TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {
 	'title=""': '', \
 	'Brennweite: ': '25mm', \
@@ -73,8 +85,9 @@ TESTDATA_DICT_VALUE_STRING_WITHOUT_VALUES = ";;;;;;;;"
 TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1 = \
 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA);10-30mm;1:3.5-1:5.6;;;Nikon 1;Nikon CX;85g;58x28mm'
 
-TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_RAW_WITHOUT_PRODIMG1
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1   = TESTDATA_DICT_WITH_EVERYTHING1
+TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_RAW_WITHOUT_PRODIMG1
+TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_761 = TESTDATA_DICT_WITH_MISSING_INFO1
 TESTDATA_DICT_VALUE_STRING_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1 = TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -142,6 +155,17 @@ TESTDATA_PRODSITE_RAW_WITH_EVERYTHING3 = '"<div id=""gh_proddesc""> Typ: Weitwin
 'n0.jpg"" alt=""Samyang 35mm 1.4 AS UMC für Sony E schwarz"" title=""Samyang 35mm' + \
 ' 1.4 AS UMC für Sony E schwarz"">";;;;;'
 
+TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1 = \
+'<div id=""gh_proddesc""> Typ: Weitwinkel-Objektiv   Brennweite: 35mm   Lichtstärke: 1:1.5   Blendenlamellen: 11   ' + \
+'Bildstabilisator: nein   Fokussiermotor: nein   Objektivbajonett: Can' + \
+'on EF   Sensorkompatibilität: APS-C/ Kleinbild<p>EAN-Codes: 4549292002669, 4549292002676</p> <p>Gelistet seit: 12.08.2014, ' + \
+'14:24</p> <p>Es liegen noch keine Bewertungen für dieses Prod' + \
+'ukt vor (<a onclick=""registerConversionTag(['+"'productpage_rating_rate','2', window.ghPageTypeCM, '0'])"+'";" rel=nofollow"" ' + \
+'href=""bew_1152662.html"">Produkt bewerten</a>).</p> </div>";"<' + \
+'img class=""gh_prodImg"" id=""gh_prodImg"" src=""//gzhls.at/i/26/62/1152662-n0.jpg"" ' + \
+'alt=""Canon Objektiv CN-E 35mm T1.5 L F schwarz (9139B001)"" title=""Canon Objektiv CN-E 35mm T1.5 ' + \
+'L F schwarz (9139B001)"">";;;;;'
+
 TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1 = '"<div id=""gh_proddesc""> Typ: Standard-Objektiv   Brennweite: 25mm   Lichtstär' + \
 'ke: 1:0.95   Optischer Aufbau (Linsen/ Gruppen): 11/ 8   Blendenlamellen: 10   B' + \
 'ildstabilisator: nein   Fokussiermotor: nein   Naheinstellgrenze: 0.17m   Kleins' + \
@@ -175,4 +199,41 @@ TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG2 = '"<div id=""gh_proddesc""> Typ: Weitwin
 'v>";;;;;;'
 
 TESTDATA_PRODSITE_RAW_RESPONSE_TWELVE_SIXTY_ENTRY_1 = TESTDATA_PRODSITE_RAW_WITH_EVERYTHING1
-TESTDATA_RPODSITE_RAW_RESPONSE_TWELVE_SICTY_ENTRY_269= TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1
+TESTDATA_RPODSITE_RAW_RESPONSE_TWELVE_SICTY_ENTRY_269 = TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1
+TESTDATA_PRODSITE_RAW_RESPONSE_TWELVE_SIXTY_ENTRY_761 = TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1 
+
+def printRowFromFile(file,rowNumber):
+	file = str(file)
+	if(file == "1"):
+		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 1 - 4.csv'
+	elif (file == "2"):
+		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 5 - 7.csv'
+	elif(file == "3"):
+		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 8 - 11.csv'
+	elif(file == "4"):
+		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 12 - 60.csv'
+
+	openFile = open(file,'r')
+	rows = openFile.readlines()
+	rowDiff = len(rows) - rowNumber
+	if(rowDiff < 0):
+		print("Rownumber is " + rowDiff + " too high.")
+	else:
+		print(rows[rowNumber-1])
+
+if __name__ == "__main__":
+	print("Print a certain Row from a certain file with 'printRowFromFile'.")
+	print("rowNumber = number")
+	print("File = fullpath (incl. filename) or:")
+	print("1 = rawResponseData 1-4")
+	print("2 = rawResponseData 5-7")
+	print("3 = rawResponseData 8-11")
+	print("4 = rawResponseData12-60")
+	print("You can import the fuction or type here 'file' (as string) and space and rownumber (as numer) or exit here with 'exit'")
+	
+	userInput = input()
+	if(userInput != "exit"):
+		file = userInput.split(" ")[0]
+		rowNumber = int(userInput.split(" ")[1])
+		printRowFromFile(file,rowNumber)
+	

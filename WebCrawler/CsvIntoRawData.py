@@ -27,14 +27,22 @@
 from glob import glob
 from tqdm import tqdm
 import GhAdapter
+import Spider
 
+# Module Variables
+totalProcessesRows = 0
+totalWrittenRows = 0
+
+# Module Constants
+EMPTY_DICT = GhAdapter.createEmtpyDict()
 
 def getAllrawResponseFullPaths(directory):
     rawResponseName = "rawResponse*.csv"
     return glob(directory + rawResponseName)
 
 def extractrawResponseFileAndWriteToRawData(rawResponseFile):
-    MAX_DICT_LIST_SIZE = 1
+    MAX_DICT_LIST_SIZE = 1000 #As it gets bigger it gets faster.
+    global totalProcessesRows
     #TODO: Problem if this constant is bigger then one. Problem pretty sure how I use the index in the while loop.
 
     #Open file and go through every row, then give rowtext (rows differs by '\n') to extractDataFromrawResponseRow
@@ -45,15 +53,17 @@ def extractrawResponseFileAndWriteToRawData(rawResponseFile):
 
     while(currentRowIndex < rowTextCount):
         #Save each return dict in a list, if list is bigger than *n* save into rawData file.
-        currentRowText = rowTexts[currentRowIndex]
-        currentDict = extractDataFromrawResponseRow(currentRowText)
 
-        currentDictList.append(currentDict)
-        if((len(currentDictList) == MAX_DICT_LIST_SIZE) or (currentRowIndex == rowTextcount - 1)):
-            writeExtractedDictsToRawData(currentDictList)
-            currentDictList = []
+        currentRowText = rowTexts[currentRowIndex]
+        if(GhAdapter.checkIfRawProdSiteIsValid(currentRowText)):
+            currentDict = extractDataFromrawResponseRow(currentRowText)
+            currentDictList.append(currentDict)
+            if((len(currentDictList) == MAX_DICT_LIST_SIZE) or (currentRowIndex == rowTextCount - 1)):
+                writeExtractedDictsToRawData(currentDictList)
+                currentDictList = []
 
         currentRowIndex += 1
+        totalProcessesRows += 1
     
 
 def extractDataFromrawResponseRow(row):
@@ -69,12 +79,16 @@ def extractDataFromrawResponseRow(row):
     return resultDict
 
 def writeExtractedDictsToRawData(dictList):
+    global totalWrittenRows
+
     rawDataFullPath = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/rawData.csv"
     rawDataFile = open(rawDataFullPath,"a")
     
     for currentDict in dictList:
-        currentDictText = GhAdapter.convertDictToCSVValueString(currentDict)
-        rawDataFile.write(currentDictText + "\n")
+        if(currentDict != EMPTY_DICT):
+            currentDictText = GhAdapter.convertDictToCSVValueString(currentDict)
+            rawDataFile.write(currentDictText + "\n")
+            totalWrittenRows += 1
 
     rawDataFile.close()
 
@@ -99,10 +113,20 @@ if __name__ == "__main__":
 
     RAW_RESPONSE_DIR = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/"
 
-    allrawResponseFullPaths = getAllrawResponseFullPaths(RAW_RESPONSE_DIR)
+    print("Type 'clean' to clean the rawDataFile or 'import' to import new Data.")
+    userInput = input()
 
-    for currentrawResponseFullPath in allrawResponseFullPaths:
-        print(currentrawResponseFullPath)
-        rawResponseFile = open(currentrawResponseFullPath,"r")
-        extractrawResponseFileAndWriteToRawData(rawResponseFile)
-        rawResponseFile.close()
+    if(userInput == "import"):
+        allrawResponseFullPaths = getAllrawResponseFullPaths(RAW_RESPONSE_DIR)
+
+        for currentrawResponseFullPath in allrawResponseFullPaths:
+            print(currentrawResponseFullPath)
+            rawResponseFile = open(currentrawResponseFullPath,"r")
+            extractrawResponseFileAndWriteToRawData(rawResponseFile)
+            rawResponseFile.close()
+
+        print("Total Count of Processed Rows: " + str(totalProcessesRows))
+        print("Total Count of Written Rows: " + str(totalWrittenRows))
+
+    elif(userInput == "clean"):
+        Spider.cleanFileAndWriteTitles()

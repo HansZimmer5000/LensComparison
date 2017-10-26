@@ -19,8 +19,10 @@ ALL_KEYS = [
 	KEY_WEIGHT,
 	KEY_SIZE]
 
-# TODO: Get Name from somewhere different, e.g. the <title>, because IMG not always existent.
-# Or find other tags
+SORT_OUT_STRINGS_FOR_TITLE=[
+	"verschiedene Modelle",
+	"Pro Set"
+]
 
 def getAllAttributes(prodDesc,prodImg):
 	
@@ -32,6 +34,25 @@ def getAllAttributes(prodDesc,prodImg):
 	)
 
 	return resultDict
+
+def checkIfRawProdSiteIsValid(rawProdSite):
+	for currentSortOutString in SORT_OUT_STRINGS_FOR_TITLE:
+		if(currentSortOutString in rawProdSite):
+			return False
+
+	return True	
+
+def checkIfDataIsValid(prodImg):
+	title = getLensNameFromProdImg(prodImg)
+	if(title == ""):
+		return True
+
+	for currentSortOutString in SORT_OUT_STRINGS_FOR_TITLE:
+		if(currentSortOutString in title):
+			return False
+
+	return True
+
 
 def getAllProdDescAttributes(prodDesc):
 	return {
@@ -66,7 +87,7 @@ def getMagnification(prodDesc):
 
 def getMount(prodDesc):
 	return getAttributeValue(KEY_MOUNT,prodDesc,"  ")
-
+	
 def getSensor(prodDesc):
 	return getAttributeValue(KEY_SENSORKOMPATIBILITÄT,prodDesc,"  ")
 
@@ -88,9 +109,14 @@ def getAttributeValue(key,string,valueTillKey):
 		rawValue = string[valueStartPos:]
 		valueEndPos = rawValue.find(valueTillKey)
 		value = rawValue[:valueEndPos]
-		return value
+		result = value
 	else:
-		return ""
+		result = ""
+
+	if("<p>" in result):
+		result = result.split("<p>")[0]
+	
+	return result
 
 def convertDictToCSVValueString(dict):
 	currentValue = ""
@@ -100,10 +126,22 @@ def convertDictToCSVValueString(dict):
 
 	while(currentIndex < len(ALL_KEYS)):
 		currentKey = ALL_KEYS[currentIndex]
-		currentValue = dict[currentKey]
-		result += currentValue
-		if(currentIndex != len(ALL_KEYS)-1):
-			result += ";"
-		currentIndex += 1
+		try:
+			currentValue = dict[currentKey]
+
+			result += currentValue
+			if(currentIndex != len(ALL_KEYS)-1):
+				result += ";"
+			currentIndex += 1
+		except KeyError:
+			result = convertDictToCSVValueString(createEmtpyDict)
+			currentIndex = len(ALL_KEYS)
+
 
 	return result
+
+def createEmtpyDict():
+	emptyDict = {}
+	for currentKey in ALL_KEYS:
+		emptyDict.update({currentKey: ""})
+	return emptyDict

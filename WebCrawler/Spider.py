@@ -17,7 +17,7 @@ def writeToTempRawFile(lensDataDict):
 	rawfile.close()
 
 def cleanRawDataFile():
-	rawfile = open("rawResponseData.csv", 'w').close()
+	open("rawResponseData.csv", 'w').close()
 
 def cleanFileAndWriteTitles():
 	#Didn't decide to use cleanRawDataFile Function because than I head to open / close it twice
@@ -47,27 +47,25 @@ def createNextOverviewPage(a):
 	return result
 
 class BlogSpider(scrapy.Spider):
-    name = 'blogspider'
-    start_urls = ['https://geizhals.de/?cat=acamobjo&amp;pg=12']
-
+	name = 'blogspider'
+	start_urls = ['https://geizhals.de/?cat=acamobjo&amp;pg=1']
 	cleanRawDataFile()
-
-    def parseLensPage(self, response):
-        gh_proddesc = response.xpath('//div[@id="gh_proddesc"]').extract_first()
-        gh_prodImg = response.xpath('//img[@class="gh_prodImg"]').extract_first()
-        writeRawData(gh_proddesc,gh_prodImg)
+	
+	def parseLensPage(self, response):
+		gh_proddesc = response.xpath('//div[@id="gh_proddesc"]').extract_first()
+		gh_prodImg = response.xpath('//img[@class="gh_prodImg"]').extract_first()
+		writeRawData(gh_proddesc,gh_prodImg)
         #writeToTempRawFile(GhAdapter.getAllAttributes(gh_proddesc,gh_prodImg))
+	def parse(self, response):
+		print("parsing!")
+		for lens_page in response.xpath('//a[@class = "productlist__link"]'):
+			time.sleep(10) # sekunden schlafen
+			yield response.follow(lens_page, self.parseLensPage)
 
-    def parse(self, response):
-    	print("parsing!")
-    	for lens_page in response.xpath('//a[@class = "productlist__link"]'):
-    		time.sleep(10) # sekunden schlafen
-    		yield response.follow(lens_page, self.parseLensPage)
+		time.sleep(10) # Sekunden schlafen
 
-    	time.sleep(10) # Sekunden schlafen
-
-    	nextPageRawUrl = response.xpath('//a[@class = "gh_pag_i only--desktop gh_pag_i_last gh_pag_next_active"]').extract_first()[3:80]
-    	nextPageUrl = createNextOverviewPage(nextPageRawUrl)
-    	if nextPageUrl is not None:
-    		yield scrapy.Request(nextPageUrl, callback=self.parse)
+		nextPageRawUrl = response.xpath('//a[@class = "gh_pag_i only--desktop gh_pag_i_last gh_pag_next_active"]').extract_first()[3:80]
+		nextPageUrl = createNextOverviewPage(nextPageRawUrl)
+		if nextPageUrl is not None:
+			yield scrapy.Request(nextPageUrl, callback=self.parse)
 
