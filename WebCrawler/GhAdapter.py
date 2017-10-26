@@ -101,18 +101,8 @@ def getSensor(prodDesc):
 
 def getWeight(prodDesc):
 	weightWithoutLetterG = getAttributeValue(KEY_WEIGHT,prodDesc,"g")
-	if(weightWithoutLetterG == ""):
-		return ""
-	else:
-		if("k" in weightWithoutLetterG):
-			stringLength = len(weightWithoutLetterG)
-			weightWithoutLetters = weightWithoutLetterG[:stringLength-1]
-			weightWithoutLettersAsFloat = float(weightWithoutLetters)
-			correctedGrammWeightAsFloat = weightWithoutLettersAsFloat * 1000
-			correctedGrammWeightAsLong = int(correctedGrammWeightAsFloat) #So we have a round number
-			return str(correctedGrammWeightAsLong)+"g"
-		else:
-			return weightWithoutLetterG + "g"
+	correctedWeight = correctWeightWithoutLetterG(weightWithoutLetterG)
+	return correctedWeight
 
 def getSize(prodDesc):
 	size = getAttributeValue(KEY_SIZE,prodDesc," ")
@@ -165,3 +155,17 @@ def createEmtpyDict():
 	for currentKey in ALL_KEYS:
 		emptyDict.update({currentKey: ""})
 	return emptyDict
+
+def correctWeightWithoutLetterG(weightWithoutLetterG):
+	if(weightWithoutLetterG == ""):
+		return ""
+	else:
+		if("k" in weightWithoutLetterG):
+			stringLength = len(weightWithoutLetterG)
+			weightWithoutLetters = weightWithoutLetterG[:stringLength-1]
+			weightWithoutLettersAsFloat = float(weightWithoutLetters)
+			correctedGrammWeightAsFloat = weightWithoutLettersAsFloat * 1000
+			correctedGrammWeightAsLong = int(correctedGrammWeightAsFloat) #So we have a round number
+			return str(correctedGrammWeightAsLong)+"g"
+		else:
+			return weightWithoutLetterG + "g"

@@ -7,7 +7,6 @@
 import scrapy
 import time
 import GhAdapter
-import GhExamples
 
 def writeToTempRawFile(lensDataDict):
 	rawfile = open("rawData.csv","a")
@@ -27,7 +26,7 @@ def cleanRawDataFileAndWriteTitles():
 def clearOfNewLines(string):
 	return string.replace("\n", " ")
 
-def writeRawData(gh_proddesc,gh_prodImg):
+def writeRawDescImgData(gh_proddesc,gh_prodImg):
 	rawfile = open("rawData.csv", 'a')
 	clearedGhProddesc = clearOfNewLines(gh_proddesc.replace("\x95"," ").replace("\u200b"," "))
 	if gh_prodImg is None:
@@ -44,15 +43,20 @@ def createNextOverviewPage(a):
 	return result
 
 class BlogSpider(scrapy.Spider):
-	name = 'blogspider'
+	name = 'lensSpider' #run with "scrapy runspider Spider.py"
 	start_urls = ['https://geizhals.de/?cat=acamobjo&amp;pg=1']
 	cleanRawDataFileAndWriteTitles()
-	
+	saveRawWithoutTransforming = True
+
 	def parseLensPage(self, response):
 		gh_proddesc = response.xpath('//div[@id="gh_proddesc"]').extract_first()
 		gh_prodImg = response.xpath('//img[@class="gh_prodImg"]').extract_first()
-		writeRawData(gh_proddesc,gh_prodImg)
-        #writeToTempRawFile(GhAdapter.getAllAttributes(gh_proddesc,gh_prodImg))
+		title = response.xpath('//title').extract_first() #-> <title>Sony E PZ 18-105mm 4.0 G OSS schwarz Preisvergleich | Geizhals Deutschland</title>
+		
+		if(saveRawWithoutTransforming):
+			writeRawDescImgData(gh_proddesc,gh_prodImg)
+		else:
+			writeToTempRawFile(GhAdapter.getAllAttributes(gh_proddesc,gh_prodImg))
 	def parse(self, response):
 		print("parsing!")
 		for lens_page in response.xpath('//a[@class = "productlist__link"]'):
