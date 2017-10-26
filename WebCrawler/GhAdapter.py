@@ -74,13 +74,21 @@ def getLensNameFromProdImg(prodImg):
 	return getAttributeValue(KEY_LENSNAME,prodImg,'"">')
 
 def getFocalLength(prodDesc):
-	return getAttributeValue(KEY_FOCAL_LENGTH,prodDesc," ")
+	focalLength = getAttributeValue(KEY_FOCAL_LENGTH,prodDesc," ")
+	if("-" in focalLength):
+		return focalLength.replace("-", " - ")
+	else:
+		return focalLength
 
 def getAperture(prodDesc):
 	return getAttributeValue(KEY_APERTURE,prodDesc," ")
 
 def getFilter(prodDesc):
-	return getAttributeValue(KEY_FILTER,prodDesc," ")
+	filterSize = getAttributeValue(KEY_FILTER,prodDesc," ")
+	if("mm" not in filterSize):
+		return ""
+	else:
+		return filterSize
 
 def getMagnification(prodDesc):
 	return getAttributeValue(KEY_MAGNIFICATION,prodDesc," ")
@@ -96,10 +104,22 @@ def getWeight(prodDesc):
 	if(weightWithoutLetterG == ""):
 		return ""
 	else:
-		return weightWithoutLetterG + "g"
+		if("k" in weightWithoutLetterG):
+			stringLength = len(weightWithoutLetterG)
+			weightWithoutLetters = weightWithoutLetterG[:stringLength-1]
+			weightWithoutLettersAsFloat = float(weightWithoutLetters)
+			correctedGrammWeightAsFloat = weightWithoutLettersAsFloat * 1000
+			correctedGrammWeightAsLong = int(correctedGrammWeightAsFloat) #So we have a round number
+			return str(correctedGrammWeightAsLong)+"g"
+		else:
+			return weightWithoutLetterG + "g"
 
 def getSize(prodDesc):
-	return getAttributeValue(KEY_SIZE,prodDesc," ")
+	size = getAttributeValue(KEY_SIZE,prodDesc," ")
+	if(" x  " in size):
+		return size
+	else:
+		return size.replace("x"," x ")
 
 def getAttributeValue(key,string,valueTillKey):
 	keyLength = len(key)

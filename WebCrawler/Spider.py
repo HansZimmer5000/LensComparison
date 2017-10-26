@@ -16,10 +16,7 @@ def writeToTempRawFile(lensDataDict):
 	rawfile.write("\n")
 	rawfile.close()
 
-def cleanRawDataFile():
-	open("rawResponseData.csv", 'w').close()
-
-def cleanFileAndWriteTitles():
+def cleanRawDataFileAndWriteTitles():
 	#Didn't decide to use cleanRawDataFile Function because than I head to open / close it twice
 	rawfile = open("rawData.csv", 'w') 
 	for key in GhAdapter.ALL_KEYS:
@@ -31,7 +28,7 @@ def clearOfNewLines(string):
 	return string.replace("\n", " ")
 
 def writeRawData(gh_proddesc,gh_prodImg):
-	rawfile = open("rawResponseData.csv", 'a')
+	rawfile = open("rawData.csv", 'a')
 	clearedGhProddesc = clearOfNewLines(gh_proddesc.replace("\x95"," ").replace("\u200b"," "))
 	if gh_prodImg is None:
 		clearedGhProdimg = ""
@@ -49,7 +46,7 @@ def createNextOverviewPage(a):
 class BlogSpider(scrapy.Spider):
 	name = 'blogspider'
 	start_urls = ['https://geizhals.de/?cat=acamobjo&amp;pg=1']
-	cleanRawDataFile()
+	cleanRawDataFileAndWriteTitles()
 	
 	def parseLensPage(self, response):
 		gh_proddesc = response.xpath('//div[@id="gh_proddesc"]').extract_first()
