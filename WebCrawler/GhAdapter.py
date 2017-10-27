@@ -1,124 +1,119 @@
-KEY_LENSNAME = 'title=""'
-KEY_FOCAL_LENGTH = "Brennweite: "
-KEY_APERTURE = "Lichtstärke: " 
-KEY_FILTER = "Filterdurchmesser: "
-KEY_MAGNIFICATION = "Abbildungsmaßstab: " 
-KEY_MOUNT = "Objektivbajonett: "
-KEY_SENSORKOMPATIBILITÄT = "Sensorkompatibilität: " 
-KEY_WEIGHT = "Gewicht: "
-KEY_SIZE = "Abmessungen (ØxL): "
+# Helps to adept the system to data from the Geizhals source.
 
-ALL_KEYS = [
-	KEY_LENSNAME,
-	KEY_FOCAL_LENGTH, 
-	KEY_APERTURE,
-	KEY_FILTER, 
-	KEY_MAGNIFICATION,
-	KEY_MOUNT,
-	KEY_SENSORKOMPATIBILITÄT,
-	KEY_WEIGHT,
-	KEY_SIZE]
+import DataKeys
+
+KEY_LENSNAME = DataKeys.key_lensname_as_gh
+KEY_FOCAL_LENGTH = DataKeys.key_focal_length_as_gh
+KEY_APERTURE = DataKeys.key_aperture_as_gh
+KEY_FILTER = DataKeys.key_filter_as_gh
+KEY_MAGNIFICATION = DataKeys.key_magnification_as_gh
+KEY_MOUNT = DataKeys.key_mount_as_gh
+KEY_SENSORKOMPATIBILITÄT = DataKeys.key_sensor_compatibility_as_gh
+KEY_WEIGHT = DataKeys.key_weight_as_gh
+KEY_SIZE = DataKeys.key_size_as_gh
+
+ALL_KEYS = list(DataKeys.gh_keys_dict.values())
 
 SORT_OUT_STRINGS_FOR_TITLE=[
 	"verschiedene Modelle",
 	"Pro Set"
 ]
 
-def getAllAttributes(prodDesc,prodImg):
+def get_all_attributes(prodDesc,prodImg):
 	
-	resultDict = {
-		KEY_LENSNAME: getLensName(prodImg)
+	result_dict = {
+		KEY_LENSNAME: get_lens_name(prodImg)
 	}
-	resultDict.update(
-		getAllProdDescAttributes(prodDesc)
+	result_dict.update(
+		get_all_proddesc_attributes(prodDesc)
 	)
 
-	return resultDict
+	return result_dict
 
-def checkIfRawProdSiteIsValid(rawProdSite):
-	for currentSortOutString in SORT_OUT_STRINGS_FOR_TITLE:
-		if(currentSortOutString in rawProdSite):
+def check_if_raw_prodsite_is_valid(rawProdSite):
+	for current_sort_out_string in SORT_OUT_STRINGS_FOR_TITLE:
+		if(current_sort_out_string in rawProdSite):
 			return False
 
 	return True	
 
-def checkIfDataIsValid(prodImg):
-	title = getLensNameFromProdImg(prodImg)
+def check_if_data_is_valid(prodImg):
+	title = get_lens_name_from_prodimg(prodImg)
 	if(title == ""):
 		return True
 
-	for currentSortOutString in SORT_OUT_STRINGS_FOR_TITLE:
-		if(currentSortOutString in title):
+	for current_sort_out_string in SORT_OUT_STRINGS_FOR_TITLE:
+		if(current_sort_out_string in title):
 			return False
 
 	return True
 
 
-def getAllProdDescAttributes(prodDesc):
+def get_all_proddesc_attributes(prodDesc):
 	return {
-		KEY_FOCAL_LENGTH: getFocalLength(prodDesc), 
-		KEY_APERTURE: getAperture(prodDesc),
-		KEY_FILTER: getFilter(prodDesc), 
-		KEY_MAGNIFICATION: getMagnification(prodDesc),
-		KEY_MOUNT: getMount(prodDesc),
-		KEY_SENSORKOMPATIBILITÄT: getSensor(prodDesc),
-		KEY_WEIGHT: getWeight(prodDesc),
-		KEY_SIZE: getSize(prodDesc)
+		KEY_FOCAL_LENGTH: get_focal_length(prodDesc), 
+		KEY_APERTURE: get_aperture(prodDesc),
+		KEY_FILTER: get_filter(prodDesc), 
+		KEY_MAGNIFICATION: get_magnification(prodDesc),
+		KEY_MOUNT: get_mount(prodDesc),
+		KEY_SENSORKOMPATIBILITÄT: get_sensor(prodDesc),
+		KEY_WEIGHT: get_weight(prodDesc),
+		KEY_SIZE: get_size(prodDesc)
 	}
 
-def getLensName(prodImg):
+def get_lens_name(prodImg):
 	#TODO: Maybe later: get LensnameFromSiteTitle here in a ifcase
-	return getLensNameFromProdImg(prodImg)
+	return get_lens_name_from_prodimg(prodImg)
 
-def getLensNameFromProdImg(prodImg):
-	return getAttributeValue(KEY_LENSNAME,prodImg,'"">')
+def get_lens_name_from_prodimg(prodImg):
+	return get_attribute_value(KEY_LENSNAME,prodImg,'"">')
 
-def getFocalLength(prodDesc):
-	focalLength = getAttributeValue(KEY_FOCAL_LENGTH,prodDesc," ")
+def get_focal_length(prodDesc):
+	focalLength = get_attribute_value(KEY_FOCAL_LENGTH,prodDesc," ")
 	if("-" in focalLength):
 		return focalLength.replace("-", " - ")
 	else:
 		return focalLength
 
-def getAperture(prodDesc):
-	return getAttributeValue(KEY_APERTURE,prodDesc," ")
+def get_aperture(prodDesc):
+	return get_attribute_value(KEY_APERTURE,prodDesc," ")
 
-def getFilter(prodDesc):
-	filterSize = getAttributeValue(KEY_FILTER,prodDesc," ")
+def get_filter(prodDesc):
+	filterSize = get_attribute_value(KEY_FILTER,prodDesc," ")
 	if("mm" not in filterSize):
 		return ""
 	else:
 		return filterSize
 
-def getMagnification(prodDesc):
-	return getAttributeValue(KEY_MAGNIFICATION,prodDesc," ")
+def get_magnification(prodDesc):
+	return get_attribute_value(KEY_MAGNIFICATION,prodDesc," ")
 
-def getMount(prodDesc):
-	return getAttributeValue(KEY_MOUNT,prodDesc,"  ")
+def get_mount(prodDesc):
+	return get_attribute_value(KEY_MOUNT,prodDesc,"  ")
 	
-def getSensor(prodDesc):
-	return getAttributeValue(KEY_SENSORKOMPATIBILITÄT,prodDesc,"  ")
+def get_sensor(prodDesc):
+	return get_attribute_value(KEY_SENSORKOMPATIBILITÄT,prodDesc,"  ")
 
-def getWeight(prodDesc):
-	weightWithoutLetterG = getAttributeValue(KEY_WEIGHT,prodDesc,"g")
-	correctedWeight = correctWeightWithoutLetterG(weightWithoutLetterG)
+def get_weight(prodDesc):
+	weight_without_letter_g = get_attribute_value(KEY_WEIGHT,prodDesc,"g")
+	correctedWeight = correct_weight_without_letter_g(weight_without_letter_g)
 	return correctedWeight
 
-def getSize(prodDesc):
-	size = getAttributeValue(KEY_SIZE,prodDesc," ")
+def get_size(prodDesc):
+	size = get_attribute_value(KEY_SIZE,prodDesc," ")
 	if(" x  " in size):
 		return size
 	else:
 		return size.replace("x"," x ")
 
-def getAttributeValue(key,string,valueTillKey):
-	keyLength = len(key)
-	keyStartPos = string.find(key)
-	if(keyStartPos >= 0):
-		valueStartPos = keyStartPos + keyLength
-		rawValue = string[valueStartPos:]
-		valueEndPos = rawValue.find(valueTillKey)
-		value = rawValue[:valueEndPos]
+def get_attribute_value(key,string,valueTillKey):
+	key_length = len(key)
+	key_start_pos = string.find(key)
+	if(key_start_pos >= 0):
+		value_start_pos = key_start_pos + key_length
+		raw_value = string[value_start_pos:]
+		value_end_pos = raw_value.find(valueTillKey)
+		value = raw_value[:value_end_pos]
 		result = value
 	else:
 		result = ""
@@ -128,44 +123,49 @@ def getAttributeValue(key,string,valueTillKey):
 	
 	return result
 
-def convertDictToCSVValueString(dict):
-	currentValue = ""
-	currentKey = ""
-	currentIndex = 0
+def create_next_gh_overview_page(next_page_raw_url):
+		tmpResult = GhAdapter.get_attribute_value('href="',next_page_raw_url,'"')
+		result = tmpResult.replace(".","https://geizhals.de",1)
+		return result
+
+def convert_dict_to_csv_value_string(dict):
+	current_value = ""
+	current_key = ""
+	current_index = 0
 	result = ""
 
-	while(currentIndex < len(ALL_KEYS)):
-		currentKey = ALL_KEYS[currentIndex]
+	while(current_index < len(ALL_KEYS)):
+		current_key = ALL_KEYS[current_index]
 		try:
-			currentValue = dict[currentKey]
+			current_value = dict[current_key]
 
-			result += currentValue
-			if(currentIndex != len(ALL_KEYS)-1):
+			result += current_value
+			if(current_index != len(ALL_KEYS)-1):
 				result += ";"
-			currentIndex += 1
+			current_index += 1
 		except KeyError:
-			result = convertDictToCSVValueString(createEmtpyDict)
-			currentIndex = len(ALL_KEYS)
+			result = convert_dict_to_csv_value_string(create_empty_dict)
+			current_index = len(ALL_KEYS)
 
 
 	return result
 
-def createEmtpyDict():
-	emptyDict = {}
-	for currentKey in ALL_KEYS:
-		emptyDict.update({currentKey: ""})
-	return emptyDict
+def create_empty_dict():
+	empty_dict = {}
+	for current_key in ALL_KEYS:
+		empty_dict.update({current_key: ""})
+	return empty_dict
 
-def correctWeightWithoutLetterG(weightWithoutLetterG):
-	if(weightWithoutLetterG == ""):
+def correct_weight_without_letter_g(weight_without_letter_g):
+	if(weight_without_letter_g == ""):
 		return ""
 	else:
-		if("k" in weightWithoutLetterG):
-			stringLength = len(weightWithoutLetterG)
-			weightWithoutLetters = weightWithoutLetterG[:stringLength-1]
-			weightWithoutLettersAsFloat = float(weightWithoutLetters)
-			correctedGrammWeightAsFloat = weightWithoutLettersAsFloat * 1000
-			correctedGrammWeightAsLong = int(correctedGrammWeightAsFloat) #So we have a round number
-			return str(correctedGrammWeightAsLong)+"g"
+		if("k" in weight_without_letter_g):
+			string_length = len(weight_without_letter_g)
+			weight_without_letters = weight_without_letter_g[:string_length-1]
+			weight_without_letters_as_float = float(weight_without_letters)
+			corrected_gramm_weight_as_float = weight_without_letters_as_float * 1000
+			corrected_gramm_weight_as_long = int(corrected_gramm_weight_as_float) #So we have a round number
+			return str(corrected_gramm_weight_as_long)+"g"
 		else:
-			return weightWithoutLetterG + "g"
+			return weight_without_letter_g + "g"

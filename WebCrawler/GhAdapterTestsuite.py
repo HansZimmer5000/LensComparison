@@ -1,8 +1,8 @@
 # Testsuite for CsvIntoRawData.py
 # Decided just to test the functions with a return value.
 
-from CsvIntoRawData import getProdImgFromRawSite
-from CsvIntoRawData import getProdDescFromRawSite
+from CsvIntoRawData import get_prodimg_from_raw_site
+from CsvIntoRawData import get_proddesc_from_raw_site
 import GhExamples
 import GhAdapter
 import unittest
@@ -64,68 +64,68 @@ class GhAdapterTestsuite(unittest.TestCase):
     # Test cases
     #////////////
 
-    def test_pos_getAllAttributes_with_everything1(self):
+    def test_pos_get_all_attributes_with_everything1(self):
         
-        givenRawSite = self.__class__.TESTDATA_PRODSITE_RAW_WITH_EVERYTHING1
-        givenProdDesc = getProdDescFromRawSite(givenRawSite)
-        givenProdImg = getProdImgFromRawSite(givenRawSite)
+        given_raw_site = self.__class__.TESTDATA_PRODSITE_RAW_WITH_EVERYTHING1
+        given_proddesc = get_proddesc_from_raw_site(given_raw_site)
+        given_prodimg = get_prodimg_from_raw_site(given_raw_site)
 
-        resultDict = GhAdapter.getAllAttributes(givenProdDesc,givenProdImg)
+        result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
 
-        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING1,resultDict)
+        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING1,result_dict)
 
-    def test_pos_getAllAttributes_with_everything2(self):
+    def test_pos_get_all_attributes_with_everything2(self):
         
-        givenRawSite = self.__class__.TESTDATA_PRODSITE_RAW_WITH_EVERYTHING2
-        givenProdDesc = getProdDescFromRawSite(givenRawSite)
-        givenProdImg = getProdImgFromRawSite(givenRawSite)
+        given_raw_site = self.__class__.TESTDATA_PRODSITE_RAW_WITH_EVERYTHING2
+        given_proddesc = get_proddesc_from_raw_site(given_raw_site)
+        given_prodimg = get_prodimg_from_raw_site(given_raw_site)
         
-        resultDict = GhAdapter.getAllAttributes(givenProdDesc,givenProdImg)
+        result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
 
-        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING2,resultDict)
+        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING2,result_dict)
 
-    def test_pos_getAllAttributes_with_everything3(self):
+    def test_pos_get_all_attributes_with_everything3(self):
         
-        givenRawSite = self.__class__.TESTDATA_PRODSITE_RAW_WITH_EVERYTHING3
-        givenProdDesc = getProdDescFromRawSite(givenRawSite)
-        givenProdImg = getProdImgFromRawSite(givenRawSite)
+        given_raw_site = self.__class__.TESTDATA_PRODSITE_RAW_WITH_EVERYTHING3
+        given_proddesc = get_proddesc_from_raw_site(given_raw_site)
+        given_prodimg = get_prodimg_from_raw_site(given_raw_site)
         
-        resultDict = GhAdapter.getAllAttributes(givenProdDesc,givenProdImg)
+        result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
 
-        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING3,resultDict)
+        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING3,result_dict)
 
-    def test_pos_getAllAttributes_with_missing_info1(self):
-        givenRawSite = self.__class__.TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1
-        givenProdDesc = getProdDescFromRawSite(givenRawSite)
-        givenProdImg = getProdImgFromRawSite(givenRawSite)
+    def test_pos_get_all_attributes_with_missing_info1(self):
+        given_raw_site = self.__class__.TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1
+        given_proddesc = get_proddesc_from_raw_site(given_raw_site)
+        given_prodimg = get_prodimg_from_raw_site(given_raw_site)
 
-        resultDict = GhAdapter.getAllAttributes(givenProdDesc,givenProdImg)
+        result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
 
-        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_MISSING_INFO1, resultDict)
+        self.assertEqual(self.__class__.TESTDATA_DICT_WITH_MISSING_INFO1, result_dict)
 
-    def test_pos_getAllAttributes_without_prodimg(self):
+    def test_pos_get_all_attributes_without_prodimg(self):
 
-        givenRawSite = self.__class__.TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1
-        givenProdDesc = getProdDescFromRawSite(givenRawSite)
-        givenProdImg = getProdImgFromRawSite(givenRawSite)
+        given_raw_site = self.__class__.TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1
+        given_proddesc = get_proddesc_from_raw_site(given_raw_site)
+        given_prodimg = get_prodimg_from_raw_site(given_raw_site)
 
-        resultDict = GhAdapter.getAllAttributes(givenProdDesc,givenProdImg)
+        result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
 
-        self.assertEqual(self.__class__.TESTDATA_DICT_RAW_WITHOUT_PRODIMG1,resultDict)
+        self.assertEqual(self.__class__.TESTDATA_DICT_RAW_WITHOUT_PRODIMG1,result_dict)
 
-    def test_neg_getAllAttributes_no_input(self):
-        givenProdDesc = ""
-        givenProdImgAndLinksText = ""
+    def test_neg_get_all_attributes_no_input(self):
+        given_proddesc = ""
+        given_prodimgAndLinksText = ""
 
-        resultDict = GhAdapter.getAllAttributes(givenProdDesc,givenProdImgAndLinksText)
-        self.assertEqual(self.__class__.TESTDATA_DICT_WITHOUT_VALUES,resultDict)
+        result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimgAndLinksText)
+        self.assertEqual(self.__class__.TESTDATA_DICT_WITHOUT_VALUES,result_dict)
 
-    def test_pos_convertDictToCSVValueString_with_everything(self):
-        resultSring = GhAdapter.convertDictToCSVValueString(self.__class__.TESTDATA_DICT_WITH_EVERYTHING1)
+    def test_pos_convert_dict_to_csv_value_string_with_everything(self):
+        resultSring = GhAdapter.convert_dict_to_csv_value_string(self.__class__.TESTDATA_DICT_WITH_EVERYTHING1)
         self.assertEqual(self.__class__.TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1,resultSring)
 
-    def test_neg_convertDictToCSVValueString_no_input(self):
-        resultSring = GhAdapter.convertDictToCSVValueString(self.__class__.TESTDATA_DICT_WITHOUT_VALUES)
+    def test_neg_convert_dict_to_csv_value_string_no_input(self):
+        resultSring = GhAdapter.convert_dict_to_csv_value_string(self.__class__.TESTDATA_DICT_WITHOUT_VALUES)
         self.assertEqual(self.__class__.TESTDATA_DICT_VALUE_STRING_WITHOUT_VALUES,resultSring)
 
  # -- End of GhAdapterTestsuite Class

@@ -68,54 +68,54 @@ class CsvIntoRawDataTestSuite(unittest.TestCase):
     # Test cases
     #////////////
 
-    def test_pos_getAllrawResponseFullPaths(self):
+    def test_pos_get_all_raw_response_full_paths(self):
         #With
 
         #Then
-        result = CsvIntoRawData.getAllrawResponseFullPaths(self.__class__.RAWRESPONSE_FILES_DIR)
+        result = CsvIntoRawData.getall_raw_response_full_paths(self.__class__.RAWRESPONSE_FILES_DIR)
         resultAsSet = set(result)
 
         #Give        
         self.assertEqual(self.__class__.RAWRESPONSE_FILES_FULLPATH_SET,resultAsSet)
 
-    def test_neg_getAllrawResponseFullPaths(self):
+    def test_neg_get_all_raw_response_full_paths(self):
         #With
 
         #Then
-        result = CsvIntoRawData.getAllrawResponseFullPaths(self.__class__.PROJECT_MAIN_DIR)
+        result = CsvIntoRawData.getall_raw_response_full_paths(self.__class__.PROJECT_MAIN_DIR)
         resultAsSet = set(result)
 
         #Give        
         self.assertEqual(self.__class__.EMPTY_SET,resultAsSet)
     
-    def test_pos_without_prodimg_extractDataFromrawResponseRow(self):
+    def test_pos_without_prodimg_extract_data_from_raw_response_row(self):
         #With
         givenRow269 = self.__class__.RAWRESPONSE_TWELVE_SIXTY_FILE.read().split("\n")[268]
 
         #Then
-        resultDict = CsvIntoRawData.extractDataFromrawResponseRow(givenRow269)
+        resultDict = CsvIntoRawData.extract_data_from_raw_response_row(givenRow269)
 
         #Give
         self.assertEqual(self.__class__.RAWRESPONSE_TWELVE_SIXTY_ENTRY_269_DICT, resultDict)
 
-    def test_pos_full_info_extractDataFromrawResponseRow(self):
+    def test_pos_full_info_extract_data_from_raw_response_row(self):
         #With
         givenRow1 = self.__class__.RAWRESPONSE_TWELVE_SIXTY_FILE.read().split("\n")[0]
 
         #Then
-        resultDict = CsvIntoRawData.extractDataFromrawResponseRow(givenRow1)
+        resultDict = CsvIntoRawData.extract_data_from_raw_response_row(givenRow1)
 
         #Give
         self.maxDiff = None #Show us whole difference, if there is any.
         self.assertEqual(self.__class__.RAWRESPONSE_TWELVE_SIXTY_ENTRY_1_DICT,resultDict)
 
-    def test_neg_extractDataFromrawResponseRow(self):
+    def test_neg_extract_data_from_raw_response_row(self):
         #TODO: Really usefull? Doubt it.
         #With
         givenRow4 = self.__class__.RAWRESPONSE_TWELVE_SIXTY_FILE.read().split("\n")[3]
 
         #Then
-        resultDict = CsvIntoRawData.extractDataFromrawResponseRow(givenRow4)
+        resultDict = CsvIntoRawData.extract_data_from_raw_response_row(givenRow4)
 
         #Give
         self.maxDiff = None #Show us whole difference, if there is any.

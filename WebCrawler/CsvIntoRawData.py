@@ -6,19 +6,19 @@
 # 3. Take rawResponse file and extract for each lens the import data (if existent)
 #   A. Get Row as one string, columns differ with ";"
 #   B. Get (if existent, else just "") data from columns:
-#       1. Column = prodDesc ------   Always there, but may not complete
+#       1. Column = proddesc ------   Always there, but may not complete
 #       2. till n-1. Column = Links   Sometimes there
-#       n. Column = prodImg -------   Sometimes there
+#       n. Column = prodimg -------   Sometimes there
 #           Data            Looks like                  get from
-#       - Full Lensname (Text with numbers)         prodImg // Links (href != "href=./")
-#       - Focal Length  (000mm - 000mm // 000mm)    prodDesc
-#       - Aperture      (F/0.0 - 0.0)               prodDesc
-#       - Filterthread  (00mm)                      prodDesc
-#       - Magnification (0.26X // 1,00 // 1:3)      prodDesc
-#       - Mount         (Nikon F // Canon EF// ...) prodDesc
-#       - Sensor Compatibility (Full-Frame // APS-C) prodDesc
-#       - Weight        (000g)                      prodDesc
-#       - Size          (Diameter x Length"mm")     prodDesc
+#       - Full Lensname (Text with numbers)         prodimg // Links (href != "href=./")
+#       - Focal Length  (000mm - 000mm // 000mm)    proddesc
+#       - Aperture      (F/0.0 - 0.0)               proddesc
+#       - Filterthread  (00mm)                      proddesc
+#       - Magnification (0.26X // 1,00 // 1:3)      proddesc
+#       - Mount         (Nikon F // Canon EF// ...) proddesc
+#       - Sensor Compatibility (Full-Frame // APS-C) proddesc
+#       - Weight        (000g)                      proddesc
+#       - Size          (Diameter x Length"mm")     proddesc
 #   D. Return to Step 4 with this extracted data.
 # 4. Write this data to RawData file, because some files are big its may better to write directly every n rows, till last row is reached.
 # 5. Close current rawResponse file, continue at 3 with the next rawResponse file.
@@ -28,85 +28,78 @@ from glob import glob
 from tqdm import tqdm
 import GhAdapter
 import Spider
+import RawData
 
 # Module Variables
-totalProcessesRows = 0
-totalWrittenRows = 0
+total_processesd_rows = 0
+total_written_rows = 0
 
 # Module Constants
-EMPTY_DICT = GhAdapter.createEmtpyDict()
+EMPTY_DICT = GhAdapter.create_empty_dict()
 
-def getAllrawResponseFullPaths(directory):
-    rawResponseName = "rawResponse*.csv"
-    return glob(directory + rawResponseName)
+def getall_raw_response_full_paths(directory):
+    raw_response_file_name = "rawResponse*.csv"
+    return glob(directory + raw_response_file_name)
 
-def extractrawResponseFileAndWriteToRawData(rawResponseFile):
+def extract_raw_response_file_and_write_to_rawdata(raw_response_file):
     MAX_DICT_LIST_SIZE = 1000 #As it gets bigger it gets faster.
-    global totalProcessesRows
-    #TODO: Problem if this constant is bigger then one. Problem pretty sure how I use the index in the while loop.
+    global total_processesd_rows
 
-    #Open file and go through every row, then give rowtext (rows differs by '\n') to extractDataFromrawResponseRow
-    rowTexts = rawResponseFile.read().split("\n")
-    rowTextCount = len(rowTexts)
-    currentDictList = []
-    currentRowIndex = 0
+    #Open file and go through every row, then give rowtext (rows differs by '\n') to extract_data_from_raw_response_row
+    row_texts = raw_response_file.read().split("\n")
+    row_text_count = len(row_texts)
+    current_dict_list = []
+    current_row_index = 0
 
-    while(currentRowIndex < rowTextCount):
+    while(current_row_index < row_text_count):
         #Save each return dict in a list, if list is bigger than *n* save into rawData file.
 
-        currentRowText = rowTexts[currentRowIndex]
-        if(GhAdapter.checkIfRawProdSiteIsValid(currentRowText)):
-            currentDict = extractDataFromrawResponseRow(currentRowText)
-            currentDictList.append(currentDict)
-            if((len(currentDictList) == MAX_DICT_LIST_SIZE) or (currentRowIndex == rowTextCount - 1)):
-                writeExtractedDictsToRawData(currentDictList)
-                currentDictList = []
+        current_row_text = row_texts[current_row_index]
+        if(GhAdapter.check_if_raw_prodsite_is_valid(current_row_text)):
+            current_dict = extract_data_from_raw_response_row(current_row_text)
+            current_dict_list.append(current_dict)
+            if((len(current_dict_list) == MAX_DICT_LIST_SIZE) or (current_row_index == row_text_count - 1)):
+                write_extracted_dicts_to_rawdata(current_dict_list)
+                current_dict_list = []
 
-        currentRowIndex += 1
-        totalProcessesRows += 1
+        current_row_index += 1
+        total_processesd_rows += 1
     
 
-def extractDataFromrawResponseRow(row):
-    #find prodDesc, search for name in prodImg / links
+def extract_data_from_raw_response_row(row):
+    #find proddesc, search for name in prodimg / links
     #return all found data in a dict.
     PROD_DESC_INDEX = 0
 
-    prodDesc = getProdDescFromRawSite(row)
-    prodImg = getProdImgFromRawSite(row)
+    proddesc = get_proddesc_from_raw_site(row)
+    prodimg = get_prodimg_from_raw_site(row)
 
-    resultDict = GhAdapter.getAllAttributes(prodDesc, prodImg)
-    # If there is no prodImg, the lens will have a empty lensname -> let them just aside?
-    return resultDict
+    result_dict = GhAdapter.get_all_attributes(proddesc, prodimg)
+    # If there is no prodimg, the lens will have a empty lensname -> let them just aside?
+    return result_dict
 
-def writeExtractedDictsToRawData(dictList):
-    global totalWrittenRows
-
-    rawDataFullPath = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/rawData.csv"
-    rawDataFile = open(rawDataFullPath,"a")
+def write_extracted_dicts_to_rawdata(dictList):
+    global total_written_rows
     
-    for currentDict in dictList:
-        if(currentDict != EMPTY_DICT):
-            currentDictText = GhAdapter.convertDictToCSVValueString(currentDict)
-            rawDataFile.write(currentDictText + "\n")
-            totalWrittenRows += 1
+    for current_dict in dictList:
+        if(current_dict != EMPTY_DICT):
+            RawData.append_lensdata_dict_to_rawdata(current_dict)
 
-    rawDataFile.close()
-
-def getProdImgFromRawSite(rawsite):
-    indexOfProdImgTag = rawsite.find("gh_prodImg")
-    if(indexOfProdImgTag < 0):
+def get_prodimg_from_raw_site(raw_site):
+    index_of_prodimg_tag = raw_site.find("gh_prodImg")
+    if(index_of_prodimg_tag < 0):
         return ""
     else:
-        prodImg = rawsite[indexOfProdImgTag+1:]
-        return prodImg
+        prodimg = raw_site[index_of_prodimg_tag+1:]
+        return prodimg
 
-def getProdDescFromRawSite(rawsite):
-    indexOfProdImgTag = rawsite.find("gh_prodImg")
-    if(indexOfProdImgTag < 0):
-        return rawsite
+def get_proddesc_from_raw_site(raw_site):
+    index_of_prodimg_tag = raw_site.find("gh_prodImg")
+    if(index_of_prodimg_tag < 0):
+        return raw_site
     else:
-        prodDesc = rawsite[:indexOfProdImgTag]
-        return prodDesc
+        proddesc = raw_site[:index_of_prodimg_tag]
+        return proddesc
 
 if __name__ == "__main__":
     #If this module is not imported, do this code
@@ -114,19 +107,19 @@ if __name__ == "__main__":
     RAW_RESPONSE_DIR = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/"
 
     print("Type 'clean' to clean the rawDataFile or 'import' to import new Data.")
-    userInput = input()
+    user_input = input()
 
-    if(userInput == "import"):
-        allrawResponseFullPaths = getAllrawResponseFullPaths(RAW_RESPONSE_DIR)
+    if(user_input == "import"):
+        all_raw_response_full_paths = getall_raw_response_full_paths(RAW_RESPONSE_DIR)
 
-        for currentrawResponseFullPath in allrawResponseFullPaths:
-            print(currentrawResponseFullPath)
-            rawResponseFile = open(currentrawResponseFullPath,"r")
-            extractrawResponseFileAndWriteToRawData(rawResponseFile)
-            rawResponseFile.close()
+        for current_raw_response_full_path in all_raw_response_full_paths:
+            print(current_raw_response_full_path)
+            raw_response_file = open(current_raw_response_full_path,"r")
+            extract_raw_response_file_and_write_to_rawdata(raw_response_file)
+            raw_response_file.close()
 
-        print("Total Count of Processed Rows: " + str(totalProcessesRows))
-        print("Total Count of Written Rows: " + str(totalWrittenRows))
+        print("Total Count of Processed Rows: " + str(total_processesd_rows))
+        print("Total Count of Written Rows: " + str(total_written_rows))
 
-    elif(userInput == "clean"):
-        Spider.cleanFileAndWriteTitles()
+    elif(user_input == "clean"):
+        RawData.clean_rawdata_file_and_write_titles()
