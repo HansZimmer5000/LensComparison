@@ -61,9 +61,15 @@ def get_all_proddesc_attributes(prodDesc):
 		KEY_SIZE: get_size(prodDesc)
 	}
 
-def get_lens_name(prodImg):
+def get_lens_name(raw_lensname):
 	#TODO: Maybe later: get LensnameFromSiteTitle here in a ifcase
-	return get_lens_name_from_prodimg(prodImg)
+	if("<title>" in raw_lensname):
+		return get_lens_name_from_title(raw_lensname)
+	else:
+		return get_lens_name_from_prodimg(raw_lensname)
+
+def get_lens_name_from_title(title):
+	return get_attribute_value("<title>",title," Preisvergleich")
 
 def get_lens_name_from_prodimg(prodImg):
 	return get_attribute_value(KEY_LENSNAME,prodImg,'"">')
@@ -124,9 +130,11 @@ def get_attribute_value(key,string,valueTillKey):
 	return result
 
 def create_next_gh_overview_page(next_page_raw_url):
-		tmpResult = GhAdapter.get_attribute_value('href="',next_page_raw_url,'"')
-		result = tmpResult.replace(".","https://geizhals.de",1)
-		return result
+	print("bla: " + next_page_raw_url)
+	tmpResult = get_attribute_value('href="',next_page_raw_url,'"')
+	result = tmpResult.replace(".","https://geizhals.de",1)
+	print("bla: " + result)
+	return result
 
 def convert_dict_to_csv_value_string(dict):
 	current_value = ""

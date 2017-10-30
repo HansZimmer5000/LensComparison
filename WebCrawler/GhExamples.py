@@ -91,11 +91,11 @@ TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_761 = TESTDATA_DICT_WITH_MISSING_IN
 TESTDATA_DICT_VALUE_STRING_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1 = TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\
-#	TESTDATA_PRODSITE_RAWs
+#	TESTDATA_PRODDESC_WITH_PRODIMG_RAWs
 #	Displayed how Python would read it (with "open" fucntion)
 #/////////////////////////
 
-TESTDATA_PRODSITE_RAW_WITH_EVERYTHING1 = '"<div id=""gh_proddesc""> Typ: Universal-Zoom-Objektiv   Brennweite: 10-30mm  ' + \
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_EVERYTHING1 = '"<div id=""gh_proddesc""> Typ: Universal-Zoom-Objektiv   Brennweite: 10-30mm  ' + \
 'Lichtstärke: 1:3.5-1:5.6   Optischer Aufbau (Linsen/ Gruppen): 9/ 7   Blendenlam' + \
 'ellen: 7 (abgerundet)   Bildstabilisator: VR   Fokussiermotor: SWM   Naheinstell' + \
 'grenze: 0.20m   Kleinste Blende: 16   Objektivbajonett: Nikon 1   Sensorkompatib' + \
@@ -123,7 +123,7 @@ TESTDATA_PRODSITE_RAW_WITH_EVERYTHING1 = '"<div id=""gh_proddesc""> Typ: Univers
 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA)"" title=""Nikon 1 N' + \
 'IKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA)"">"'
 
-TESTDATA_PRODSITE_RAW_WITH_EVERYTHING2 = '"<div id=""gh_proddesc""> Typ: Tele-Zoom-Objektiv   ' +\
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_EVERYTHING2 = '"<div id=""gh_proddesc""> Typ: Tele-Zoom-Objektiv   ' +\
 'Brennweite: 200-500mm   Lichtstärke: 1:5.6   Optischer Aufbau (Linsen/ Gruppen): 19/ 12   ' +\
 'Blendenlamellen: 9 (abgerundet)Bildstabilisator: VR   Fokussiermotor: SWM   Naheinstellgrenze: 2.20m   ' +\
 'Kleinste Blende: 32   Abbildungsmaßstab: 1:4.50   Objektivbajonett: Nikon F   Sensorkompatibilität: APS-C' +\
@@ -142,7 +142,7 @@ TESTDATA_PRODSITE_RAW_WITH_EVERYTHING2 = '"<div id=""gh_proddesc""> Typ: Tele-Zo
 'alt=""Nikon AF-S VR 200-500mm 5.6E ED schwarz (JAA822DA)""' +\
 ' title=""Nikon AF-S VR 200-500mm 5.6E ED schwarz (JAA822DA)"">";'
 
-TESTDATA_PRODSITE_RAW_WITH_EVERYTHING3 = '"<div id=""gh_proddesc""> Typ: Weitwinkel-Objektiv   Brennweite: 35mm   Lichtst' + \
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_EVERYTHING3 = '"<div id=""gh_proddesc""> Typ: Weitwinkel-Objektiv   Brennweite: 35mm   Lichtst' + \
 'ärke: 1:1.4   Optischer Aufbau (Linsen/ Gruppen): 12/ 10   Blendenlamellen: 8 (a' + \
 'bgerundet)   Bildstabilisator: nein   Fokussiermotor: nein   Naheinstellgrenze: ' + \
 '0.30m   Kleinste Blende: 22   Objektivbajonett: Sony E   Sensorkompatibilität: A' + \
@@ -155,7 +155,7 @@ TESTDATA_PRODSITE_RAW_WITH_EVERYTHING3 = '"<div id=""gh_proddesc""> Typ: Weitwin
 'n0.jpg"" alt=""Samyang 35mm 1.4 AS UMC für Sony E schwarz"" title=""Samyang 35mm' + \
 ' 1.4 AS UMC für Sony E schwarz"">";;;;;'
 
-TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1 = \
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_MISSING_INFO1 = \
 '<div id=""gh_proddesc""> Typ: Weitwinkel-Objektiv   Brennweite: 35mm   Lichtstärke: 1:1.5   Blendenlamellen: 11   ' + \
 'Bildstabilisator: nein   Fokussiermotor: nein   Objektivbajonett: Can' + \
 'on EF   Sensorkompatibilität: APS-C/ Kleinbild<p>EAN-Codes: 4549292002669, 4549292002676</p> <p>Gelistet seit: 12.08.2014, ' + \
@@ -166,7 +166,7 @@ TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1 = \
 'alt=""Canon Objektiv CN-E 35mm T1.5 L F schwarz (9139B001)"" title=""Canon Objektiv CN-E 35mm T1.5 ' + \
 'L F schwarz (9139B001)"">";;;;;'
 
-TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1 = '"<div id=""gh_proddesc""> Typ: Standard-Objektiv   Brennweite: 25mm   Lichtstär' + \
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITHOUT_PRODIMG1 = '"<div id=""gh_proddesc""> Typ: Standard-Objektiv   Brennweite: 25mm   Lichtstär' + \
 'ke: 1:0.95   Optischer Aufbau (Linsen/ Gruppen): 11/ 8   Blendenlamellen: 10   B' + \
 'ildstabilisator: nein   Fokussiermotor: nein   Naheinstellgrenze: 0.17m   Kleins' + \
 'te Blende: 16   Objektivbajonett: Micro-Four-Thirds   Sensorkompatibilität: Four' + \
@@ -185,9 +185,9 @@ TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1 = '"<div id=""gh_proddesc""> Typ: Standar
 'eTypeCM, \'0\'])";" href=./bew_616904.html"" rel=""nofollow"">Produkt bewerten</' + \
 'a>) </span> </p> </div>";;;;'
 
-# TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG2 includes slightly different format in 3rd last row because of the placement of the \'0.
+# TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITHOUT_PRODIMG2 includes slightly different format in 3rd last row because of the placement of the \'0.
 # Has no effect on how it is displayed.
-TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG2 = '"<div id=""gh_proddesc""> Typ: Weitwinkel-Objektiv   Brennweite: 28mm   Lichtst' + \
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITHOUT_PRODIMG2 = '"<div id=""gh_proddesc""> Typ: Weitwinkel-Objektiv   Brennweite: 28mm   Lichtst' + \
 'ärke: 1:2.8   Optischer Aufbau (Linsen/ Gruppen): 8/ 6   Bildstabilisator: nein ' + \
 '  Fokussiermotor: nein   Naheinstellgrenze: 0.70m   Kleinste Blende: 22   Abbild' + \
 'ungsmaßstab: 1:22.00   Objektivbajonett: Leica M   Sensorkompatibilität: APS-C/ ' + \
@@ -198,9 +198,23 @@ TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG2 = '"<div id=""gh_proddesc""> Typ: Weitwin
 '\'0\'])";" rel=nofollow"" href=""bew_51352.html"">Produkt bewerten</a>).</p> </di' + \
 'v>";;;;;;'
 
-TESTDATA_PRODSITE_RAW_RESPONSE_TWELVE_SIXTY_ENTRY_1 = TESTDATA_PRODSITE_RAW_WITH_EVERYTHING1
-TESTDATA_RPODSITE_RAW_RESPONSE_TWELVE_SICTY_ENTRY_269 = TESTDATA_PRODSITE_RAW_WITHOUT_PRODIMG1
-TESTDATA_PRODSITE_RAW_RESPONSE_TWELVE_SIXTY_ENTRY_761 = TESTDATA_PRODSITE_RAW_WITH_MISSING_INFO1 
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_RESPONSE_TWELVE_SIXTY_ENTRY_1 = TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_EVERYTHING1
+TESTDATA_RPODSITE_RAW_RESPONSE_TWELVE_SICTY_ENTRY_269 = TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITHOUT_PRODIMG1
+TESTDATA_PRODDESC_WITH_PRODIMG_RAW_RESPONSE_TWELVE_SIXTY_ENTRY_761 = TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_MISSING_INFO1 
+
+
+#\\\\\\\\\\\\\\\\\\\\\\\\\
+#	TESTDATA_TITLE_RAWS
+#/////////////////////////
+
+TESTDATA_TITLE_RAW1 = "<title>Nikon AF-S 28mm 1.4E ED schwarz Preisvergleich | Geizhals Deutschland</title>"
+
+#\\\\\\\\\\\\\\\\\\\\\\\\\
+#	TESTDATA_TITLE_CLEAR
+#/////////////////////////
+
+TESTDATA_TITLE_CLEAR1 = "Nikon AF-S 28mm 1.4E ED schwarz"
+
 
 def printRowFromFile(file,rowNumber):
 	file = str(file)
@@ -220,6 +234,9 @@ def printRowFromFile(file,rowNumber):
 		print("Rownumber is " + rowDiff + " too high.")
 	else:
 		print(rows[rowNumber-1])
+
+
+
 
 if __name__ == "__main__":
 	print("Print a certain Row from a certain file with 'printRowFromFile'.")

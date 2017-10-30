@@ -5,7 +5,10 @@ from GhAdapterTestsuite import GhAdapterTestsuite
 import unittest
 
 if __name__ == '__main__':
-    testClassesToRun = [GhAdapterTestsuite, CsvIntoRawDataTestSuite]
+    testClassesToRun = [
+        GhAdapterTestsuite, 
+        CsvIntoRawDataTestSuite
+    ]
 
     unittestLoader = unittest.TestLoader()
 

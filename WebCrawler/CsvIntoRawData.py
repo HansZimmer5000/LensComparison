@@ -25,9 +25,7 @@
 # 6. If every rawResponse file is done, close RawData file.
 
 from glob import glob
-from tqdm import tqdm
 import GhAdapter
-import Spider
 import RawData
 
 # Module Variables
@@ -83,6 +81,7 @@ def write_extracted_dicts_to_rawdata(dictList):
     
     for current_dict in dictList:
         if(current_dict != EMPTY_DICT):
+            total_written_rows += 1
             RawData.append_lensdata_dict_to_rawdata(current_dict)
 
 def get_prodimg_from_raw_site(raw_site):
