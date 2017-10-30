@@ -15,7 +15,6 @@ if __name__ == "__main__":
 class BlogSpider(scrapy.Spider):
 	__SAVE_FULL_LENS_PAGE_ONLY = True
 	__SAVE_RAW_WITHOUT_TRANSFORMING = False
-	__USE_TITLE = True
 
 	__SLEEP_SECONDS_BETWEEN_LENSE_PAGES = 10
 	__SLEEP_SECONDS_BETWEEN_OVERVIEW_PAGES = 10
@@ -31,14 +30,7 @@ class BlogSpider(scrapy.Spider):
 			RawData.append_raw_lens_page_to_rawdata(response.body_as_unicode())
 		else:
 			gh_proddesc = response.xpath('//div[@id="gh_proddesc"]').extract_first()
-			gh_prodImg = response.xpath('//img[@class="gh_prodImg"]').extract_first()
-			title = response.xpath('//title').extract_first() 
-
-			raw_lensname = ""
-			if(self.__USE_TITLE):
-				raw_lensname = title
-			else:
-				raw_lensname = gh_prodImg
+			raw_lensname = response.xpath('//title').extract_first() 
 
 			if(self.__SAVE_RAW_WITHOUT_TRANSFORMING):
 				RawData.append_raw_desc_raw_lensname_to_rawdata(gh_proddesc,raw_lensname)
