@@ -22,6 +22,7 @@ class BlogSpider(scrapy.Spider):
 	name = 'lensSpider' 
 	start_urls = ['https://geizhals.de/?cat=acamobjo&amp;pg=1']
 
+	# TODO: Following line will be executed even whenits just importat
 	RawData.clean_rawdata_file_and_write_titles()
 
 	def parseLensPage(self, response):

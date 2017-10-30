@@ -1,6 +1,7 @@
 # RawData is about the access to the same called file.
 # Its here to unclutter the other files and sperate the concerns
 
+# CSV can handle a maximum of 32759 characters in one cells
 import DataKeys
 
 __full_path_of_rawdata_file = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/rawData.csv"
@@ -32,7 +33,9 @@ def append_raw_desc_raw_lensname_to_rawdata(proddesc, raw_lensname):
 def append_raw_lens_page_to_rawdata(raw_lenspage):
     rawdata_file = open(__full_path_of_rawdata_file, "a")
     cleared_raw_lenspage = clear_string(raw_lenspage)
-    rawdata_file.write(cleared_raw_lenspage+"\n")
+    if("DOCTYPE" in cleared_raw_lenspage):
+        cleared_raw_lenspage = "\n"+cleared_raw_lenspage
+    rawdata_file.write(cleared_raw_lenspage)
     rawdata_file.close()
 
 def clear_string(string_to_clear):
@@ -43,8 +46,7 @@ def clear_string(string_to_clear):
     forbidden_strings = [
         "\x95",
         "\u200b",
-        "\n",
-        ";"
+        "\n"
     ]
     replacement_letter = " "
     cleared_string = string_to_clear
@@ -52,3 +54,19 @@ def clear_string(string_to_clear):
         cleared_string = cleared_string.replace(current_forbidden_string,replacement_letter)
     
     return cleared_string
+
+if __name__ == "__main__":
+    rawdata_file = open(__full_path_of_rawdata_file,"r")
+    all_lines = rawdata_file.readlines()
+    print(len(all_lines))
+    rawdata_file.close()
+
+    rawdata_file = open(__full_path_of_rawdata_file,"w")
+    for line in all_lines:
+        clean_line = line.replace("\n","")
+        rawdata_file.write(clean_line)
+    rawdata_file.close()
+
+    rawdata_file = open(__full_path_of_rawdata_file,"r")
+    print(len(all_lines))
+    rawdata_file.close()
