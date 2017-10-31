@@ -19,6 +19,8 @@ SORT_OUT_STRINGS_FOR_TITLE=[
 	"Pro Set"
 ]
 
+START_URL = 'https://geizhals.de/?cat=acamobjo&amp;pg=1'
+
 def get_all_attributes(prodDesc,prodImg):
 	
 	result_dict = {
@@ -129,10 +131,8 @@ def get_attribute_value(key,string,valueTillKey):
 	return result
 
 def create_next_gh_overview_page(next_page_raw_url):
-	print("bla: " + next_page_raw_url)
 	tmpResult = get_attribute_value('href="',next_page_raw_url,'"')
 	result = tmpResult.replace(".","https://geizhals.de",1)
-	print("bla: " + result)
 	return result
 
 def convert_dict_to_csv_value_string(dict):
