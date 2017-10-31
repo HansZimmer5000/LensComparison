@@ -82,7 +82,7 @@ def write_extracted_dicts_to_rawdata(dictList):
     for current_dict in dictList:
         if(current_dict != EMPTY_DICT):
             total_written_rows += 1
-            RawData.append_lensdata_dict_to_rawdata(current_dict)
+            RawData.append_clean_lensdata_dict_to_rawdata(current_dict)
 
 def get_prodimg_from_raw_site(raw_site):
     index_of_prodimg_tag = raw_site.find("gh_prodImg")

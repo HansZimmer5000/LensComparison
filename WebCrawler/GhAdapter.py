@@ -62,7 +62,6 @@ def get_all_proddesc_attributes(prodDesc):
 	}
 
 def get_lens_name(raw_lensname):
-	#TODO: Maybe later: get LensnameFromSiteTitle here in a ifcase
 	if("<title>" in raw_lensname):
 		return get_lens_name_from_title(raw_lensname)
 	else:
