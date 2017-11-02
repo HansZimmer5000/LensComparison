@@ -51,10 +51,19 @@ Also I want to practice how to document a project well so everybody could unders
 TODO
 
 ## Installation
-To see or edit the UML diagrams go to [draw.io](https://draw.io).
-To see or edit the Excel sheet, you will need Microsoft Excel, I use Office 365.
-Python is Python 3.
-Run the WebCrawler with 'python StartCrawling.py' in the WebCrawler directory.
+1. To see or edit the UML diagrams go to [draw.io](https://draw.io).
+2. To see or edit the Excel sheet, you will need Microsoft Excel, I use Office 365.
+3. Python is used in Version 3.6.1
+4. Run the WebCrawler with 'python StartCrawling.py' in the WebCrawler directory.
+
+Following modules are imported in total:
+```
+from scrapy.crawler import CrawlerProcess
+from glob import glob
+import unittest
+import scrapy
+import os
+```
 
 ## Tests
 To run all the python Tests at once run the "testall.py" file with 'python testall.py' in the WebCrawler directory.
