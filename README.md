@@ -29,7 +29,7 @@ Entry                 Description of data (example)
 - [x] \(Must-Have)----Made a nice GUI for filtering and comparing the lenses (perhaps something like on "geizhals.de") 
 - [x] \(Must-Have)----RawData will be shown in the Result Table, if they match the selected / active filters.
 - [ ] \(Should-Have)--Able to copy the data from "WebCrawler/rawData.csv" to "AllLenses.xlsm" in the RawData sheet.
-- [ ] \(Should-Have)--Create or find Key, so Data about the same lens comes together and so doesn't creates multiple entries.
+- [ ] \(Should-Have)--Create or find Key, so Data about the same lens comes together and so doesn`t creates multiple entries.
 - [ ] \(Should-Have)--Got all necessary data from ALL the Nikon F compatible lenses
 - [ ] \(Should-Have)--Data of Autofocus (AF,AF-S,MF) and Vibration Reduction
 - [ ] \(Should-Have)--A Sheet with a Table where you can compare (from the ResultTable) selected lenses.
@@ -43,20 +43,43 @@ Entry                 Description of data (example)
 I really enjoy comparing all the lenses out there.
 But on "geizhals.de" you just can compare all lenses which are in stock at the moment.
 So all of the good old glas and perhaps one or the other pearl is missing in that list.
-I didn't find such a list, so here I will build my own. 
+I didn`t find such a list, so here I will build my own. 
 
 Also I want to practice how to document a project well so everybody could understand it.
 
 ## Code Example
-TODO
+Example from Webcrawler/StartCrawling.py (total file except Comments and Imports):
+```
+def start_spider_within_python():
+    custom_settings = {
+        `DOWNLOAD_DELAY`: 7,
+	`RANDOMIZE_DOWNLOAD_DELAY`: False, #from 0.5*DELAY till 1.5*DELAY
+	`COOKIES_ENABLED`: False
+    }
+```
+`DOWNLOAD_DELAY` was set to 7 (seconds). Faster will lead to a ban from Geizhals.de
+The other two settings were set to perhaps avoid a ban.
+```
+    process = CrawlerProcess(custom_settings)
+    process.crawl(LensSpider)
+    process.start() 
+```
+I use `scrapy.crawler.CrawlerProcess` to set the settings and set our Spider class (LensSpider).
+We start the crawling with `process.start()`
+```
+if __name__ == "__main__":
+	RawData.clean_rawdata_file_and_write_titles()
+	start_spider_within_python()
+```
+So, if its not imported first it will wipe out any data in the WebCrawler/rawData.csv and then start the crawling which will fill the file.
 
 ## Installation
 1. To see or edit the UML diagrams go to [draw.io](https://draw.io).
 2. To see or edit the Excel sheet, you will need Microsoft Excel, I use Office 365.
 3. Python is used in Version 3.6.1
-4. Run the WebCrawler with 'python StartCrawling.py' in the WebCrawler directory.
+4. Run the WebCrawler with `python StartCrawling.py` in the WebCrawler directory, but beware! WebCrawler/RawData.csv will be wiped clean of data! (see the Code Example).
 
-Following modules are imported in total:
+Following modules are imported overall:
 ```
 from scrapy.crawler import CrawlerProcess
 from glob import glob
@@ -66,7 +89,7 @@ import os
 ```
 
 ## Tests
-To run all the python Tests at once run the "testall.py" file with 'python testall.py' in the WebCrawler directory.
+To run all the python Tests at once run the "testall.py" file with `python testall.py` in the WebCrawler directory.
 Testclasses contains:
 -   setUp
 -   tearDown
