@@ -1,5 +1,5 @@
-# This module is about my webcrawler with the use of scrapy.
-# Its a generell web crawler, but the import and use of GhAdapter makes it usefull for geizhals.de sites.
+# Start the LensSpider and let it crawl.
+# start_urls and name is set in LensSpider class.
 
 from LensSpider import LensSpider
 from scrapy.crawler import CrawlerProcess
