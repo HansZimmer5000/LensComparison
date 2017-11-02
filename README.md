@@ -24,7 +24,7 @@ Entry                 Description of data (example)
 
 ## Task List
 - [ ] \(Must-Have)----(Never done) Create UML graphs and keep them updated
-- [ ] \(Must-Have)----Complete README file
+- [x] \(Must-Have)----Complete README file
 - [x] \(Must-Have)----Got all necessary data from the most Nikon F compatible lenses
 - [x] \(Must-Have)----Made a nice GUI for filtering and comparing the lenses (perhaps something like on "geizhals.de") 
 - [x] \(Must-Have)----RawData will be shown in the Result Table, if they match the selected / active filters.
