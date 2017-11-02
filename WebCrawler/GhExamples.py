@@ -24,25 +24,25 @@ TESTDATA_DICT_WITHOUT_VALUES = {
 
 TESTDATA_DICT_WITH_EVERYTHING1 = {
 	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA)', \
-	'Brennweite: ': '10 - 30mm', \
+	'Brennweite: ': '10-30mm', \
 	'Lichtstärke: ': '1:3.5-1:5.6', \
 	'Filterdurchmesser: ': "", \
 	'Abbildungsmaßstab: ': "", \
  	'Objektivbajonett: ': 'Nikon 1', \
 	'Sensorkompatibilität: ': 'Nikon CX', \
  	'Gewicht: ': '85g',\
-	'Abmessungen (ØxL): ': '58 x 28mm'}
+	'Abmessungen (ØxL): ': '58x28mm'}
 
 TESTDATA_DICT_WITH_EVERYTHING2 = {
 	'title=""': 'Nikon AF-S VR 200-500mm 5.6E ED schwarz (JAA822DA)', \
-	'Brennweite: ': '200 - 500mm', \
+	'Brennweite: ': '200-500mm', \
 	'Lichtstärke: ': '1:5.6', \
 	'Filterdurchmesser: ': '95mm', \
 	'Abbildungsmaßstab: ': '1:4.50', \
  	'Objektivbajonett: ': 'Nikon F', \
 	'Sensorkompatibilität: ': 'APS-C/ Kleinbild', \
  	'Gewicht: ': '2300g', \
-	'Abmessungen (ØxL): ': '108 x 267.5mm'
+	'Abmessungen (ØxL): ': '108x267.5mm'
 }
 
 TESTDATA_DICT_WITH_EVERYTHING3 = {
@@ -54,7 +54,7 @@ TESTDATA_DICT_WITH_EVERYTHING3 = {
  	'Objektivbajonett: ': 'Sony E', \
 	'Sensorkompatibilität: ': 'APS-C', \
  	'Gewicht: ': '660g', \
-	'Abmessungen (ØxL): ': '83 x 111mm'
+	'Abmessungen (ØxL): ': '83x111mm'
 }
 
 TESTDATA_DICT_WITH_MISSING_INFO1 = {
@@ -78,12 +78,12 @@ TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {
  	'Objektivbajonett: ': 'Micro-Four-Thirds', \
 	'Sensorkompatibilität: ': 'Four-Thirds', \
  	'Gewicht: ': '410g',\
-	'Abmessungen (ØxL): ': '58.4 x 70mm'}
+	'Abmessungen (ØxL): ': '58.4x70mm'}
 
 	
 TESTDATA_DICT_VALUE_STRING_WITHOUT_VALUES = ";;;;;;;;"
 TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1 = \
-'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA);10 - 30mm;1:3.5-1:5.6;;;Nikon 1;Nikon CX;85g;58 x 28mm'
+'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA);10-30mm;1:3.5-1:5.6;;;Nikon 1;Nikon CX;85g;58x28mm'
 
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1   = TESTDATA_DICT_WITH_EVERYTHING1
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_RAW_WITHOUT_PRODIMG1

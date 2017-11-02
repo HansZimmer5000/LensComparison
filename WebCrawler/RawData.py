@@ -23,11 +23,11 @@ def append_clean_lensdata_dict_to_rawdata(lensDataDict):
     rawdata_file.write("\n")
     rawdata_file.close()
 
-def append_raw_desc_raw_lensname_to_rawdata(proddesc, raw_lensname):
+def append_raw_desc_raw_lens_name_to_rawdata(proddesc, raw_lens_name):
     rawdata_file = open(__full_path_of_rawdata_file, "a")
     cleared_proddesc = clear_string(proddesc)
-    cleared_raw_lensname = clear_string(raw_lensname)
-    rawdata_file.write(cleared_proddesc + ";" + cleared_raw_lensname + "\n")
+    cleared_raw_lens_name = clear_string(raw_lens_name)
+    rawdata_file.write(cleared_proddesc + ";" + cleared_raw_lens_name + "\n")
     rawdata_file.close()
 
 def append_raw_lens_page_to_rawdata(raw_lenspage):

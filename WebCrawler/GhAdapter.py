@@ -21,6 +21,12 @@ SORT_OUT_STRINGS_FOR_TITLE=[
 
 START_URL = 'https://geizhals.de/?cat=acamobjo&amp;pg=1'
 
+LINK_TAG_TO_LENS_IN_OVERVIEW_PAGE = '//a[@class = "productlist__link"]'
+LINK_TAG_TO_NEXT_OVERVIEW_PAGE_IN_OVERVIEW_PAGE = '//a[@class = "gh_pag_i only--desktop gh_pag_i_last gh_pag_next_active"]'
+
+LENS_INFO_TAG = '//div[@id="gh_proddesc"]'
+LENS_NAME_TAG = '//title'
+
 def get_all_attributes(prodDesc,prodImg):
 	
 	result_dict = {
@@ -77,23 +83,29 @@ def get_lens_name_from_prodimg(prodImg):
 
 def get_focal_length(prodDesc):
 	focalLength = get_attribute_value(KEY_FOCAL_LENGTH,prodDesc," ")
-	if("-" in focalLength):
-		return focalLength.replace("-", " - ")
-	else:
-		return focalLength
+	focalLength = focalLength.replace(" ", "")
+	return focalLength
 
 def get_aperture(prodDesc):
-	return get_attribute_value(KEY_APERTURE,prodDesc," ")
+	result = get_attribute_value(KEY_APERTURE,prodDesc," ")
+	result = result.replace(" ", "")
+	return result
 
 def get_filter(prodDesc):
 	filterSize = get_attribute_value(KEY_FILTER,prodDesc," ")
 	if("mm" not in filterSize):
-		return ""
+		filterSize = ""
 	else:
-		return filterSize
+		filterSize = filterSize
+
+	return filterSize
 
 def get_magnification(prodDesc):
-	return get_attribute_value(KEY_MAGNIFICATION,prodDesc," ")
+	result = get_attribute_value(KEY_MAGNIFICATION,prodDesc," ")
+	if("." not in result and result != ""):
+		result = result + ".00"
+	result = result.replace(" ","")
+	return result
 
 def get_mount(prodDesc):
 	return get_attribute_value(KEY_MOUNT,prodDesc,"  ")
@@ -107,11 +119,12 @@ def get_weight(prodDesc):
 	return correctedWeight
 
 def get_size(prodDesc):
-	size = get_attribute_value(KEY_SIZE,prodDesc," ")
-	if(" x  " in size):
-		return size
-	else:
-		return size.replace("x"," x ")
+	size = get_attribute_value(KEY_SIZE,prodDesc,"mm")
+	size = size.replace("/","x")
+	size = size.replace(" ","")
+	if(size != ""):
+		size = size + "mm"
+	return size
 
 def get_attribute_value(key,string,valueTillKey):
 	key_length = len(key)
@@ -127,7 +140,7 @@ def get_attribute_value(key,string,valueTillKey):
 
 	if("<p>" in result):
 		result = result.split("<p>")[0]
-	
+
 	return result
 
 def create_next_gh_overview_page(next_page_raw_url):
