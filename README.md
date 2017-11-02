@@ -66,25 +66,25 @@ Testclasses contains:
 -   uses the built-in python unittests 
 
 Following Code is from "GhAdapterTestsuite.py":
-'''
+```
     def test_pos_get_all_attributes_with_everything1(self):
-'''
+```
 Functions start with "test" (unittests module requires it) then "pos" as a positive test.
 "get_all_attributes" the actually function which is being tested and "with_everything1", info about the input data.
 In this case has the input all necessary Info and because there are several like that, its uses the first variation of the that kind of data.
-'''        
+```        
         given_raw_site = self.__class__.TESTDATA_PRODDESC_WITH_PRODIMG_RAW_WITH_EVERYTHING1
         given_proddesc = get_proddesc_from_raw_site(given_raw_site)
         given_prodimg = get_prodimg_from_raw_site(given_raw_site)
-'''
+```
 Set the input for the upcoming function call.
-'''
+```
         result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
-'''
+```
 Actually do the call.
-'''
+```
         self.assertEqual(self.__class__.TESTDATA_DICT_WITH_EVERYTHING1,result_dict)
-'''
+```
 Assert.
 
 ## Contributers
