@@ -1,7 +1,6 @@
 Attribute VB_Name = "TestsuiteResultLens"
 ' This module includes test for the ResutlLens class.
-
-Private 
+ 
 
 Function testAllCases()
     Call testPosGetAllAttributes
