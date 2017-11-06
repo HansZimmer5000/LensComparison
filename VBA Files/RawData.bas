@@ -8,20 +8,20 @@ Function convertNumberStringPointToNumberCommaAndCleanEmpySpaces(rawString As St
     convertNumberStringPointToNumberCommaAndCleanEmpySpaces = CDbl(tmpResultStr)
 End Function
 
-Function getFocalLengthStart(fullFocalLength As String) As Double
-    getFocalLengthStart = getFocalLengthPart(fullFocalLength, True)
+Function getFocalLengthStart(focalLengthInfo As String) As Double
+    getFocalLengthStart = getFocalLengthPart(focalLengthInfo, True)
 End Function
 
-Function getFocalLengthEnd(fullFocalLength As String) As Double
-    getFocalLengthEnd = getFocalLengthPart(fullFocalLength, False)
+Function getFocalLengthEnd(focalLengthInfo As String) As Double
+    getFocalLengthEnd = getFocalLengthPart(focalLengthInfo, False)
 End Function
 
-Function getApertureStart(fullApertureInfo As String) As Double
-    getApertureStart = getAperturePart(fullApertureInfo, True)
+Function getApertureStart(apertureInfo As String) As Double
+    getApertureStart = getAperturePart(apertureInfo, True)
 End Function
 
-Function getApertureEnd(fullApertureInfo As String) As Double
-    getApertureEnd = getAperturePart(fullApertureInfo, False)
+Function getApertureEnd(apertureInfo As String) As Double
+    getApertureEnd = getAperturePart(apertureInfo, False)
 End Function
 
 Function getFiltersizeAsDouble(filtersize As String) As Double
@@ -34,45 +34,69 @@ Function getFiltersizeAsDouble(filtersize As String) As Double
 End Function
 
 Function getWeightAsDouble(weight As String) As Double
-    getWeightAsDouble = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(Replace(weight, "g", ""))
+    if(StrComp(weight, "") = 0) Then
+        getWeightAsDouble = 0
+    Else
+        getWeightAsDouble = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(Replace(weight, "g", ""))
+    End If
 End Function
 
-Function getSizeDiameter(fullSizeInfo As String) As Double
+Function getSizeDiameter(sizeInfo As String) As Double
     Const X_ELEM As String = "x"
 
     Dim indexOfX As Integer
     Dim resultStr As String
     Dim resultDbl As Double
 
-    indexOfX = InStr(fullSizeInfo, X_ELEM)
-
-    If (StrComp(fullSizeInfo, "0") = 0) Then
-        resultStr = fullSizeInfo
+    If (StrComp(sizeInfo, "0") = 0 or _
+        StrComp(sizeInfo, "") = 0) Then
+        resultStr = "0"
     Else
-        resultStr = Left(fullSizeInfo, indexOfX - 1) '-1 because we don't "x" in our resultStr
+        indexOfX = InStr(sizeInfo, X_ELEM)
+        resultStr = Left(sizeInfo, indexOfX - 1) '-1 because we don't "x" in our resultStr
     End If
     
     resultDbl = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(resultStr)
     getSizeDiameter = resultDbl
 End Function
 
-Function getSizeLength(fullSizeInfo As String) As Double
+Function getSizeLength(sizeInfo As String) As Double
     Const X_ELEM As String = "x"
 
     Dim indexOfX As Integer
     Dim resultStr As String
     Dim resultDbl As Double
 
-    indexOfX = InStr(fullSizeInfo, X_ELEM)
+    if(StrComp(sizeInfo, "") = 0) Then
+        resultStr = "0"
+    Else
+        indexOfX = InStr(sizeInfo, X_ELEM)
 
-    resultStr = Mid(fullSizeInfo, indexOfX + 1) '-1 because we don't "x" in our resultStr
-    resultStr = Replace(resultStr, "mm", "")
+        resultStr = Mid(sizeInfo, indexOfX + 1) '-1 because we don't "x" in our resultStr
+        resultStr = Replace(resultStr, "mm", "")
+    End If
+
     resultDbl = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(resultStr)
-
     getSizeLength = resultDbl
 End Function
 
-Function getMagnification(fullMagnificationInfo As String) As Double
+Function getMount(mountInfo as String) as String
+    if(StrComp(MountInfo, "") = 0) Then
+        getMount = "Unknown"
+    Else
+        getMount = MountInfo
+    End If
+End Function
+
+Function getSensorCompatibility(sensorInfo as String) as String
+    if(StrComp(sensorInfo, "") = 0) Then
+        getSensorCompatibility = "Unknown"
+    Else
+        getSensorCompatibility = sensorInfo
+    End If
+End Function
+
+Function getMagnification(magnificationInfo As String) As Double
 
     ' Can only understand Magnifications similar to:
     '   1:3.10 / 1:1
@@ -86,18 +110,18 @@ Function getMagnification(fullMagnificationInfo As String) As Double
     Dim resultDbl As Double
     Dim magnificationAsDouble As Double
     
-    inputIsAlreadyCorrect = (InStr(fullMagnificationInfo, UNIT) = 1)
+    inputIsAlreadyCorrect = (InStr(magnificationInfo, UNIT) = 1)
     
-    If (StrComp(fullMagnificationInfo, "") = 0 Or _
-        StrComp(fullMagnificationInfo, "0") = 0 _
+    If (StrComp(magnificationInfo, "") = 0 Or _
+        StrComp(magnificationInfo, "0") = 0 _
         ) Then
         resultStr = "0"
     Else
         If (inputIsAlreadyCorrect) Then
-            resultStr = Replace(fullMagnificationInfo, UNIT, "")
+            resultStr = Replace(magnificationInfo, UNIT, "")
         Else
-            If (InStr(fullMagnificationInfo, X_ELEM) > 0) Then
-                magnificationAsDouble = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(Replace(fullMagnificationInfo, X_ELEM, ""))
+            If (InStr(magnificationInfo, X_ELEM) > 0) Then
+                magnificationAsDouble = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(Replace(magnificationInfo, X_ELEM, ""))
                 magnificationAsDouble = 1 / magnificationAsDouble
                 resultStr = CStr(magnificationAsDouble)
             Else
@@ -110,7 +134,7 @@ Function getMagnification(fullMagnificationInfo As String) As Double
     getMagnification = resultDbl
 End Function
 
-Private Function getFocalLengthPart(fullFocalLength As String, focalLengthStartIsNeeded As Boolean) As Double
+Private Function getFocalLengthPart(focalLengthInfo As String, focalLengthStartIsNeeded As Boolean) As Double
     Const MINUS_ELEM As String = "-"
 
     Dim indexOfMinus As Integer
@@ -118,24 +142,28 @@ Private Function getFocalLengthPart(fullFocalLength As String, focalLengthStartI
     Dim resultDbl As Double
     Dim inputLength As Integer
 
-    indexOfMinus = InStr(fullFocalLength, MINUS_ELEM)
+    indexOfMinus = InStr(focalLengthInfo, MINUS_ELEM)
     
-    If (indexOfMinus > 0) Then
-        If (focalLengthStartIsNeeded) Then
-            resultStr = Left(fullFocalLength, indexOfMinus - 1) '-1 because otherwise Minus would be returned too.
-        Else
-            resultStr = Mid(fullFocalLength, indexOfMinus + 1)
-            resultStr = Replace(resultStr, "mm", "")
-        End If
+    If(StrComp(focalLengthInfo, "") = 0) Then
+        resultStr = "0"
     Else
-        resultStr = Replace(fullFocalLength, "mm", "")
-    End If
+        If (indexOfMinus > 0) Then
+            If (focalLengthStartIsNeeded) Then
+                resultStr = Left(focalLengthInfo, indexOfMinus - 1) '-1 because otherwise Minus would be returned too.
+            Else
+                resultStr = Mid(focalLengthInfo, indexOfMinus + 1)
+                resultStr = Replace(resultStr, "mm", "")
+            End If
+        Else
+            resultStr = Replace(focalLengthInfo, "mm", "")
+        End If
+    end If
 
     resultDbl = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(resultStr)
     getFocalLengthPart = resultDbl
 End Function
 
-Private Function getAperturePart(fullApertureInfo As String, apertureStartIsNeeded As Boolean) As Double
+Private Function getAperturePart(apertureInfo As String, apertureStartIsNeeded As Boolean) As Double
     Const MINUS_ELEM As String = "-"
 
     Dim indexOfMinus As Integer
@@ -143,18 +171,22 @@ Private Function getAperturePart(fullApertureInfo As String, apertureStartIsNeed
     Dim resultDbl As Double
     Dim inputLength As Integer
 
-    indexOfMinus = InStr(fullApertureInfo, MINUS_ELEM)
+    indexOfMinus = InStr(apertureInfo, MINUS_ELEM)
 
-    If (indexOfMinus > 0) Then
-        If (apertureStartIsNeeded) Then
-            resultStr = Left(fullApertureInfo, indexOfMinus - 1) '1:3.5
-            resultStr = Replace(resultStr, "1:", "")
-        Else
-            resultStr = Mid(fullApertureInfo, indexOfMinus + 1)
-            resultStr = Replace(resultStr, "1:", "")
-        End If
+    If(StrComp(apertureInfo, "") = 0) Then
+        resultStr = "0"
     Else
-        resultStr = Replace(fullApertureInfo, "1:", "")
+        If (indexOfMinus > 0) Then
+            If (apertureStartIsNeeded) Then
+                resultStr = Left(apertureInfo, indexOfMinus - 1) '1:3.5
+                resultStr = Replace(resultStr, "1:", "")
+            Else
+                resultStr = Mid(apertureInfo, indexOfMinus + 1)
+                resultStr = Replace(resultStr, "1:", "")
+            End If
+        Else
+            resultStr = Replace(apertureInfo, "1:", "")
+        End If
     End If
     
     resultDbl = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(resultStr)
