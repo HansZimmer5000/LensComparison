@@ -22,44 +22,6 @@ Public Function CreateRawDataTable(newFirstTableRow As range)
     Call CreateRawDataTable.Init(newFirstTableRow)
 End Function
 
-Public Function CreateRawDataLens(newLensName As String, _
-                                    newFocalLength As String, _
-                                    newFocalLengthStart As Double, _
-                                    newFocalLengthEnd As Double, _
-                                    newAperture As String, _
-                                    newApertureStart As Double, _
-                                    newApertureEnd As Double, _
-                                    newFilterSize1 As String, _
-                                    newFilterSize2 As Double, _
-                                    newMagnification1 As String, _
-                                    newMagnification2 As Double, _
-                                    newMount As String, _
-                                    newSensorCompatibiliy As String, _
-                                    newWeight1 As String, _
-                                    newWeight2 As Double, _
-                                    newSize As String, _
-                                    newDiameter As Double, _
-                                    newLength As Double)
-    Set CreateRawDataLens = New RawDataLens
-    Call CreateRawDataLens.Init(newLensName, _
-                                    newFocalLength, _
-                                    newFocalLengthStart, _
-                                    newFocalLengthEnd, _
-                                    newAperture, _
-                                    newApertureStart, _
-                                    newApertureEnd, _
-                                    newFilterSize1, _
-                                    newFilterSize2, _
-                                    newMagnification1, _
-                                    newMagnification2, _
-                                    newMount, _
-                                    newSensorCompatibiliy, _
-                                    newWeight1, _
-                                    newWeight2, _
-                                    newSize, _
-                                    newDiameter, _
-                                    newLength)
-End Function
 
 
 Public Function CreateResultTable(newTableRange As range, newRawDataTable As rawDataTable, _
@@ -68,7 +30,7 @@ Public Function CreateResultTable(newTableRange As range, newRawDataTable As raw
     Call CreateResultTable.Init(newTableRange, newRawDataTable, newFiltersTable)
 End Function
 
-Public Function CreateResultLens(newLensName As String, _
+Public Function CreateLens(newLensName As String, _
                                     newFocalLengthStart As Double, _
                                     newFocalLengthEnd As Double, _
                                     newApertureStart As Double, _
@@ -80,8 +42,8 @@ Public Function CreateResultLens(newLensName As String, _
                                     newWeight As Double, _
                                     newDiameter As Double, _
                                     newLength As Double)
-    Set CreateResultLens = New ResultLens
-    Call CreateResultLens.Init(newLensName, _
+    Set CreateLens = New Lens
+    Call CreateLens.Init(newLensName, _
                                     newFocalLengthStart, _
                                     newFocalLengthEnd, _
                                     newApertureStart, _
@@ -93,20 +55,4 @@ Public Function CreateResultLens(newLensName As String, _
                                     newWeight, _
                                     newDiameter, _
                                     newLength)
-End Function
-
-Public Function CreateResultLensFromRawDataLens(RawDataLens As RawDataLens)
-    Set CreateResultLensFromRawDataLens = New ResultLens
-    Call CreateResultLensFromRawDataLens.Init(RawDataLens.getLensName, _
-                                                RawDataLens.getFocalLengthStart, _
-                                                RawDataLens.getFocalLengthEnd, _
-                                                RawDataLens.getApertureStart, _
-                                                RawDataLens.getApertureEnd, _
-                                                RawDataLens.getFilterSize2, _
-                                                RawDataLens.getMagnification2, _
-                                                RawDataLens.getMount, _
-                                                RawDataLens.getSensorCompatibility, _
-                                                RawDataLens.getWeight2, _
-                                                RawDataLens.getDiameter, _
-                                                RawDataLens.getLength)
 End Function

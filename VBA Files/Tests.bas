@@ -5,9 +5,6 @@ Sub testFilters()
     Dim myResultTable As ResultTable
     Dim rawSheet As Worksheet
     
-    Dim currentRow As range
-    Dim currentRawDataLens As RawDataLens
-    
     Set rawSheet = ActiveWorkbook.Sheets("RawData")
     
     Set myFiltersTable = CreateFiltersTable(range("B3", "D11"), range("F3", "O7"))

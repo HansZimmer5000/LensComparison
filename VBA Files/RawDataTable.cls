@@ -7,19 +7,19 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' Class for the RawDataTable within are all RawDataLenses.
-' Each Entry (Line / Row) is a RawDataLens.
+' Class for the RawDataTable within are all Lenses.
+' Each Entry (Line / Row) is a Lens.
 ' It just holds the data about these lenses.
 
 Private tableRange As range
-Private rawDataLenses As Collection
+Private lenses As Collection
 
 Public Property Get getTableRange() As range
     Set getTableRange = tableRange
 End Property
 
-Public Property Get getAllRawDataLenses() As Collection
-    Set getAllRawDataLenses = rawDataLenses
+Public Property Get getAllLenses() As Collection
+    Set getAllLenses = lenses
 End Property
 
 Private Sub Class_Initialize()
@@ -27,7 +27,7 @@ End Sub
 
 Public Function Init(newFirstTableRow As range)
     Set tableRange = calcTableRangeFromFirstRow(newFirstTableRow)
-    Set rawDataLenses = collectAllRawDataLenses()
+    Set lenses = collectAllLenses()
 End Function
 
 Private Function calcTableRangeFromFirstRow(newFirstTableRow As range) As range
@@ -42,32 +42,28 @@ Private Function calcTableRangeFromFirstRow(newFirstTableRow As range) As range
     Set calcTableRangeFromFirstRow = newFirstTableRow.Parent.range(firstCell, lastCell)
 End Function
 
-Private Function collectAllRawDataLenses()
-    Dim currentRow As range
-    Dim currentRawDataLens As RawDataLens
 
-    Set collectAllRawDataLenses = New Collection
+Private Function collectAllLenses()
+    Dim currentRow As range
+    Dim currentLens As Lens
+
+    Set collectAllLenses = New Collection
 
     For Each currentRow In tableRange.Rows
-        Set currentRawDataLens = CreateRawDataLens(currentRow.Columns(1).text, _
-                                                currentRow.Columns(2).text, _
+        Set currentLens = CreateLens(currentRow.Columns(1).text, _
+                                                currentRow.Columns(2).value2, _
                                                 currentRow.Columns(3).value2, _
                                                 currentRow.Columns(4).value2, _
-                                                currentRow.Columns(5).text, _
+                                                currentRow.Columns(5).value2, _
                                                 currentRow.Columns(6).value2, _
                                                 currentRow.Columns(7).value2, _
                                                 currentRow.Columns(8).text, _
-                                                currentRow.Columns(9).value2, _
-                                                currentRow.Columns(10).text, _
+                                                currentRow.Columns(9).text, _
+                                                currentRow.Columns(10).value2, _
                                                 currentRow.Columns(11).value2, _
-                                                currentRow.Columns(12).text, _
-                                                currentRow.Columns(13).text, _
-                                                currentRow.Columns(14).text, _
-                                                currentRow.Columns(15).value2, _
-                                                currentRow.Columns(16).text, _
-                                                currentRow.Columns(17).value2, _
-                                                currentRow.Columns(18).value2)
-        collectAllRawDataLenses.Add currentRawDataLens
+                                                currentRow.Columns(12).value2)
+        collectAllLenses.Add currentLens
     Next currentRow
 End Function
+
 

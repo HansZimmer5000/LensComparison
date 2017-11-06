@@ -1,0 +1,14 @@
+Attribute VB_Name = "TestData"
+
+'Module to organize TestData in Sheet "TestData"
+
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+' Raw unprocessed Data from the Sheet:
+'/////////////////////////////////////
+Function getLensWithFullInfo
+
+
+
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+' Should-Output from processed Data:
+'/////////////////////////////////////

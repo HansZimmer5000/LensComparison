@@ -1,5 +1,5 @@
 Attribute VB_Name = "Result"
-Public Function resultLensMatchTheMinMaxFilter(lens As ResultLens, filter As MinMaxNumberFilter) As Boolean
+Public Function lensMatchTheMinMaxFilter(lens As Lens, filter As MinMaxNumberFilter) As Boolean
     
     Dim filterName As String
     Dim filterMinValue As Double
@@ -11,39 +11,39 @@ Public Function resultLensMatchTheMinMaxFilter(lens As ResultLens, filter As Min
     
     If (StrComp("Focus Length", filterName) = 0 And _
         valueRangeIsBetweenMinMax(lens.getFocalLengthStart, lens.getFocalLengthEnd, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
             
     ElseIf (StrComp("Aperture", filterName) = 0 And _
         valueRangeIsBetweenMinMax(lens.getApertureStart, lens.getApertureEnd, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
     
     ElseIf (StrComp("Filter", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getFilterSize, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
     
     ElseIf (StrComp("Magnification (0,1)", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getMagnification, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
     
     ElseIf (StrComp("Weight", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getWeight, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
     
     ElseIf (StrComp("Diameter", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getDiameter, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
     
     ElseIf (StrComp("Length", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getLength, filterMinValue, filterMaxValue)) Then
-            resultLensMatchTheMinMaxFilter = True
+            lensMatchTheMinMaxFilter = True
     
     Else
-        resultLensMatchTheMinMaxFilter = False
+        lensMatchTheMinMaxFilter = False
     End If
     
 End Function
 
-Public Function resultLensMatchTheMultipleFilter(lens As ResultLens, filter As MultipleStringFilter) As Boolean
+Public Function lensMatchTheMultipleFilter(lens As Lens, filter As MultipleStringFilter) As Boolean
     
     Dim filterName As String
     Dim activeFilterValues As Collection
@@ -53,26 +53,26 @@ Public Function resultLensMatchTheMultipleFilter(lens As ResultLens, filter As M
     
     If (StrComp("Mount", filterName) = 0 And _
         stringMatchesAtLeastOneValue(lens.getMount(), activeFilterValues)) Then
-            resultLensMatchTheMultipleFilter = True
+            lensMatchTheMultipleFilter = True
             
     ElseIf (StrComp("Sensor", filterName) = 0 And _
         stringMatchesAtLeastOneValue(lens.getSensorCompatibility, activeFilterValues)) Then
-            resultLensMatchTheMultipleFilter = True
+            lensMatchTheMultipleFilter = True
 
     'ElseIf ("Brand" = filterName And _
     '    stringMatchesAtLeastOneValue(lens.getLensName, activeFilterValues)) Then
-    '        resultLensMatchTheMultipleFilter = True
+    '        lensMatchTheMultipleFilter = True
             
     'ElseIf ("AF" = filterName And _
     '    stringMatchesAtLeastOneValue(lens.getAF??, activeFilterValues)) Then
-    '        resultLensMatchTheMultipleFilter = True
+    '        lensMatchTheMultipleFilter = True
             
     'ElseIf ("VR" = filterName And _
     '    stringMatchesAtLeastOneValue(lens.getVR??, activeFilterValues)) Then
-    '        resultLensMatchTheMultipleFilter = True
+    '        lensMatchTheMultipleFilter = True
             
     Else
-        resultLensMatchTheMultipleFilter = False
+        lensMatchTheMultipleFilter = False
     End If
     
 End Function
