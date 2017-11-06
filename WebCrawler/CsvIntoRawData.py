@@ -105,7 +105,7 @@ if __name__ == "__main__":
 
     RAW_RESPONSE_DIR = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/"
 
-    print("Type 'clean' to clean the rawDataFile or 'import' to import new Data.")
+    print("Type 'clean' to clean the rawDataFile, 'import' to import new Data or 'repair' to repair the 'rawResponseData 12 - 60.csv file'.")
     user_input = input()
 
     if(user_input == "import"):
@@ -122,3 +122,31 @@ if __name__ == "__main__":
 
     elif(user_input == "clean"):
         RawData.clean_rawdata_file_and_write_titles()
+
+    elif(user_input == "repair"):
+        #Replaces "whatever characters" with the right ones (see mappingDict)
+        file = open("rawResponseData 12 - 60.csv","r")
+        oldLines = file.readlines()
+        newLines = []
+        file.close()
+
+        oldLine = ""
+        newLine = ""
+
+        mappingDict = {
+            "Ã¤": "ä",
+            "Ã˜": "Ø",
+            "ÃŸ": "ß",
+            "Ã¼": "ü"
+        }
+        for oldLine in oldLines:
+            newLine = oldLine
+            for key in mappingDict:
+                value = mappingDict[key]
+                print(key + " " + value)
+                newLine = newLine.replace(key,value)
+                
+            newLines.append(newLine)
+
+        file = open("rawResponseData 12 - 60 repaired.csv","w")
+        file.writelines(newLines)
