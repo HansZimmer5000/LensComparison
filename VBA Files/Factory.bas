@@ -56,3 +56,18 @@ Public Function CreateLens(newLensName As String, _
                                     newDiameter, _
                                     newLength)
 End Function
+
+Function CreateLensFromRow(row as Range) as Lens
+    Set CreateLensFromRow = CreateLens(row.Columns(1).text, _
+                                        row.Columns(2).value2, _
+                                        row.Columns(3).value2, _
+                                        row.Columns(4).value2, _
+                                        row.Columns(5).value2, _
+                                        row.Columns(6).value2, _
+                                        row.Columns(7).value2, _
+                                        row.Columns(8).text, _
+                                        row.Columns(9).text, _
+                                        row.Columns(10).value2, _
+                                        row.Columns(11).value2, _
+                                        row.Columns(12).value2)
+End Function

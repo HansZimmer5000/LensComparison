@@ -50,18 +50,7 @@ Private Function collectAllLenses()
     Set collectAllLenses = New Collection
 
     For Each currentRow In tableRange.Rows
-        Set currentLens = CreateLens(currentRow.Columns(1).text, _
-                                                currentRow.Columns(2).value2, _
-                                                currentRow.Columns(3).value2, _
-                                                currentRow.Columns(4).value2, _
-                                                currentRow.Columns(5).value2, _
-                                                currentRow.Columns(6).value2, _
-                                                currentRow.Columns(7).value2, _
-                                                currentRow.Columns(8).text, _
-                                                currentRow.Columns(9).text, _
-                                                currentRow.Columns(10).value2, _
-                                                currentRow.Columns(11).value2, _
-                                                currentRow.Columns(12).value2)
+        Set currentLens = CreateLensFromRow(currentRow)
         collectAllLenses.Add currentLens
     Next currentRow
 End Function
