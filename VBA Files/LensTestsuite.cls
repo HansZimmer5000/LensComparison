@@ -9,8 +9,6 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 ' This module includes test for the ResutlLens class.
 
-
-
 Private lensWithFullInfo1Lensname As String
 Private lensWithFullInfo1FocalStart As Double
 Private lensWithFullInfo1FocalEnd As Double
@@ -47,19 +45,6 @@ Function testAllCases()
     Call testPosGetFullInfo1Diameter
     Call testPosGetFullInfo1Length
 End Function
-
-Private Function printAndAssert(functionName As String, result As Boolean)
-    if(InStr(functionName,"NEG")>0) Then
-        result = not(result)
-    End If
-    
-    If (result) Then
-        Debug.Print (Str(Now) + " .")
-    Else
-        Debug.Print (Str(Now) + " " + functionName + " FAIL!")
-    End If
-End Function
-
 
 Private Function setUp()
     lensWithFullInfo1Lensname = getLensWithFullInfo1Lensname()

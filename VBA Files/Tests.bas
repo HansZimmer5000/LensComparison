@@ -6,11 +6,11 @@ Sub testAll()
     For i = 1 To 10
         Debug.Print vbNewLine
     Next
-    Debug.Print (Str(Now) + " Run testAll Start")
+    Debug.Print (Str(Now) + " " + "Run testAll Start")
     
     Call myLensTestsuite.testAllCases
 
-    Debug.Print (Str(Now) + " Run testAll Done")
+    Debug.Print (Str(Now) + " " + "Run testAll Done")
 End Sub
 
 Function printAndAssert(functionName As String, result As Boolean)
@@ -19,7 +19,7 @@ Function printAndAssert(functionName As String, result As Boolean)
     End If
     
     If (result) Then
-        Debug.Print (Str(Now) + " .")
+        Debug.Print (Str(Now) + " " + ".")
     Else
         Debug.Print (Str(Now) + " " + functionName + " FAIL!")
     End If
