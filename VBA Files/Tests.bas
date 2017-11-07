@@ -1,20 +1,26 @@
 Attribute VB_Name = "Tests"
 
-
-Sub loadNewLensesAccordingToFilters()
-    Dim myFiltersTable As FiltersTable
-    Dim myRawDataTable As rawDataTable
-    Dim myResultTable As ResultTable
-    Dim rawSheet As Worksheet
-    
-    Set rawSheet = ActiveWorkbook.Sheets("RawData")
-    Set myFiltersTable = CreateFiltersTable(range("B3", "D11"), range("F3", "O7"))
-    Set myRawDataTable = CreateRawDataTable(rawSheet.range("A2", "Q2"))
-    Set myResultTable = CreateResultTable(range("B16", "M999"), myRawDataTable, myFiltersTable)
-End Sub
-
 Sub testAll()
-    Dim myTestSuiteLens As testSuiteLens: Set myTestSuiteLens = New testSuiteLens
+    Dim myLensTestsuite As LensTestsuite: Set myLensTestsuite = New LensTestsuite
     
-    Call myTestSuiteLens.testAllCases
+    For i = 1 To 10
+        Debug.Print vbNewLine
+    Next
+    Debug.Print (Str(Now) + " Run testAll Start")
+    
+    Call myLensTestsuite.testAllCases
+
+    Debug.Print (Str(Now) + " Run testAll Done")
 End Sub
+
+Function printAndAssert(functionName As String, result As Boolean)
+    if(InStr(functionName,"NEG")>0) Then
+        result = not(result)
+    End If
+    
+    If (result) Then
+        Debug.Print (Str(Now) + " .")
+    Else
+        Debug.Print (Str(Now) + " " + functionName + " FAIL!")
+    End If
+End Function
