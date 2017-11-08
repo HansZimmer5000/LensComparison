@@ -7,7 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' This module includes test for the ResutlLens class.
+' This module includes test for the Lens class.
 
 Private lensWithFullInfo1Lensname As String
 Private lensWithFullInfo1FocalStart As Double
@@ -21,6 +21,9 @@ Private lensWithFullInfo1Sensor As String
 Private lensWithFullInfo1Weight As Double
 Private lensWithFullInfo1Diameter As Double
 Private lensWithFullInfo1Length As Double
+
+Private lensWithAllExceptMagnificationSensorInfo1Magnification as Double
+Private lenswithAllExceptMagnificationSensorInfo1Sensor as String
 
 Private lensWithFullInfo1 As lens
 Private lensWithAllExceptFilterInfo1 As lens
@@ -44,6 +47,9 @@ Function testAllCases()
     Call testPosGetFullInfo1Weight
     Call testPosGetFullInfo1Diameter
     Call testPosGetFullInfo1Length
+
+    Call testPosGetWithAllExceptMagnificationSensorInfo1Magnification()
+    Call testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
 End Function
 
 Private Function setUp()
@@ -60,11 +66,13 @@ Private Function setUp()
     lensWithFullInfo1Diameter = getLensWithFullInfo1Diameter()
     lensWithFullInfo1Length = getLensWithFullInfo1Length()
 
+    lensWithAllExceptMagnificationSensorInfo1Magnification = getLensWithAllExceptMagnificationSensorInfo1Magnification()
+    lenswithAllExceptMagnificationSensorInfo1Sensor = getLensWithAllExceptMagnificationSensorInfo1Sensor()
+
     Set lensWithFullInfo1 = getLensWithFullInfo1()
     Set lensWithAllExceptFilterInfo1 = getLensWithAllExceptFilterInfo1()
     Set lensWithAllExceptfilterMagnificationInfo1 = getLensWithAllExceptFilterMagnificationInfo1()
     Set lensWithallExceptMagnificationSensorInfo1 = getLensWithAllExceptMagnificationSensorInfo1()
-    
 End Function
 
 Private Function tearDown()
@@ -187,6 +195,27 @@ Private Function testPosGetFullInfo1Length()
 
     result = lensWithFullInfo1Length = lensWithFullInfo1.getLength
     Call printAndAssert("testPosGetFullInfo1Length", result)
+    
+    Call tearDown
+End Function
+
+
+Private Function testPosGetWithAllExceptMagnificationSensorInfo1Magnification()
+    Call setUp
+    Dim result As Boolean
+
+    result = lensWithAllExceptMagnificationSensorInfo1Magnification = lensWithallExceptMagnificationSensorInfo1.getMagnification
+    Call printAndAssert("testPosGetWithAllExceptMagnificationSensorInfo1Magnification", result)
+    
+    Call tearDown
+End Function
+
+Private Function testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
+    Call setUp
+    Dim result As Boolean
+
+    result = StrComp(lenswithAllExceptMagnificationSensorInfo1Sensor,lensWithallExceptMagnificationSensorInfo1.getSensorCompatibility()) = 0
+    Call printAndAssert("testPosGetWithAllExceptMagnificationSensorInfo1Sensor", result)
     
     Call tearDown
 End Function

@@ -55,6 +55,15 @@ Function getLensWithFullInfo1Length() As Double
     getLensWithFullInfo1Length = 193#
 End Function
 
+
+Function getLensWithAllExceptMagnificationSensorInfo1Magnification() as Double
+    getLensWithAllExceptMagnificationSensorInfo1Magnification = 0
+End Function
+
+Function getLensWithAllExceptMagnificationSensorInfo1Sensor() as String
+    getLensWithAllExceptMagnificationSensorInfo1Sensor = "Unknown"
+End Function
+
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Created Lenses from Raw Lensdata from the Sheet:
 '/////////////////////////////////////
