@@ -82,3 +82,18 @@ End Function
 Function getLensWithAllExceptMagnificationSensorInfo1() As lens
     Set getLensWithAllExceptMagnificationSensorInfo1 = CreateLensFromRow(Sheets("TestData").range("A5:L5"))
 End Function
+
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+' Single RawDataTable Attributes from  the Sheet:
+'/////////////////////////////////////
+Function getRawDataTable1Range() as Range
+    Set getRawDataTable1Range = Sheets("TestData").range("A2:L5")
+End Function
+
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+' Created RawDataTable from the Sheet:
+'/////////////////////////////////////
+
+Function getRawDataTable1() as RawDataTable
+    Set getRawDataTable1 = CreateRawDataTable(Sheets("TestData").range("A2:L2"))
+End Function

@@ -7,7 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' This module includes test for the Lens class.
+' This module has test for the Lens class.
 
 Private lensWithFullInfo1Lensname As String
 Private lensWithFullInfo1FocalStart As Double
@@ -35,6 +35,8 @@ Private Sub Class_Initialize()
 End Sub
 
 Function testAllCases()
+    Debug.Print(Str(Now) + " Starting LensTestsuite")
+
     Call testPosGetFullInfo1Lensname
     Call testPosGetFullInfo1FocalStart
     Call testPosGetFullInfo1FocalEnd
