@@ -9,6 +9,8 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 ' This module has test for the Lens class.
 
+Private lensWithFullInfo1RowRange as Range
+
 Private lensWithFullInfo1Lensname As String
 Private lensWithFullInfo1FocalStart As Double
 Private lensWithFullInfo1FocalEnd As Double
@@ -52,9 +54,15 @@ Function testAllCases()
 
     Call testPosGetWithAllExceptMagnificationSensorInfo1Magnification()
     Call testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
+
+    Call testPosEqualsFullInfo1()
+    Call testNegEqualsNothing()
+    Call testNegEqualsString()
 End Function
 
 Private Function setUp()
+    Set lensWithFullInfo1RowRange = getLensWithFullInfo1RowRange()
+
     lensWithFullInfo1Lensname = getLensWithFullInfo1Lensname()
     lensWithFullInfo1FocalStart = getLensWithFullInfo1FocalStart()
     lensWithFullInfo1FocalEnd = getLensWithFullInfo1FocalEnd()
@@ -218,6 +226,56 @@ Private Function testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
 
     result = StrComp(lenswithAllExceptMagnificationSensorInfo1Sensor,lensWithallExceptMagnificationSensorInfo1.getSensorCompatibility()) = 0
     Call printAndAssert("testPosGetWithAllExceptMagnificationSensorInfo1Sensor", result)
+    
+    Call tearDown
+End Function
+
+Private Function testPosEqualsFullInfo1()
+    Call setUp
+    Dim result As Boolean
+
+    result = lensWithFullInfo1.equals(lensWithFullInfo1)
+    Call printAndAssert("testPosEqualsFullInfo1", result)
+    
+    Call tearDown
+End Function
+
+Private Function testPosEqualslensWithAllExceptFilterInfo1()
+    Call setUp
+    Dim result As Boolean
+
+    result = lensWithAllExceptFilterInfo1.equals(lensWithAllExceptFilterInfo1)
+    Call printAndAssert("testPosEqualslensWithAllExceptFilterInfo1", result)
+    
+    Call tearDown
+End Function
+
+Private Function testPosEqualslensWithAllExceptMagnificationSensorInfo1()
+    Call setUp
+    Dim result As Boolean
+
+    result = lensWithAllExceptMagnificationSensorInfo1.equals(lensWithAllExceptMagnificationSensorInfo1)
+    Call printAndAssert("testPosEqualslensWithAllExceptMagnificationSensorInfo1", result)
+    
+    Call tearDown
+End Function
+
+Private Function testNegEqualsNothing()
+    Call setUp
+    Dim result As Boolean
+
+    result = lensWithFullInfo1.equals(Nothing)
+    Call printAndAssert("testNegEqualsNothing", result)
+    
+    Call tearDown
+End Function
+
+Private Function testNegEqualsString()
+    Call setUp
+    Dim result As Boolean
+
+    result = lensWithFullInfo1.equals("2")
+    Call printAndAssert("testNegEqualsString", result)
     
     Call tearDown
 End Function

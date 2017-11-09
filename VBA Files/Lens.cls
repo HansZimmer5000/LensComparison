@@ -90,10 +90,23 @@ Public Function Init(newLensName As String, _
 
 End Function
 
+Function equals(obj as Variant) as Boolean
+    equals = False
 
-
-
-
-
-
-
+    if(StrComp(TypeName(obj), "Lens") = 0) Then
+        if(StrComp(Me.getLensName(),obj.getLensName()) = 0 and _
+            Me.getFocalLengthStart() = obj.getFocalLengthStart() and _ 
+            Me.getFocalLengthEnd() = obj.getFocalLengthEnd() and _
+            Me.getApertureStart() = obj.getApertureStart() and _
+            Me.getApertureEnd() = obj.getApertureEnd() and _
+            Me.getFilterSize() = obj.getFilterSize() and _
+            Me.getMagnification() = obj.getMagnification() and _
+            StrComp(Me.getMount(),obj.getMount()) = 0 and _
+            StrComp(Me.getSensorCompatibility(), obj.getSensorCompatibility()) = 0 and _
+            Me.getWeight() = obj.getWeight() and _
+            Me.getDiameter() = obj.getDiameter() and _
+            Me.getLength() = obj.getLength()) Then
+            equals = True
+        end If
+    End If
+End Function

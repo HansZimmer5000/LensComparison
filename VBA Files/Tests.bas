@@ -16,7 +16,7 @@ Sub testAll()
 End Sub
 
 Function printAndAssert(functionName As String, result As Boolean)
-    if(InStr(functionName,"NEG")>0) Then
+    if(InStr(functionName,"Neg") > 0) Then
         result = not(result)
     End If
     
@@ -25,4 +25,15 @@ Function printAndAssert(functionName As String, result As Boolean)
     Else
         Debug.Print (Str(Now) + " " + functionName + " FAIL!")
     End If
+End Function
+
+Function elemIsInCollection(elem as Variant, coll as Collection) as Boolean
+    elemIsInCollection = False
+    for each currentElem in coll
+        if(StrComp(TypeName(currentElem),"Lens") = 0) Then
+            if(elem.equals(currentElem)) Then
+                elemIsInCollection = True
+            End If
+        End If
+    next
 End Function

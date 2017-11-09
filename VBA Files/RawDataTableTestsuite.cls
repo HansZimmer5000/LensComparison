@@ -24,13 +24,14 @@ End Sub
 Function testAllCases()
     Debug.Print(Str(Now) + " Starting RawDataTableTestsuite")
     Call testPosGetTable1Range
+    Call testPosGetTable1AllLenses
 End Function
 
 Private Function setUp()
     Set lensWithFullInfo1 = getLensWithFullInfo1()
     Set lensWithAllExceptFilterInfo1 = getLensWithAllExceptFilterInfo1()
-    Set lensWithAsllExceptfilterMagnificationInfo1 = getLensWithAllExceptFilterMagnificationInfo1()
-    Set lensWithallExceptMagnificationSensorInfo1 = getLensWithAllExceptMagnificationSensorInfo1()
+    Set lensWithAllExceptfilterMagnificationInfo1 = getLensWithAllExceptFilterMagnificationInfo1()
+    Set lensWithAllExceptMagnificationSensorInfo1 = getLensWithAllExceptMagnificationSensorInfo1()
 
     Set rawDataTable1 = getRawDataTable1()
 
@@ -48,5 +49,22 @@ Private Function testPosGetTable1Range()
     result = StrComp(rawDataTable1Range.Address,rawDataTable1.getTableRange().Address) = 0
     Call printAndAssert("testPosGetTable1Range", result)
     
+    Call tearDown
+End Function
+
+
+Private Function testPosGetTable1AllLenses()
+    Call setUp
+    Dim result As Boolean
+    Dim allLenses as Collection
+
+    Set allLenses = rawDataTable1.getAllLenses()
+    result = elemIsInCollection(lensWithFullInfo1, allLenses)
+    result = result and elemIsInCollection(lensWithAllExceptFilterInfo1, allLenses)
+    result = result and elemIsInCollection(lensWithAllExceptfilterMagnificationInfo1, allLenses)
+    result = result and elemIsInCollection(lensWithAllExceptMagnificationSensorInfo1, allLenses)    
+
+    Call printAndAssert("testPosGetTable1AllLenses", result)
+
     Call tearDown
 End Function

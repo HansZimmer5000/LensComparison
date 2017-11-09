@@ -3,12 +3,18 @@ Attribute VB_Name = "TestData"
 
 'Module to organize TestData in Sheet "TestData"
 
+'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+' Single Lens Rows:
+'/////////////////////////////////////
+Function getLensWithFullInfo1RowRange() as Range
+    Set getLensWithFullInfo1RowRange = Sheets("TestData").Range("A2:L2")
+End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Single Lens Attributes:
 '/////////////////////////////////////
 Function getLensWithFullInfo1Lensname() As String
-    getLensWithFullInfo1Lensname = "Canon EF 100-400mm 4.5-5.6 L IS II USM weiß"
+    getLensWithFullInfo1Lensname = Sheets("TestData").Range("A2").Text 'makes problems because of the 'sharp s' in the end: "Canon EF 100-400mm 4.5-5.6 L IS II USM weiß"
 End Function
 
 Function getLensWithFullInfo1FocalStart() As Double
