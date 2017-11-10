@@ -4,6 +4,12 @@
 This project is about comparing DSLR Lenses from every brand and hopefully from every timeline.
 With all necessary data without the price.
 
+Just saw that there are complete databases for all lenses. 
+For example the one from [Photographylife](https://photographylife.com/lenses).
+
+So I guess from now on its just about practice.
+Maybe I will find something new to add in my database.
+
 ### Attributes of each Lens
 Each Entry has:
 

@@ -36,11 +36,11 @@ Public Function updateResultTable()
     Set activeMinMaxFilters = filterTable.getAllMinMaxNumberFilters
     Set activeMultipleFilters = filterTable.getAllMultipleStringFilters
 
-    Call getAllLensesAndFilter(activeMinMaxFilters, activeMultipleFilters)
+    Call setAllLensesAndFilter(activeMinMaxFilters, activeMultipleFilters)
     Call writeLenses
 End Function
 
-Private Function getAllLensesAndFilter(minMaxFilters As Collection, multipleFilters As Collection)
+Private Function setAllLensesAndFilter(minMaxFilters As Collection, multipleFilters As Collection)
     Const USE_FILERS As Boolean = True
     
     Dim currentLens As Lens
@@ -121,6 +121,7 @@ Private Function lensMatchesAllMultipleFilters(multipleFilters As Collection, le
 End Function
 
 Private Function clearRestOfRange()
+    'TODO: Look closer, feels like it doesnt work right at ("...Offset(filteredLenses.Count, 0)")
     Dim firstCellWithoutData As range
     Dim lastCellWithoutData As range
     Dim rangeWithoutData As range
