@@ -121,13 +121,12 @@ Private Function lensMatchesAllMultipleFilters(multipleFilters As Collection, le
 End Function
 
 Private Function clearRestOfRange()
-    'TODO: Look closer, feels like it doesnt work right at ("...Offset(filteredLenses.Count, 0)")
     Dim firstCellWithoutData As range
     Dim lastCellWithoutData As range
     Dim rangeWithoutData As range
     
     Set firstCellWithoutData = tableRange.Rows(1).Columns(1).Offset(filteredLenses.Count, 0)
-    Set lastCellWithoutData = tableRange.Rows(tableRange.Rows.Count).Columns(tableRange.Columns.Count).Offset(filteredLenses.Count, 0)
+    Set lastCellWithoutData = tableRange.Rows(tableRange.Rows.Count).Columns(tableRange.Columns.Count).Offset(allLenses.Count, 0)
     Set rangeWithoutData = firstCellWithoutData.Parent.range(firstCellWithoutData, lastCellWithoutData)
     
     rangeWithoutData.value2 = ""
