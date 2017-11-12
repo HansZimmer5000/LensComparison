@@ -69,5 +69,46 @@ Public Function isSet() As Boolean
     End If
 End Function
 
-
-
+Public Function lensMatchTheMinMaxFilter(lens As Lens) As Boolean
+    
+    Dim filterName As String
+    Dim filterMinValue As Double
+    Dim filterMaxValue As Double
+    
+    filterName = name
+    filterMinValue = minValue
+    filterMaxValue = maxValue
+    
+    If (StrComp("Focus Length", filterName) = 0 And _
+        valueRangeIsBetweenMinMax(lens.getFocalLengthStart, lens.getFocalLengthEnd, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+            
+    ElseIf (StrComp("Aperture", filterName) = 0 And _
+        valueRangeIsBetweenMinMax(lens.getApertureStart, lens.getApertureEnd, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+    
+    ElseIf (StrComp("Filter", filterName) = 0 And _
+        singleValueIsBetweenMinMax(lens.getFilterSize, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+    
+    ElseIf (StrComp("Magnification (0,1)", filterName) = 0 And _
+        singleValueIsBetweenMinMax(lens.getMagnification, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+    
+    ElseIf (StrComp("Weight", filterName) = 0 And _
+        singleValueIsBetweenMinMax(lens.getWeight, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+    
+    ElseIf (StrComp("Diameter", filterName) = 0 And _
+        singleValueIsBetweenMinMax(lens.getDiameter, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+    
+    ElseIf (StrComp("Length", filterName) = 0 And _
+        singleValueIsBetweenMinMax(lens.getLength, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+    
+    Else
+        lensMatchTheMinMaxFilter = False
+    End If
+    
+End Function

@@ -56,6 +56,40 @@ Public Function isSet() As Boolean
 End Function
 
 
+Public Function lensMatchTheMultipleFilter(lens As Lens) As Boolean
+    'TODO: Make Classes that depend on this main class -> Open/Closed Principle
+    Dim filterName As String
+    Dim activeFilterValues As Collection
+    
+    filterName = name
+    Set activeFilterValues = Me.getActiveValues()
+    
+    If (StrComp("Mount", filterName) = 0 And _
+        stringMatchesAtLeastOneValue(lens.getMount(), activeFilterValues)) Then
+            lensMatchTheMultipleFilter = True
+            
+    ElseIf (StrComp("Sensor", filterName) = 0 And _
+        stringMatchesAtLeastOneValue(lens.getSensorCompatibility, activeFilterValues)) Then
+            lensMatchTheMultipleFilter = True
+
+    'ElseIf ("Brand" = filterName And _
+    '    stringMatchesAtLeastOneValue(lens.getLensName, activeFilterValues)) Then
+    '        lensMatchTheMultipleFilter = True
+            
+    'ElseIf ("AF" = filterName And _
+    '    stringMatchesAtLeastOneValue(lens.getAF??, activeFilterValues)) Then
+    '        lensMatchTheMultipleFilter = True
+            
+    'ElseIf ("VR" = filterName And _
+    '    stringMatchesAtLeastOneValue(lens.getVR??, activeFilterValues)) Then
+    '        lensMatchTheMultipleFilter = True
+            
+    Else
+        lensMatchTheMultipleFilter = False
+    End If
+    
+End Function
+
 Private Function gatherAllValueCells(valuesRow As range) As Collection
     Dim currentCell As range
 

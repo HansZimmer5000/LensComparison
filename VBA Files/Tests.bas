@@ -9,7 +9,7 @@ Sub testAll()
     Next
     Debug.Print (Str(Now) + " " + "Run testAll Start")
     
-    Call myLensTestsuite.testAllCasesgit 
+    Call myLensTestsuite.testAllCases 
     Call myRawDataTableTestsuite.testAllCases
 
     Debug.Print (Str(Now) + " " + "Run testAll Done")

@@ -94,7 +94,7 @@ Private Function lensMatchesAllMinMaxFilters(minMaxFilters As Collection, lens A
     Dim currentMinMaxFilter As MinMaxNumberFilter
 
     For Each currentMinMaxFilter In minMaxFilters
-        If (currentMinMaxFilter.isSet And lensMatchTheMinMaxFilter(lens, currentMinMaxFilter)) Then
+        If (currentMinMaxFilter.isSet And currentMinMaxFilter.lensMatchTheMinMaxFilter(lens)) Then
             lensMatchesAllMinMaxFilters = True
         ElseIf (Not currentMinMaxFilter.isSet) Then
             lensMatchesAllMinMaxFilters = True
@@ -109,7 +109,7 @@ Private Function lensMatchesAllMultipleFilters(multipleFilters As Collection, le
     Dim currentMultipleFilter As MultipleStringFilter
 
     For Each currentMultipleFilter In multipleFilters
-        If (currentMultipleFilter.isSet And Not(lensMatchTheMultipleFilter(lens, currentMultipleFilter))) Then
+        If (currentMultipleFilter.isSet And Not(currentMultipleFilter.lensMatchTheMultipleFilter(lens))) Then
             lensMatchesAllMultipleFilters = False
             Exit Function
         End If
