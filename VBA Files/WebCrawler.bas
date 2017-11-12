@@ -6,7 +6,7 @@ Attribute VB_Name = "WebCrawler"
 Sub runAllPythonTests()
 	dim command as String
 
-	command = "python C:\Users\Michael\IdeaProjects\NikonLensComparison\WebCrawler\testall.py"
+	command = "python C:\Users\Michael\IdeaProjects\LensComparison\WebCrawler\testall.py"
 	Call executeShellCommand(command, True, True)
 End Sub
 
