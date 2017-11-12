@@ -129,9 +129,6 @@ def get_size(prodDesc):
 def get_attribute_value(key,string,valueTillKey):
 	key_length = len(key)
 	key_start_pos = string.find(key)
-	if(key == KEY_SENSORKOMPATIBILITÄT):
-		print(string)
-		print(key_start_pos)
 
 	if(key_start_pos >= 0):
 		value_start_pos = key_start_pos + key_length

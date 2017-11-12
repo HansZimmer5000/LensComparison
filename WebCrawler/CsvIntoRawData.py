@@ -26,7 +26,7 @@
 
 from glob import glob
 import GhAdapter
-import RawData
+import RawDataAccess
 
 # Module Variables
 total_processesd_rows = 0
@@ -82,7 +82,7 @@ def write_extracted_dicts_to_rawdata(dictList):
     for current_dict in dictList:
         if(current_dict != EMPTY_DICT):
             total_written_rows += 1
-            RawData.append_clean_lensdata_dict_to_rawdata(current_dict)
+            RawDataAccess.append_clean_lensdata_dict_to_rawdata(current_dict)
 
 def get_prodimg_from_raw_site(raw_site):
     index_of_prodimg_tag = raw_site.find("gh_prodImg")
@@ -121,7 +121,7 @@ if __name__ == "__main__":
         print("Total Count of Written Rows: " + str(total_written_rows))
 
     elif(user_input == "clean"):
-        RawData.clean_rawdata_file_and_write_titles()
+        RawDataAccess.clean_rawdata_file_and_write_titles()
 
     elif(user_input == "repair"):
         #Replaces "whatever characters" with the right ones (see mappingDict)
