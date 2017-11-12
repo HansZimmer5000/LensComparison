@@ -126,7 +126,7 @@ Private Function clearRestOfRange()
     Set lastCellWithoutData = tableRange.Rows(tableRange.Rows.Count).Columns(tableRange.Columns.Count).Offset(allLenses.Count, 0)
     Set rangeWithoutData = firstCellWithoutData.Parent.range(firstCellWithoutData, lastCellWithoutData)
     
-    rangeWithoutData.value2 = ""
+    rangeWithoutData.clear
 End Function
 
 

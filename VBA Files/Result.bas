@@ -5,11 +5,13 @@ Sub loadNewLensesAccordingToFilters()
     Dim myRawDataTable As rawDataTable
     Dim myResultTable As ResultTable
     Dim rawSheet As Worksheet
+    Dim overviewSheet as Worksheet
     
-    Set rawSheet = ActiveWorkbook.Sheets("RawData")
-    Set myFiltersTable = CreateFiltersTable(range("B3", "D11"), range("F3", "O7"))
+    Set rawSheet = getRawDataSheet()
+    Set overviewSheet = getOverviewSheet()
+    Set myFiltersTable = CreateFiltersTable(overviewSheet.range("B3", "D11"), overviewSheet.range("F3", "O7"))
     Set myRawDataTable = CreateRawDataTable(rawSheet.range("A2", "Q2"))
-    Set myResultTable = CreateResultTable(range("B16", "M999"), myRawDataTable, myFiltersTable)
+    Set myResultTable = CreateResultTable(overviewSheet.range("B16", "M999"), myRawDataTable, myFiltersTable)
 End Sub
 
 Public Function lensMatchTheMinMaxFilter(lens As Lens, filter As MinMaxNumberFilter) As Boolean
