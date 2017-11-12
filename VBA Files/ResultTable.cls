@@ -36,11 +36,11 @@ Public Function updateResultTable()
     Set activeMinMaxFilters = filterTable.getAllMinMaxNumberFilters
     Set activeMultipleFilters = filterTable.getAllMultipleStringFilters
 
-    Call setAllLensesAndFilter(activeMinMaxFilters, activeMultipleFilters)
+    Call setAndFilterLenses(activeMinMaxFilters, activeMultipleFilters)
     Call writeLenses
 End Function
 
-Private Function setAllLensesAndFilter(minMaxFilters As Collection, multipleFilters As Collection)
+Private Function setAndFilterLenses(minMaxFilters As Collection, multipleFilters As Collection)
     Const USE_FILERS As Boolean = True
     
     Dim currentLens As Lens
@@ -109,15 +109,12 @@ Private Function lensMatchesAllMultipleFilters(multipleFilters As Collection, le
     Dim currentMultipleFilter As MultipleStringFilter
 
     For Each currentMultipleFilter In multipleFilters
-        If (currentMultipleFilter.isSet And lensMatchTheMultipleFilter(lens, currentMultipleFilter)) Then
-            lensMatchesAllMultipleFilters = True
-        ElseIf (Not currentMultipleFilter.isSet) Then
-            lensMatchesAllMultipleFilters = True
-        Else
+        If (currentMultipleFilter.isSet And Not(lensMatchTheMultipleFilter(lens, currentMultipleFilter))) Then
             lensMatchesAllMultipleFilters = False
             Exit Function
         End If
     Next
+    lensMatchesAllMultipleFilters = True
 End Function
 
 Private Function clearRestOfRange()

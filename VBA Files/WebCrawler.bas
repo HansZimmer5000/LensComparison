@@ -1,12 +1,4 @@
-'VERSION 1.0 CLASS
-'BEGIN
-''  MultiUse = -1  'True
-'END
 Attribute VB_Name = "WebCrawler"
-'Attribute VB_GlobalNameSpace = False
-'Attribute VB_Creatable = False
-'Attribute VB_PredeclaredId = False
-'Attribute VB_Exposed = False
 
 ' This class connect the excel file to the WebCrawler to get new data.
 ' Class is the mentioned WebCrawler Module in the UML Component Diagramm.
