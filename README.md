@@ -1,4 +1,4 @@
-# NikonLensComparison
+# LensComparison
 
 ## Overview
 This project is about comparing DSLR Lenses from every brand and hopefully from every timeline.
