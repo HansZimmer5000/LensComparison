@@ -21,10 +21,11 @@ Entry                 Description of data (example)
 5. Apeture End--------4.5
 6. Filtersize------------77mm 
 7. Magnification------1:4
-8. Mount--------------Nikon F
-9. Sensor--------------APS-C /Kleinbild
-10. Weight-------------Gramm
-11. Size-----------------Diagramm x Length 
+8. Minimal Focus------0.2m
+9. Mount--------------Nikon F
+10. Sensor--------------APS-C /Kleinbild
+11. Weight-------------350g
+12. Size-----------------Diagramm x Length 
 
 
 
