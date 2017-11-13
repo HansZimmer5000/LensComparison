@@ -25,7 +25,7 @@ Entry                 Description of data (example)
 9. Mount--------------Nikon F
 10. Sensor--------------APS-C /Kleinbild
 11. Weight-------------350g
-12. Size-----------------Diagramm x Length 
+12. Size-----------------141x66mm (Diagram x Length) 
 
 
 
