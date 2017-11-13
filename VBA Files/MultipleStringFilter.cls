@@ -60,6 +60,8 @@ Public Function lensMatchTheMultipleFilter(lens As Lens) As Boolean
     'TODO: Make Classes that depend on this main class -> Open/Closed Principle
     Dim filterName As String
     Dim activeFilterValues As Collection
+    Dim afValue as String
+    Dim vrValue as String
     
     filterName = name
     Set activeFilterValues = Me.getActiveValues()
@@ -76,13 +78,29 @@ Public Function lensMatchTheMultipleFilter(lens As Lens) As Boolean
         stringMatchesAtLeastOneValue(lens.getBrand(), activeFilterValues)) Then
             lensMatchTheMultipleFilter = True
             
-    'ElseIf ("AF" = filterName And _
-    '    stringMatchesAtLeastOneValue(lens.getAF??, activeFilterValues)) Then
-    '        lensMatchTheMultipleFilter = True
+    ElseIf ("AF" = filterName) Then
+        if(lens.getAFCode() = 0) Then
+            afValue = "Nein"
+        ElseIf(lens.getAFCode() = 1) Then
+            afValue = "Stange"
+        ElseIf(lens.getAFCode() = 2) Then
+            afValue = "Motor"
+        end If
+        if("Nikon" = lens.getBrand()) Then Debug.Print(lens.getLensName() + " " + afValue + " " + Cstr(lens.getAFCode()))
+        If(stringMatchesAtLeastOneValue(afValue, activeFilterValues)) Then
+            lensMatchTheMultipleFilter = True
+        End If
             
-    'ElseIf ("VR" = filterName And _
-    '    stringMatchesAtLeastOneValue(lens.getVR??, activeFilterValues)) Then
-    '        lensMatchTheMultipleFilter = True
+    ElseIf ("VR" = filterName) Then
+        If(lens.hasVR()) Then
+            vrValue = "Ja"
+        Else
+            vrValue = "Nein"
+        End If
+        
+        If stringMatchesAtLeastOneValue(vrValue, activeFilterValues) Then
+            lensMatchTheMultipleFilter = True
+        End If
             
     Else
         lensMatchTheMultipleFilter = False

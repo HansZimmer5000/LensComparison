@@ -38,6 +38,7 @@ Public Function stringMatchesAtLeastOneValue(value As String, activeFilterValues
     
     For currentIteration = 1 To activeFilterValues.Count
         currentFilterString = activeFilterValues.Item(currentIteration)
+
         If (InStr(value, currentFilterString) > 0) Then
             stringMatchesAtLeastOneValue = True
             Exit Function

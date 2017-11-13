@@ -17,10 +17,6 @@ Function getLensWithFullInfo1Lensname() As String
     getLensWithFullInfo1Lensname = Sheets("TestData").Range("A2").Text 'makes problems because of the 'sharp s' in the end: "Canon EF 100-400mm 4.5-5.6 L IS II USM weiß"
 End Function
 
-Function getLensWithFullInfo1Brand() as String
-    getLensWithFullInfo1Brand = "Canon"
-End Function
-
 Function getLensWithFullInfo1FocalStart() As Double
     getLensWithFullInfo1FocalStart = 100#
 End Function
@@ -64,6 +60,21 @@ End Function
 Function getLensWithFullInfo1Length() As Double
     getLensWithFullInfo1Length = 193#
 End Function
+
+Function getLensWithFullInfo1Brand() as String
+    getLensWithFullInfo1Brand = "Canon"
+End Function
+
+Function getLensWithFullInfo1AFCode() as Double
+    getLensWithFullInfo1AFCode = 2
+End Function
+
+Function getLensWithFullInfo1HasVR() as Boolean
+    getLensWithFullInfo1HasVR = True
+End Function
+
+
+
 
 
 Function getLensWithAllExceptMagnificationSensorInfo1Magnification() as Double

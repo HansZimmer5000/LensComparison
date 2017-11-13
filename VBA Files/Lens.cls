@@ -10,7 +10,6 @@ Attribute VB_Exposed = False
 ' Class to hold all the necessary info for the ResultTable
 '
 Private lensName As String
-Private brand as String
 Private focalLengthStart As Double
 Private focalLengthEnd As Double
 Private apertureStart As Double
@@ -22,13 +21,13 @@ Private sensorCompatibiliy As String
 Private weight As Double
 Private diameter As Double
 Private length As Double
+Private brand as String
+Private afCode as Double
+Private usesVR as Boolean
 
 
 Public Property Get getLensName() As String
     getLensName = lensName
-End Property
-Public Property Get getBrand() As String
-    getBrand = brand
 End Property
 Public Property Get getFocalLengthStart() As Double
     getFocalLengthStart = focalLengthStart
@@ -63,6 +62,15 @@ End Property
 Public Property Get getLength() As Double
     getLength = length
 End Property
+Public Property Get getBrand() As String
+    getBrand = brand
+End Property
+Public Property Get getAFCode() as Double
+    getAFCode = afCode
+End Property
+Public Property Get hasVR() as Boolean
+    hasVR = usesVR
+End Property
 
 Private Sub Class_Initialize()
 End Sub
@@ -80,7 +88,6 @@ Public Function Init(newLensName As String, _
                         newDiameter As Double, _
                         newLength As Double)
     lensName = newLensName
-    brand = getBrandFromLensName()
     focalLengthStart = newFocalLengthStart
     focalLengthEnd = newFocalLengthEnd
     apertureStart = newApertureStart
@@ -93,6 +100,9 @@ Public Function Init(newLensName As String, _
     diameter = newDiameter
     length = newLength
 
+    Call setBrand()
+    Call setAFCode()
+    Call setUsesVR()
 End Function
 
 Function equals(obj as Variant) as Boolean
@@ -117,6 +127,54 @@ Function equals(obj as Variant) as Boolean
     End If
 End Function
 
-Private Function getBrandFromLensName() as String
-    getBrandFromLensName = Split(lensName)(0)
+Private Function setBrand()
+    brand = Split(lensName)(0)
+End Function
+
+Private Function setAFCode()
+    afCode = 0
+
+    If(StrComp(brand,"Nikon") = 0) Then
+        If(StrComp(mount,"Nikon 1") = 0) Then
+            afCode = 2 
+        ElseIf(InStr(lensName,"AF-S") > 0 or _ 
+                InStr(lensName,"AF-P") > 0 or _
+                InStr(lensName,"AF-I") > 0)  Then
+            afCode = 2
+        ElseIf(InStr(lensName,"AF") > 0) Then
+            afCode = 1
+        End If
+    ElseIf(StrComp(brand,"Canon") = 0) Then
+        If(InStr(lensName,"USM") > 0) Then
+            afCode = 2
+        End If
+    ElseIf(StrComp(brand,"Sigma") = 0) Then
+        If(InStr(lensName,"HSM") > 0) Then
+            afCode = 2
+        ElseIf(InStr(lensName,"AF") > 0) Then
+            afCode = 1
+        End If
+    ElseIf(StrComp(brand,"Tamron") = 0) Then
+        If(InStr(lensName,"USD") > 0) Then
+            afCode = 2
+        ElseIf(InStr(lensName,"AF") > 0) Then
+            afCode = 1
+        End If
+    ElseIf(InStr(lensName,"AF") > 0) Then
+        afCode = 1
+    End If
+End Function
+
+Private Function setUsesVR()
+    usesVR = False
+
+    If(StrComp(brand,"Nikon") = 0 and InStr(lensName,"VR")) Then
+        usesVR = True
+    ElseIf(StrComp(brand,"Canon") = 0 and InStr(lensName, "IS")) Then
+        usesVR = True
+    ElseIf(StrComp(brand,"Sigma") = 0 and InStr(lensName, "OS")) Then
+        usesVR = True
+    ElseIf(StrComp(brand,"Tamron") = 0 and InStr(lensName,"VC")) Then
+        usesVR = True
+    End If
 End Function

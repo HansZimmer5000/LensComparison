@@ -12,7 +12,6 @@ Attribute VB_Exposed = False
 Private lensWithFullInfo1RowRange as Range
 
 Private lensWithFullInfo1Lensname As String
-Private lensWithFullInfo1Brand as String
 Private lensWithFullInfo1FocalStart As Double
 Private lensWithFullInfo1FocalEnd As Double
 Private lensWithFullInfo1ApertureStart As Double
@@ -24,6 +23,9 @@ Private lensWithFullInfo1Sensor As String
 Private lensWithFullInfo1Weight As Double
 Private lensWithFullInfo1Diameter As Double
 Private lensWithFullInfo1Length As Double
+Private lensWithFullInfo1Brand as String
+Private lensWithFullInfo1AFCode as String
+Private lensWithFullInfo1HasVR as Boolean
 
 Private lensWithAllExceptMagnificationSensorInfo1Magnification as Double
 Private lenswithAllExceptMagnificationSensorInfo1Sensor as String
@@ -41,7 +43,6 @@ Function testAllCases()
     Debug.Print(Str(Now) + " Starting LensTestsuite")
 
     Call testPosGetFullInfo1Lensname
-    Call testPosGetFullInfo1Brand
     Call testPosGetFullInfo1FocalStart
     Call testPosGetFullInfo1FocalEnd
     Call testPosGetFullInfo1ApertureStart
@@ -53,6 +54,9 @@ Function testAllCases()
     Call testPosGetFullInfo1Weight
     Call testPosGetFullInfo1Diameter
     Call testPosGetFullInfo1Length
+    Call testPosGetFullInfo1Brand
+    Call testPosGetFullInfo1AFCode
+    Call testPosGetFullInfo1HasVR
 
     Call testPosGetWithAllExceptMagnificationSensorInfo1Magnification()
     Call testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
@@ -66,7 +70,6 @@ Private Function setUp()
     Set lensWithFullInfo1RowRange = getLensWithFullInfo1RowRange()
 
     lensWithFullInfo1Lensname = getLensWithFullInfo1Lensname()
-    lensWithFullInfo1Brand = getLensWithFullInfo1Brand()
     lensWithFullInfo1FocalStart = getLensWithFullInfo1FocalStart()
     lensWithFullInfo1FocalEnd = getLensWithFullInfo1FocalEnd()
     lensWithFullInfo1ApertureStart = getLensWithFullInfo1ApertureStart()
@@ -78,6 +81,10 @@ Private Function setUp()
     lensWithFullInfo1Weight = getLensWithFullInfo1Weight()
     lensWithFullInfo1Diameter = getLensWithFullInfo1Diameter()
     lensWithFullInfo1Length = getLensWithFullInfo1Length()
+    lensWithFullInfo1Brand = getLensWithFullInfo1Brand()
+    lensWithFullInfo1AFCode = getLensWithFullInfo1AFCode()
+    lensWithFullInfo1HasVR = getLensWithFullInfo1HasVR()
+    
 
     lensWithAllExceptMagnificationSensorInfo1Magnification = getLensWithAllExceptMagnificationSensorInfo1Magnification()
     lenswithAllExceptMagnificationSensorInfo1Sensor = getLensWithAllExceptMagnificationSensorInfo1Sensor()
@@ -99,16 +106,6 @@ Private Function testPosGetFullInfo1Lensname()
     result = StrComp(lensWithFullInfo1Lensname, lensWithFullInfo1.getLensName) = 0
     Call printAndAssert("testPosGetFullInfo1Lensname", result)
     
-    Call tearDown
-End Function
-
-Private Function testPosGetFullInfo1Brand()
-    Call setUp
-    Dim result as Boolean
-
-    result = StrComp(lensWithFullInfo1Brand, lensWithFullInfo1.getBrand()) = 0
-    Call printAndAssert("testPosGetFullInfo1Brand",result)
-
     Call tearDown
 End Function
 
@@ -221,6 +218,40 @@ Private Function testPosGetFullInfo1Length()
     
     Call tearDown
 End Function
+
+Private Function testPosGetFullInfo1Brand()
+    Call setUp
+    Dim result as Boolean
+
+    result = StrComp(lensWithFullInfo1Brand, lensWithFullInfo1.getBrand()) = 0
+    Call printAndAssert("testPosGetFullInfo1Brand",result)
+
+    Call tearDown
+End Function
+
+Private Function testPosGetFullInfo1AFCode()
+    Call setUp
+    Dim result as Boolean
+
+    result = lensWithFullInfo1AFCode = lensWithFullInfo1.getAFCode()
+    Call printAndAssert("testPosGetFullInfo1AFCode",result)
+
+    Call tearDown
+End Function
+
+Private Function testPosGetFullInfo1HasVR()
+    Call setUp
+    Dim result as Boolean
+
+    result = lensWithFullInfo1HasVR And lensWithFullInfo1.hasVR()
+    Call printAndAssert("testPosGetFullInfo1HasVR",result)
+
+    Call tearDown
+End Function
+
+
+
+
 
 
 Private Function testPosGetWithAllExceptMagnificationSensorInfo1Magnification()

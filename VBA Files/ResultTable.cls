@@ -109,9 +109,11 @@ Private Function lensMatchesAllMultipleFilters(multipleFilters As Collection, le
     Dim currentMultipleFilter As MultipleStringFilter
 
     For Each currentMultipleFilter In multipleFilters
-        If (currentMultipleFilter.isSet And Not(currentMultipleFilter.lensMatchTheMultipleFilter(lens))) Then
-            lensMatchesAllMultipleFilters = False
-            Exit Function
+        If (currentMultipleFilter.isSet) Then
+            if Not(currentMultipleFilter.lensMatchTheMultipleFilter(lens)) Then
+                lensMatchesAllMultipleFilters = False
+                Exit Function
+            End If
         End If
     Next
     lensMatchesAllMultipleFilters = True
@@ -126,7 +128,7 @@ Private Function clearRestOfRange()
     Set lastCellWithoutData = tableRange.Rows(tableRange.Rows.Count).Columns(tableRange.Columns.Count).Offset(allLenses.Count, 0)
     Set rangeWithoutData = firstCellWithoutData.Parent.range(firstCellWithoutData, lastCellWithoutData)
     
-    rangeWithoutData.clear
+    rangeWithoutData.value2 = "" '.clear method also clears of formaatting
 End Function
 
 
