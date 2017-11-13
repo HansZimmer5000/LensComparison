@@ -10,6 +10,7 @@ Attribute VB_Exposed = False
 ' Class to hold all the necessary info for the ResultTable
 '
 Private lensName As String
+Private brand as String
 Private focalLengthStart As Double
 Private focalLengthEnd As Double
 Private apertureStart As Double
@@ -25,6 +26,9 @@ Private length As Double
 
 Public Property Get getLensName() As String
     getLensName = lensName
+End Property
+Public Property Get getBrand() As String
+    getBrand = brand
 End Property
 Public Property Get getFocalLengthStart() As Double
     getFocalLengthStart = focalLengthStart
@@ -76,6 +80,7 @@ Public Function Init(newLensName As String, _
                         newDiameter As Double, _
                         newLength As Double)
     lensName = newLensName
+    brand = getBrandFromLensName()
     focalLengthStart = newFocalLengthStart
     focalLengthEnd = newFocalLengthEnd
     apertureStart = newApertureStart
@@ -94,7 +99,8 @@ Function equals(obj as Variant) as Boolean
     equals = False
 
     if(StrComp(TypeName(obj), "Lens") = 0) Then
-        if(StrComp(Me.getLensName(),obj.getLensName()) = 0 and _
+        if(StrComp(Me.getLensName(), obj.getLensName()) = 0 and _
+            StrComp(Me.getBrand(), obj.getBrand()) = 0 and _
             Me.getFocalLengthStart() = obj.getFocalLengthStart() and _ 
             Me.getFocalLengthEnd() = obj.getFocalLengthEnd() and _
             Me.getApertureStart() = obj.getApertureStart() and _
@@ -109,4 +115,8 @@ Function equals(obj as Variant) as Boolean
             equals = True
         end If
     End If
+End Function
+
+Private Function getBrandFromLensName() as String
+    getBrandFromLensName = Split(lensName)(0)
 End Function

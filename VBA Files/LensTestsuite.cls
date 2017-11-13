@@ -12,6 +12,7 @@ Attribute VB_Exposed = False
 Private lensWithFullInfo1RowRange as Range
 
 Private lensWithFullInfo1Lensname As String
+Private lensWithFullInfo1Brand as String
 Private lensWithFullInfo1FocalStart As Double
 Private lensWithFullInfo1FocalEnd As Double
 Private lensWithFullInfo1ApertureStart As Double
@@ -40,6 +41,7 @@ Function testAllCases()
     Debug.Print(Str(Now) + " Starting LensTestsuite")
 
     Call testPosGetFullInfo1Lensname
+    Call testPosGetFullInfo1Brand
     Call testPosGetFullInfo1FocalStart
     Call testPosGetFullInfo1FocalEnd
     Call testPosGetFullInfo1ApertureStart
@@ -64,6 +66,7 @@ Private Function setUp()
     Set lensWithFullInfo1RowRange = getLensWithFullInfo1RowRange()
 
     lensWithFullInfo1Lensname = getLensWithFullInfo1Lensname()
+    lensWithFullInfo1Brand = getLensWithFullInfo1Brand()
     lensWithFullInfo1FocalStart = getLensWithFullInfo1FocalStart()
     lensWithFullInfo1FocalEnd = getLensWithFullInfo1FocalEnd()
     lensWithFullInfo1ApertureStart = getLensWithFullInfo1ApertureStart()
@@ -96,6 +99,16 @@ Private Function testPosGetFullInfo1Lensname()
     result = StrComp(lensWithFullInfo1Lensname, lensWithFullInfo1.getLensName) = 0
     Call printAndAssert("testPosGetFullInfo1Lensname", result)
     
+    Call tearDown
+End Function
+
+Private Function testPosGetFullInfo1Brand()
+    Call setUp
+    Dim result as Boolean
+
+    result = StrComp(lensWithFullInfo1Brand, lensWithFullInfo1.getBrand()) = 0
+    Call printAndAssert("testPosGetFullInfo1Brand",result)
+
     Call tearDown
 End Function
 

@@ -72,9 +72,9 @@ Public Function lensMatchTheMultipleFilter(lens As Lens) As Boolean
         stringMatchesAtLeastOneValue(lens.getSensorCompatibility, activeFilterValues)) Then
             lensMatchTheMultipleFilter = True
 
-    'ElseIf ("Brand" = filterName And _
-    '    stringMatchesAtLeastOneValue(lens.getLensName, activeFilterValues)) Then
-    '        lensMatchTheMultipleFilter = True
+    ElseIf ("Brand" = filterName And _
+        stringMatchesAtLeastOneValue(lens.getBrand(), activeFilterValues)) Then
+            lensMatchTheMultipleFilter = True
             
     'ElseIf ("AF" = filterName And _
     '    stringMatchesAtLeastOneValue(lens.getAF??, activeFilterValues)) Then
