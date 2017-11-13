@@ -5,8 +5,10 @@ Attribute VB_Name = "WebCrawler"
 
 Sub runAllPythonTests()
 	dim command as String
+	dim excelFilePath as String
 
-	command = "python C:\Users\Michael\IdeaProjects\LensComparison\WebCrawler\testall.py"
+	excelFilePath = ActiveWorkbook.Path
+	command = "python " + excelFilePath + "\WebCrawler\testall.py"
 	Call executeShellCommand(command, True, True)
 End Sub
 

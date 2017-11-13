@@ -9,8 +9,6 @@ Sub testAll()
     Next
     Debug.Print (Str(Now) + " " + "Run testAll Start")
     
-    Debug.Print (Str(Now) + " " + "Run Pyhton tests.")
-    Call runAllPythonTests()
     Call myLensTestsuite.testAllCases 
     Call myRawDataTableTestsuite.testAllCases
 

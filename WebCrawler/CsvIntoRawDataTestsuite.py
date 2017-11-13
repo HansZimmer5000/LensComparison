@@ -34,8 +34,8 @@ class CsvIntoRawDataTestSuite(unittest.TestCase):
     #////////////
 
     def setUp(self):
-        self.__class__.PROJECT_MAIN_DIR = 'C:\\Users\\Michael\\IdeaProjects\\LensComparison\\'
-        self.__class__.RAWRESPONSE_FILES_DIR = self.__class__.PROJECT_MAIN_DIR + "WebCrawler\\"
+        self.__class__.RAWRESPONSE_FILES_DIR = os.path.dirname(os.path.realpath(__file__)) + "\\"
+        self.__class__.PROJECT_MAIN_DIR =  os.path.abspath(os.path.join(self.__class__.RAWRESPONSE_FILES_DIR, os.pardir)) + "\\"
 
         self.__class__.EMPTY_SET = set()
         self.__class__.RAWRESPONSE_FILES_FULLPATH_SET = {

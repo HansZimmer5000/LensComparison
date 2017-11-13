@@ -25,6 +25,7 @@
 # 6. If every rawResponse file is done, close RawData file.
 
 from glob import glob
+import os
 import GhAdapter
 import RawDataAccess
 
@@ -103,7 +104,7 @@ def get_proddesc_from_raw_site(raw_site):
 if __name__ == "__main__":
     #If this module is not imported, do this code
 
-    RAW_RESPONSE_DIR = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/"
+    RAW_RESPONSE_DIR = os.getcwd()
 
     print("Type 'clean' to clean the rawDataFile, 'import' to import new Data or 'repair' to repair the 'rawResponseData 12 - 60.csv file'.")
     user_input = input()
