@@ -3,7 +3,7 @@
 
 from LensSpider import LensSpider
 from scrapy.crawler import CrawlerProcess
-import RawData
+import RawDataAccess
 
 def start_spider_within_python():
     custom_settings = {
