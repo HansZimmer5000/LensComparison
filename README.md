@@ -31,17 +31,18 @@ Entry                 Description of data (example)
 ## Task List
 - [ ] \(Must-Have)----(Never done) Create UML graphs and keep them updated
 - [x] \(Must-Have)----Complete README file
-- [x] \(Must-Have)----Got all necessary data from the most Nikon F compatible lenses
+- [x] \(Must-Have)----Got all necessary data from the most lenses
 - [x] \(Must-Have)----Made a nice GUI for filtering and comparing the lenses (perhaps something like on "geizhals.de") 
 - [x] \(Must-Have)----RawData will be shown in the Result Table, if they match the selected / active filters.
-- [ ] \(Should-Have)--Able to copy the data from "WebCrawler/rawData.csv" to "AllLenses.xlsm" in the RawData sheet.
 - [ ] \(Should-Have)--Create or find Key, so Data about the same lens comes together and so doesn`t creates multiple entries.
-- [ ] \(Should-Have)--Got all necessary data from ALL the Nikon F compatible lenses
-- [ ] \(Should-Have)--Data of Autofocus (AF,AF-S,MF) and Vibration Reduction
+- [ ] \(Should-Have)--Got all necessary data from all lenses
+- [ ] \(Should-Have)--Data of Autofocus (AF,AF-S,MF)
+- [ ] \(Should-Have)--Data of Vibration Reduction
+- [ ] \(Should-Have)--Data of Brand
 - [ ] \(Should-Have)--A Sheet with a Table where you can compare (from the ResultTable) selected lenses.
 - [ ] \(NiceTo-Have)--Move from Excel to a real database (e.g. Wide-Column?)
 - [ ] \(NiceTo-Have)--Complete standalone program.
-- [x] \(NiceTo-Have)--Not only Nikon F lenses, but all Lenses compatible to Nikon F (e.g. with adapter the Pentax Lenses)
+- [ ] \(NiceTo-Have)--When Selecting a certain mount, show also the lenses compatible with an adapter.
 - [ ] \(NiceTo-Have)--Sheet with a Table with alle the lenses someone ownes, to see how much you can do with them and if you really need a new lens.
 - [ ] \(NiceTo-Have)--Not only Nikon F Lenses and Nikon F compatible lenses, but all Lenses every made.
 
