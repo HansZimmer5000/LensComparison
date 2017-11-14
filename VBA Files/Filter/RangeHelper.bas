@@ -1,4 +1,4 @@
-Attribute VB_Name = "Filters"
+Attribute VB_Name = "RangeHelper"
 Public Function rangeIsEmpty(range As range) As Boolean
     'returns if a range has no text / numbers in it.
     If (WorksheetFunction.CountA(range) = 0) Then
