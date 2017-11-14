@@ -149,29 +149,24 @@ Private Function setAFCode()
     Call allBrandsWithTheirAFNames.Add(Array("AF"), "Sigma")
     Call allBrandsWithTheirAFNames.Add(Array("AF"), "Tamron")
 
-    On Error Resume Next
-    afNames = allBrandsWithTheirAFMotorNames.Item(brand)
-
-    If(Err.Number = 0) Then
-        'Brand existing
+    if(keyExistsInCollection(brand,allBrandsWithTheirAFMotorNames)) Then
+        afNames = allBrandsWithTheirAFMotorNames.Item(brand)
         For Each afMotorName in afNames
             If(InStr(lensName, afMotorName) > 0) Then
                 afCode = 2
                 Exit Function
             End If
         Next
+    End If
 
-        On Error Resume Next
+    If(keyExistsInCollection(brand,allBrandsWithTheirAFNames)) Then
         afNames = allBrandsWithTheirAFNames.Item(brand)
-
-        If(Err.Number = 0) Then
-            For Each afName in afNames 
-                if(InStr(lensName, afName) > 0) Then
-                    afCode = 1
-                    Exit Function
-                End If
-            Next
-        End If
+        For Each afName in afNames 
+            if(InStr(lensName, afName) > 0) Then
+                afCode = 1
+                Exit Function
+            End If
+        Next
     End If
 
     afCode = 0
@@ -189,14 +184,23 @@ Private Function setUsesVR()
     Call allBrandsWithTheirVRName.Add("OS","Sigma")
     Call allBrandsWithTheirVRName.Add("VC","Tamron")
 
-    On Error Resume Next
-    vrName = allBrandsWithTheirVRName.Item(brand)
-
-    If(Err.Number = 0) Then
+    If(keyExistsInCollection(brand, allBrandsWithTheirVRName)) Then
+        vrName = allBrandsWithTheirVRName.Item(brand)
         If(InStr(lensName, vrName) > 0) Then
             usesVR = True
             Exit Function
         End If  
     End If
     usesVR = False
+End Function
+
+Private Function keyExistsInCollection(key as String, coll as Collection) as Boolean
+    On Error Resume Next
+    Call coll.Item(Key)
+
+    If(Err.Number = 0) Then
+        keyExistsInCollection = True
+    Else
+        keyExistsInCollection = False
+    End If
 End Function
