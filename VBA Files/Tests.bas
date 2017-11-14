@@ -1,6 +1,8 @@
 Attribute VB_Name = "Tests"
 
 Sub testAll()
+    Application.VBE.MainWindow.Visible = True 
+
     Dim myLensTestsuite As LensTestsuite: Set myLensTestsuite = New LensTestsuite
     Dim myLensRawDataTableTestsuite As RawDataTableTestsuite: Set myRawDataTableTestsuite = new RawDataTableTestsuite
     
