@@ -2,10 +2,45 @@ Attribute VB_Name = "Factory"
 ' A Factory static module that creates and inits new instances
 ' of our classes.
 
-Public Function CreateMinMaxNumberFilter(nameCell As range, minValueCell As range, maxValueCell As range) As MinMaxNumberFilter
-    Set CreateMinMaxNumberFilter = New MinMaxNumberFilter
-    Call CreateMinMaxNumberFilter.Init(nameCell, minValueCell, maxValueCell)
+Public Function CreateApertureMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New ApertureMinMaxFilter
+    Call CreateApertureMinMaxNumberFilter.Init(minValueCell, maxValueCell)
 End Function
+
+Public Function CreateDiameterMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New DiameterMinMaxFilter
+    Call CreateDiameterMinMaxNumberFilter.Init(minValueCell, maxValueCell)
+End Function
+
+Public Function CreateFiltersizeMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New FiltersizeMinMaxFilter
+    Call CreateFiltersizeMinMaxNumberFilter.Init(minValueCell, maxValueCell)
+End Function
+
+Public Function CreateFocalLengthMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New FocalLengthMinMaxFilter
+    Call CreateFocalLengthMinMaxNumberFilter.Init(minValueCell, maxValueCell)
+End Function
+
+Public Function CreateLengthMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New LengthMinMaxFilter
+    Call CreateLengthMinMaxNumberFilter.Init(minValueCell, maxValueCell)
+End Function
+
+Public Function CreateMagnificationMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New MagnificationMinMaxFilter
+    Call CreateMagnificationMinMaxNumberFilter.Init(minValueCell, maxValueCell)
+End Function
+
+Public Function CreateWeightMinMaxFilter(minValueCell As range, maxValueCell As range) As MinMaxFilter
+    Set CreateMinMaxFilter = New WeightMinMaxFilter
+    Call CreateWeightMinMaxNumberFilter.Init(minValueCell, maxValueCell)
+End Function
+
+
+
+
+
 
 Public Function CreateMultipleStringFilter(newNameCell As range, newValuesRow As range) As MultipleStringFilter
     Set CreateMultipleStringFilter = New MultipleStringFilter
