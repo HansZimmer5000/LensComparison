@@ -132,49 +132,71 @@ Private Function setBrand()
 End Function
 
 Private Function setAFCode()
+    Dim allBrandsWithTheirAFMotorNames as Collection
+    Dim allBrandsWithTheirAFNames as Collection
+    Dim afNames as Variant
+
+    Set allBrandsWithTheirAFMotorNames = New Collection
+    Set allBrandsWithTheirAFNames = New Collection
     afCode = 0
 
-    If(StrComp(brand,"Nikon") = 0) Then
-        If(StrComp(mount,"Nikon 1") = 0) Then
-            afCode = 2 
-        ElseIf(InStr(lensName,"AF-S") > 0 or _ 
-                InStr(lensName,"AF-P") > 0 or _
-                InStr(lensName,"AF-I") > 0)  Then
-            afCode = 2
-        ElseIf(InStr(lensName,"AF") > 0) Then
-            afCode = 1
+    Call allBrandsWithTheirAFMotorNames.Add(Array("Nikon 1", "AF-S", "AF-P", "AF-I"), "Nikon")
+    Call allBrandsWithTheirAFMotorNames.Add(Array("USM"), "Canon")
+    Call allBrandsWithTheirAFMotorNames.Add(Array("HSM"), "Sigma")
+    Call allBrandsWithTheirAFMotorNames.Add(Array("USD"), "Tamron")
+
+    Call allBrandsWithTheirAFNames.Add(Array("AF"), "Nikon")
+    Call allBrandsWithTheirAFNames.Add(Array("AF"), "Sigma")
+    Call allBrandsWithTheirAFNames.Add(Array("AF"), "Tamron")
+
+    On Error Resume Next
+    afNames = allBrandsWithTheirAFMotorNames.Item(brand)
+
+    If(Err.Number = 0) Then
+        'Brand existing
+        For Each afMotorName in afNames
+            If(InStr(lensName, afMotorName) > 0) Then
+                afCode = 2
+                Exit Function
+            End If
+        Next
+
+        On Error Resume Next
+        afNames = allBrandsWithTheirAFNames.Item(brand)
+
+        If(Err.Number = 0) Then
+            For Each afName in afNames 
+                if(InStr(lensName, afName) > 0) Then
+                    afCode = 1
+                    Exit Function
+                End If
+            Next
         End If
-    ElseIf(StrComp(brand,"Canon") = 0) Then
-        If(InStr(lensName,"USM") > 0) Then
-            afCode = 2
-        End If
-    ElseIf(StrComp(brand,"Sigma") = 0) Then
-        If(InStr(lensName,"HSM") > 0) Then
-            afCode = 2
-        ElseIf(InStr(lensName,"AF") > 0) Then
-            afCode = 1
-        End If
-    ElseIf(StrComp(brand,"Tamron") = 0) Then
-        If(InStr(lensName,"USD") > 0) Then
-            afCode = 2
-        ElseIf(InStr(lensName,"AF") > 0) Then
-            afCode = 1
-        End If
-    ElseIf(InStr(lensName,"AF") > 0) Then
-        afCode = 1
     End If
+
+    afCode = 0
 End Function
 
 Private Function setUsesVR()
+    Dim allBrandsWithTheirVRName as Collection
+    Dim vrName as String
+
+    Set allBrandsWithTheirVRName = New Collection
     usesVR = False
 
-    If(StrComp(brand,"Nikon") = 0 and InStr(lensName,"VR")) Then
-        usesVR = True
-    ElseIf(StrComp(brand,"Canon") = 0 and InStr(lensName, "IS")) Then
-        usesVR = True
-    ElseIf(StrComp(brand,"Sigma") = 0 and InStr(lensName, "OS")) Then
-        usesVR = True
-    ElseIf(StrComp(brand,"Tamron") = 0 and InStr(lensName,"VC")) Then
-        usesVR = True
+    Call allBrandsWithTheirVRName.Add("VR","Nikon")
+    Call allBrandsWithTheirVRName.Add("IS","Canon")
+    Call allBrandsWithTheirVRName.Add("OS","Sigma")
+    Call allBrandsWithTheirVRName.Add("VC","Tamron")
+
+    On Error Resume Next
+    vrName = allBrandsWithTheirVRName.Item(brand)
+
+    If(Err.Number = 0) Then
+        If(InStr(lensName, vrName) > 0) Then
+            usesVR = True
+            Exit Function
+        End If  
     End If
+    usesVR = False
 End Function
