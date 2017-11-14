@@ -7,19 +7,32 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-'This is a Interface.
 
-Public Property Get getMinValue() as Double
+Implements MinMaxFilter
+
+Private superClass As MinMaxFilter
+
+Public Property Get MinMaxFilter_getMinValue() As Double
+    MinMaxFilter_getMinValue = superClass.getMinValue()
 End Property
 
-Public Property Get getMaxValue() As Double
+Public Property Get MinMaxFilter_getMaxValue() As Double
+    MinMaxFilter_getMaxValue = superClass.getMaxValue()
 End Property
 
-Public Function Init(newNameCell As range, newMinValueCell As range, newMaxValueCell As range)
+Private Sub Class_Initialize()
+    Set superClass = New MinMaxFilter
+End Sub
+
+Function MinMaxFilter_Init(range1 As range, range2 As range)
+    Call superClass.Init(range1, range2)
 End Function
 
-Public Function isSet() As Boolean
+Public Function MinMaxFilter_isSet() As Boolean
+    MinMaxFilter_isSet = superClass.isSet()
 End Function
 
-Public Function lensMatchTheMinMaxFilter(lens As Lens) As Boolean
+Function MinMaxFilter_lensMatchTheMinMaxFilter(lens As lens) As Boolean
+    'TODO
+    MinMaxFilter_lensMatchTheMinMaxFilter = False
 End Function
