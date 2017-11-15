@@ -45,7 +45,7 @@ Function elemIsInCollection(elem as Variant, coll as Collection) as Boolean
 End Function
 
 Function collectionsAreEqual(coll1 as Collection, coll2 as Collection) as Boolean
-    
+
     If(coll1.Count = coll2.Count) Then
         For each elem1 in coll1
             On Error Resume Next
@@ -55,6 +55,7 @@ Function collectionsAreEqual(coll1 as Collection, coll2 as Collection) as Boolea
                 Exit Function
             End If
         Next
+        collectionsAreEqual = True
     Else
         collectionsAreEqual = False
     End If
