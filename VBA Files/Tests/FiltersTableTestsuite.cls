@@ -20,3 +20,6 @@ End Function
 Private Function setUp()
     
 End Function
+
+'getAllMinMaxNumberFilters() As Collection
+'getAllMultipleStringFilters() As Collection

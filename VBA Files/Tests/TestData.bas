@@ -181,16 +181,16 @@ Function getMinMaxNumberFilter1MaxValueRange() as Range
     Set getMinMaxNumberFilter1MaxValueRange = Sheets("TestData").range("C20")
 End Function
 
-Function getMinMaxNumberFilter2NameRange() as Range
-    Set getMinMaxNumberFilter2NameRange = Sheets("TestData").range("A22")
+Function getMinMaxNumberFilter3NameRange() as Range
+    Set getMinMaxNumberFilter3NameRange = Sheets("TestData").range("A22")
 End Function
 
-Function getMinMaxNumberFilter2MinValueRange() as Range
-    Set getMinMaxNumberFilter2MinValueRange = Sheets("TestData").range("B22")
+Function getMinMaxNumberFilter3MinValueRange() as Range
+    Set getMinMaxNumberFilter3MinValueRange = Sheets("TestData").range("B22")
 End Function
 
-Function getMinMaxNumberFilter2MaxValueRange() as Range
-    Set getMinMaxNumberFilter2MaxValueRange = Sheets("TestData").range("C22")
+Function getMinMaxNumberFilter3MaxValueRange() as Range
+    Set getMinMaxNumberFilter3MaxValueRange = Sheets("TestData").range("C22")
 End Function
 
 Function getMultipleStringFilter1NameRange() as Range
@@ -218,12 +218,33 @@ Function getMinMaxNumberFilter1() as MinMaxNumberFilter
 End Function
 
 Function getMinMaxNumberFilter2() as MinMaxNumberFilter
-    Set getMinMaxNumberFilter2 = CreateMinMaxNumberFilter(getMinMaxNumberFilter2NameRange, _
-                                                            getMinMaxNumberFilter2MinValueRange, _
-                                                            getMinMaxNumberFilter2MaxValueRange)
+    Set getMinMaxNumberFilter2 = CreateMinMaxNumberFilter(Sheets("TestData").Range("A21"), _
+                                                            Sheets("TestData").Range("B21"), _
+                                                            Sheets("TestData").Range("C21"))
+End Function
+
+Function getMinMaxNumberFilter3() as MinMaxNumberFilter
+    Set getMinMaxNumberFilter3 = CreateMinMaxNumberFilter(getMinMaxNumberFilter3NameRange, _
+                                                            getMinMaxNumberFilter3MinValueRange, _
+                                                            getMinMaxNumberFilter3MaxValueRange)
 End Function
 
 Function getMultipleStringFilter1() as MultipleStringFilter
     Set getMultipleStringFilter1 = CreateMultipleStringFilter(getMultipleStringFilter1NameRange, _
                                                                 getMultipleStringFilter1ValuesRow)
+End Function
+
+Function getMultipleStringFilter2() as MultipleStringFilter
+    Set getMultipleStringFilter2 = CreateMultipleStringFilter(Sheets("TestData").Range("E21"), _
+                                                                Sheets("TestData").Range("F21:N21"))
+End Function
+
+Function getMultipleStringFilter3() as MultipleStringFilter
+    Set getMultipleStringFilter3 = CreateMultipleStringFilter(Sheets("TestData").Range("E22"), _
+                                                                Sheets("TestData").Range("F22:N22"))
+End Function
+
+Function getMultipleStringFilter4() as MultipleStringFilter
+    Set getMultipleStringFilter4 = CreateMultipleStringFilter(Sheets("TestData").Range("E23"), _
+                                                                Sheets("TestData").Range("F23:N23"))
 End Function
