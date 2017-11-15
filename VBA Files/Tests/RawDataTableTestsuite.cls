@@ -38,18 +38,13 @@ Private Function setUp()
     Set rawDataTable1Range = getRawDataTable1Range()
 End Function
 
-Private Function tearDown()
-
-End Function
-
 Private Function testPosGetTable1Range()
     Call setUp
     Dim result As Boolean
 
     result = StrComp(rawDataTable1Range.Address,rawDataTable1.getTableRange().Address) = 0
     Call printAndAssert("testPosGetTable1Range", result)
-    
-    Call tearDown
+
 End Function
 
 
@@ -65,6 +60,4 @@ Private Function testPosGetTable1AllLenses()
     result = result and elemIsInCollection(lensWithAllExceptMagnificationSensorInfo1, allLenses)    
 
     Call printAndAssert("testPosGetTable1AllLenses", result)
-
-    Call tearDown
 End Function

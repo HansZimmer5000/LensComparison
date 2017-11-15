@@ -27,6 +27,7 @@ Function testAllCases()
     Call testPosGetTable1Range
     Call testPosGetTable1AllLenses
     Call testPosGetTable1FilteredLenses
+    'TODO: Wait for FiltersTableTestsuite to complete
 End Function
 
 Private Function setUp()
@@ -38,8 +39,4 @@ Private Function setUp()
     Set resultTable1 = getResultTable1()
 
     Set resultTable1Range = getResultTable1Range()
-End Function
-
-Private Function tearDown()
-
 End Function

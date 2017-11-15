@@ -95,18 +95,12 @@ Private Function setUp()
     Set lensWithallExceptMagnificationSensorInfo1 = getLensWithAllExceptMagnificationSensorInfo1()
 End Function
 
-Private Function tearDown()
-
-End Function
-
 Private Function testPosGetFullInfo1Lensname()
     Call setUp
     Dim result As Boolean
 
     result = StrComp(lensWithFullInfo1Lensname, lensWithFullInfo1.getLensName) = 0
     Call printAndAssert("testPosGetFullInfo1Lensname", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1FocalStart()
@@ -115,8 +109,6 @@ Private Function testPosGetFullInfo1FocalStart()
 
     result = lensWithFullInfo1FocalStart = lensWithFullInfo1.getFocalLengthStart
     Call printAndAssert("testPosGetFullInfo1FocalStart", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1FocalEnd()
@@ -125,8 +117,6 @@ Private Function testPosGetFullInfo1FocalEnd()
 
     result = lensWithFullInfo1FocalEnd = lensWithFullInfo1.getFocalLengthEnd
     Call printAndAssert("testPosGetFullInfo1FocalEnd", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1ApertureStart()
@@ -135,8 +125,6 @@ Private Function testPosGetFullInfo1ApertureStart()
 
     result = lensWithFullInfo1ApertureStart = lensWithFullInfo1.getApertureStart
     Call printAndAssert("testPosGetFullInfo1ApertureStart", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1ApertureEnd()
@@ -145,8 +133,6 @@ Private Function testPosGetFullInfo1ApertureEnd()
 
     result = lensWithFullInfo1ApertureEnd = lensWithFullInfo1.getApertureEnd
     Call printAndAssert("testPosGetFullInfo1ApertureEnd", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Filter()
@@ -155,8 +141,6 @@ Private Function testPosGetFullInfo1Filter()
 
     result = lensWithFullInfo1Filter = lensWithFullInfo1.getFilterSize
     Call printAndAssert("testPosGetFullInfo1Filter", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Magnification()
@@ -165,8 +149,6 @@ Private Function testPosGetFullInfo1Magnification()
 
     result = lensWithFullInfo1Magnification = lensWithFullInfo1.getMagnification
     Call printAndAssert("testPosGetFullInfo1Magnification", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Mount()
@@ -175,8 +157,6 @@ Private Function testPosGetFullInfo1Mount()
 
     result = StrComp(lensWithFullInfo1Mount, lensWithFullInfo1.getMount) = 0
     Call printAndAssert("testPosGetFullInfo1Mount", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Sensor()
@@ -185,8 +165,6 @@ Private Function testPosGetFullInfo1Sensor()
 
     result = StrComp(lensWithFullInfo1Sensor, lensWithFullInfo1.getSensorCompatibility) = 0
     Call printAndAssert("testPosGetFullInfo1Sensor", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Weight()
@@ -195,8 +173,6 @@ Private Function testPosGetFullInfo1Weight()
 
     result = lensWithFullInfo1Weight = lensWithFullInfo1.getWeight
     Call printAndAssert("testPosGetFullInfo1Weight", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Diameter()
@@ -205,8 +181,6 @@ Private Function testPosGetFullInfo1Diameter()
 
     result = lensWithFullInfo1Diameter = lensWithFullInfo1.getDiameter
     Call printAndAssert("testPosGetFullInfo1Diameter", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Length()
@@ -215,8 +189,6 @@ Private Function testPosGetFullInfo1Length()
 
     result = lensWithFullInfo1Length = lensWithFullInfo1.getLength
     Call printAndAssert("testPosGetFullInfo1Length", result)
-    
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1Brand()
@@ -225,8 +197,6 @@ Private Function testPosGetFullInfo1Brand()
 
     result = StrComp(lensWithFullInfo1Brand, lensWithFullInfo1.getBrand()) = 0
     Call printAndAssert("testPosGetFullInfo1Brand",result)
-
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1AFCode()
@@ -235,8 +205,6 @@ Private Function testPosGetFullInfo1AFCode()
 
     result = lensWithFullInfo1AFCode = lensWithFullInfo1.getAFCode()
     Call printAndAssert("testPosGetFullInfo1AFCode",result)
-
-    Call tearDown
 End Function
 
 Private Function testPosGetFullInfo1HasVR()
@@ -245,8 +213,6 @@ Private Function testPosGetFullInfo1HasVR()
 
     result = lensWithFullInfo1HasVR And lensWithFullInfo1.hasVR()
     Call printAndAssert("testPosGetFullInfo1HasVR",result)
-
-    Call tearDown
 End Function
 
 
@@ -261,7 +227,7 @@ Private Function testPosGetWithAllExceptMagnificationSensorInfo1Magnification()
     result = lensWithAllExceptMagnificationSensorInfo1Magnification = lensWithallExceptMagnificationSensorInfo1.getMagnification
     Call printAndAssert("testPosGetWithAllExceptMagnificationSensorInfo1Magnification", result)
     
-    Call tearDown
+    
 End Function
 
 Private Function testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
@@ -271,7 +237,7 @@ Private Function testPosGetWithAllExceptMagnificationSensorInfo1Sensor()
     result = StrComp(lenswithAllExceptMagnificationSensorInfo1Sensor,lensWithallExceptMagnificationSensorInfo1.getSensorCompatibility()) = 0
     Call printAndAssert("testPosGetWithAllExceptMagnificationSensorInfo1Sensor", result)
     
-    Call tearDown
+    
 End Function
 
 Private Function testPosEqualsFullInfo1()
@@ -281,7 +247,7 @@ Private Function testPosEqualsFullInfo1()
     result = lensWithFullInfo1.equals(lensWithFullInfo1)
     Call printAndAssert("testPosEqualsFullInfo1", result)
     
-    Call tearDown
+    
 End Function
 
 Private Function testPosEqualslensWithAllExceptFilterInfo1()
@@ -291,7 +257,7 @@ Private Function testPosEqualslensWithAllExceptFilterInfo1()
     result = lensWithAllExceptFilterInfo1.equals(lensWithAllExceptFilterInfo1)
     Call printAndAssert("testPosEqualslensWithAllExceptFilterInfo1", result)
     
-    Call tearDown
+    
 End Function
 
 Private Function testPosEqualslensWithAllExceptMagnificationSensorInfo1()
@@ -301,7 +267,7 @@ Private Function testPosEqualslensWithAllExceptMagnificationSensorInfo1()
     result = lensWithAllExceptMagnificationSensorInfo1.equals(lensWithAllExceptMagnificationSensorInfo1)
     Call printAndAssert("testPosEqualslensWithAllExceptMagnificationSensorInfo1", result)
     
-    Call tearDown
+    
 End Function
 
 Private Function testNegEqualsNothing()
@@ -311,7 +277,7 @@ Private Function testNegEqualsNothing()
     result = lensWithFullInfo1.equals(Nothing)
     Call printAndAssert("testNegEqualsNothing", result)
     
-    Call tearDown
+    
 End Function
 
 Private Function testNegEqualsString()
@@ -321,5 +287,5 @@ Private Function testNegEqualsString()
     result = lensWithFullInfo1.equals("2")
     Call printAndAssert("testNegEqualsString", result)
     
-    Call tearDown
+    
 End Function
