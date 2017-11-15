@@ -8,3 +8,17 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 ' Class contains all Tests for the MultipleStringFilter Class
+
+
+Private Sub Class_Initialize()
+End Sub
+
+Function testAllCases()
+    Debug.Print(Str(Now) + " Starting MultipleStringFilterTestsuite")
+
+
+End Function
+
+Private Function setUp()
+
+End Function

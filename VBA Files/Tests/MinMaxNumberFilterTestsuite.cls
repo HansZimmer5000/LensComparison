@@ -2,7 +2,7 @@ VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
-Attribute VB_Name = "MinMaxNumberfilterTestsuite"
+Attribute VB_Name = "MinMaxNumberFilterTestsuite"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
@@ -29,7 +29,7 @@ Private Sub Class_Initialize()
 End Sub
 
 Function testAllCases()
-    Debug.Print(Str(Now) + " Starting MinMaxNumberfilterTestsuite")
+    Debug.Print(Str(Now) + " Starting MinMaxNumberFilterTestsuite")
 
     Call testPosGetMinMaxNumberFilter1Name
     Call testPosGetMinMaxNumberFilter1MinValue
