@@ -48,7 +48,10 @@ Private Function setAndFilterLenses(minMaxFilters As Collection, multipleFilters
     If (allLenses Is Nothing) Then
         Set allLenses = rawDataTable.getAllLenses
     End If
-        'TODO; filteredLenses wird neu befüllt aber nicht geleert!!
+
+    'TODO: Easy way here, but thing about a better one.
+    Set filteredLenses = New Collection
+
     If (USE_FILERS) Then
         For Each currentLens In allLenses
             If (lensMatchesAllMinMaxFilters(minMaxFilters, currentLens) And _
