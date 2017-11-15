@@ -7,7 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' Class contains all Tests for the FiltersTable
+' Class contains all Tests for the MinMaxNumberFilter class
 
 Private minMaxNumberFilter1 as MinMaxNumberFilter
 Private minMaxNumberFilter1NameRange as Range
