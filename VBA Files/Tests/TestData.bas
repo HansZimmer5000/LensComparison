@@ -201,6 +201,12 @@ Function getMultipleStringFilter1ValuesRow() as Range
     Set getMultipleStringFilter1ValuesRow = Sheets("TestData").range("F20:N20")
 End Function
 
+Function getMultipleStringFilter1ActiveValues() as Collection
+    Set getMultipleStringFilter1ActiveValues = new Collection
+    getMultipleStringFilter1ActiveValues.Add "Canon EF"
+    getMultipleStringFilter1ActiveValues.Add "Leica"
+End Function
+
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Created Filters from the Sheet:
 '/////////////////////////////////////

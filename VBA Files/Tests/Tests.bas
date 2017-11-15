@@ -6,7 +6,8 @@ Sub testAll()
     Dim myLensTestsuite As LensTestsuite: Set myLensTestsuite = New LensTestsuite
     Dim myLensRawDataTableTestsuite As RawDataTableTestsuite: Set myRawDataTableTestsuite = new RawDataTableTestsuite
     Dim myMinMaxNumberFilterTestsuite as MinMaxNumberFilterTestsuite: Set myMinMaxNumberFilterTestsuite = new MinMaxNumberFilterTestsuite
-    
+    Dim myMultipleStringFilterTestsuite as MultipleStringFilterTestsuite: Set myMultipleStringFilterTestsuite = new MultipleStringFilterTestsuite
+
     For i = 1 To 10
         Debug.Print vbNewLine
     Next
@@ -15,6 +16,7 @@ Sub testAll()
     Call myLensTestsuite.testAllCases 
     Call myRawDataTableTestsuite.testAllCases
     Call myMinMaxNumberFilterTestsuite.testAllCases
+    Call myMultipleStringFilterTestsuite.testAllCases
 
     Debug.Print (Str(Now) + " " + "Run testAll Done")
 End Sub
@@ -40,4 +42,20 @@ Function elemIsInCollection(elem as Variant, coll as Collection) as Boolean
             End If
         End If
     next
+End Function
+
+Function collectionsAreEqual(coll1 as Collection, coll2 as Collection) as Boolean
+    
+    If(coll1.Count = coll2.Count) Then
+        For each elem1 in coll1
+            On Error Resume Next
+            Call coll2.Item(elem1)
+            If(Err.Number = 9) Then
+                collectionsAreEqual = False
+                Exit Function
+            End If
+        Next
+    Else
+        collectionsAreEqual = False
+    End If
 End Function
