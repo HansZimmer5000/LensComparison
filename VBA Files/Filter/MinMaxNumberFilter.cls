@@ -79,6 +79,7 @@ Public Function lensMatchTheMinMaxFilter(lens As Lens) As Boolean
     filterMinValue = minValue
     filterMaxValue = maxValue
     
+    'Not conform with Open/Closed Principle but I think that all the classes and the work is not worth to just clean up this one function, analogue to the function in MultipleStringFilter
     If (StrComp("Focus Length", filterName) = 0 And _
         valueRangeIsBetweenMinMax(lens.getFocalLengthStart, lens.getFocalLengthEnd, filterMinValue, filterMaxValue)) Then
             lensMatchTheMinMaxFilter = True

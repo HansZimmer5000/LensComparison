@@ -66,6 +66,7 @@ Public Function lensMatchTheMultipleFilter(lens As Lens) As Boolean
     filterName = name
     Set activeFilterValues = Me.getActiveValues()
     
+    'Not conform with Open/Closed Principle but I think that all the classes and the work is not worth to just clean up this one function, analogue to the function in MultipleStringFilter
     If (StrComp("Mount", filterName) = 0 And _
         stringMatchesAtLeastOneValue(lens.getMount(), activeFilterValues)) Then
             lensMatchTheMultipleFilter = True
