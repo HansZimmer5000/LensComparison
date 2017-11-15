@@ -12,6 +12,7 @@ Public Function CreateMultipleStringFilter(newNameCell As range, newValuesRow As
     Call CreateMultipleStringFilter.Init(newNameCell, newValuesRow)
 End Function
 
+' The FilterRanges must only include rows with filters, so without the header!
 Public Function CreateFiltersTable(newMinMaxNumberFilterRange As range, newMultipleStringFilterRange As range) As FiltersTable
     Set CreateFiltersTable = New FiltersTable
     Call CreateFiltersTable.Init(newMinMaxNumberFilterRange, newMultipleStringFilterRange)

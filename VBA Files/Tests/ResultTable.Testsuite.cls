@@ -15,6 +15,10 @@ Private lensWithAllExceptFilterInfo1 As lens
 Private lensWithAllExceptfilterMagnificationInfo1 As lens
 Private lensWithallExceptMagnificationSensorInfo1 As lens
 
+Private resultTable1 as ResultTable
+
+Private resultTable1Range as Range
+
 Private Sub Class_Initialize()
 End Sub
 
@@ -22,6 +26,7 @@ Function testAllCases()
     Debug.Print(Str(Now) + " Starting RawDataTableTestsuite")
     Call testPosGetTable1Range
     Call testPosGetTable1AllLenses
+    Call testPosGetTable1FilteredLenses
 End Function
 
 Private Function setUp()
@@ -30,6 +35,9 @@ Private Function setUp()
     Set lensWithAllExceptfilterMagnificationInfo1 = getLensWithAllExceptFilterMagnificationInfo1()
     Set lensWithAllExceptMagnificationSensorInfo1 = getLensWithAllExceptMagnificationSensorInfo1()
 
+    Set resultTable1 = getResultTable1()
+
+    Set resultTable1Range = getResultTable1Range()
 End Function
 
 Private Function tearDown()
