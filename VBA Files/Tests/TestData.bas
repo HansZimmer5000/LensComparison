@@ -138,23 +138,19 @@ End Function
 ' Single FiltersTable Attributes from  the Sheet:
 '/////////////////////////////////////
 Function getMinMaxNumberFilterTableRange() as Range
-    Set getMinMaxNumberFilter1Range = Sheets("TestData").range("A20:C22")
+    Set getMinMaxNumberFilterTableRange = Sheets("TestData").range("A20:C22")
 End Function
 
 Function getMultipleStringFilterTableRange() as Range
-    Set getMultipleStringFilter1Range = Sheets("TestData").range("E20:N23")
-End Function
-
-Function getFiltersTable1Range() as Range
-    Set getFiltersTable1Range = Sheets("TestData").range("A2:L5")
+    Set getMultipleStringFilterTableRange = Sheets("TestData").range("E20:N23")
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Created FiltersTable from the Sheet:
 '/////////////////////////////////////
 
-Function getFiltersTable1() as RawDataTable
-    Set getFiltersTable1 = CreateFiltersTable(getMinMaxNumberFilterTableRange, getMultipleStringFilterTableRange)
+Function getFiltersTable1() as FiltersTable
+    Set getFiltersTable1 = CreateFiltersTable(getMinMaxNumberFilterTableRange(), getMultipleStringFilterTableRange())
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -210,6 +206,20 @@ End Function
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Created Filters from the Sheet:
 '/////////////////////////////////////
+Function getAllMinMaxNumberFilters() as Collection
+    Set getAllMinMaxNumberFilters = New Collection
+    getAllMinMaxNumberFilters.Add getMinMaxNumberFilter1()
+    getAllMinMaxNumberFilters.Add getMinMaxNumberFilter2()
+    getAllMinMaxNumberFilters.Add getMinMaxNumberFilter3()
+End Function
+
+Function getAllMultipleStringFilters() as Collection
+    Set getAllMultipleStringFilters = New Collection
+    getAllMultipleStringFilters.Add getMultipleStringFilter1()
+    getAllMultipleStringFilters.Add getMultipleStringFilter2()
+    getAllMultipleStringFilters.Add getMultipleStringFilter3()
+    getAllMultipleStringFilters.Add getMultipleStringFilter4()
+End Function
 
 Function getMinMaxNumberFilter1() as MinMaxNumberFilter
     Set getMinMaxNumberFilter1 = CreateMinMaxNumberFilter(getMinMaxNumberFilter1NameRange, _

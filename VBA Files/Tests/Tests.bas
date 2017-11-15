@@ -7,6 +7,7 @@ Sub testAll()
     Dim myLensRawDataTableTestsuite As RawDataTableTestsuite: Set myRawDataTableTestsuite = new RawDataTableTestsuite
     Dim myMinMaxNumberFilterTestsuite as MinMaxNumberFilterTestsuite: Set myMinMaxNumberFilterTestsuite = new MinMaxNumberFilterTestsuite
     Dim myMultipleStringFilterTestsuite as MultipleStringFilterTestsuite: Set myMultipleStringFilterTestsuite = new MultipleStringFilterTestsuite
+    Dim myFiltersTableTestsuite as FiltersTableTestsuite: Set myFiltersTableTestsuite = new FiltersTableTestsuite
 
     For i = 1 To 10
         Debug.Print vbNewLine
@@ -17,6 +18,7 @@ Sub testAll()
     Call myRawDataTableTestsuite.testAllCases
     Call myMinMaxNumberFilterTestsuite.testAllCases
     Call myMultipleStringFilterTestsuite.testAllCases
+    Call myFiltersTableTestsuite.testAllCases
 
     Debug.Print (Str(Now) + " " + "Run testAll Done")
 End Sub
