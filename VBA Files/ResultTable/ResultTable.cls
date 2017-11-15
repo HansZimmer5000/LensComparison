@@ -25,7 +25,6 @@ Public Function Init(newTableRange As range, newRawDataTable As rawDataTable, _
     Set filterTable = newFiltersTable
     
     Set filteredLenses = New Collection
-    Call updateResultTable
 End Function
 
 Public Function updateResultTable()
