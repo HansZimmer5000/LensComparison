@@ -122,16 +122,22 @@ End Function
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Single ResultTable Attributes from  the Sheet:
 '/////////////////////////////////////
+Function getResultTable1FilteredLenses() as Collection
+    Set getResultTable1FilteredLenses = new Collection
+    getResultTable1FilteredLenses.Add getLensWithFullInfo1()
+    getResultTable1FilteredLenses.Add getLensWithAllExceptFilterMagnificationInfo1()
+End Function
+
 Function getResultTable1Range() as Range
-    Set getResultTable1Range = Sheets("TestData").range("A2:L5")
+    Set getResultTable1Range = Sheets("TestData").range("A28:L36")
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Created ResultTable from the Sheet:
 '/////////////////////////////////////
 
-Function getResultTable1() as RawDataTable
-    Set getResultTable1 = CreateResultTable(Sheets("TestData").range("A2:L2"),getRawDataTable1, getFiltersTable1)
+Function getResultTable1() as ResultTable
+    Set getResultTable1 = CreateResultTable(getResultTable1Range(), getRawDataTable1(), getFiltersTable1())
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

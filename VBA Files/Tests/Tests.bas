@@ -8,6 +8,7 @@ Sub testAll()
     Dim myMinMaxNumberFilterTestsuite as MinMaxNumberFilterTestsuite: Set myMinMaxNumberFilterTestsuite = new MinMaxNumberFilterTestsuite
     Dim myMultipleStringFilterTestsuite as MultipleStringFilterTestsuite: Set myMultipleStringFilterTestsuite = new MultipleStringFilterTestsuite
     Dim myFiltersTableTestsuite as FiltersTableTestsuite: Set myFiltersTableTestsuite = new FiltersTableTestsuite
+    Dim myResultTableTestsuite as ResultTableTestsuite: Set myResultTableTestsuite = new ResultTableTestsuite
 
     For i = 1 To 10
         Debug.Print vbNewLine
@@ -19,6 +20,7 @@ Sub testAll()
     Call myMinMaxNumberFilterTestsuite.testAllCases
     Call myMultipleStringFilterTestsuite.testAllCases
     Call myFiltersTableTestsuite.testAllCases
+    Call myResultTableTestsuite.testAllCases
 
     Debug.Print (Str(Now) + " " + "Run testAll Done")
 End Sub

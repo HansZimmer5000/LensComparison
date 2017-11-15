@@ -23,11 +23,8 @@ Private Sub Class_Initialize()
 End Sub
 
 Function testAllCases()
-    Debug.Print(Str(Now) + " Starting RawDataTableTestsuite")
-    Call testPosGetTable1Range
-    Call testPosGetTable1AllLenses
-    Call testPosGetTable1FilteredLenses
-    'TODO: Wait for FiltersTableTestsuite to complete
+    Debug.Print(Str(Now) + " Starting ResultTableTestsuite")
+    Call testPosUpdateResultTable1()
 End Function
 
 Private Function setUp()
@@ -39,4 +36,24 @@ Private Function setUp()
     Set resultTable1 = getResultTable1()
 
     Set resultTable1Range = getResultTable1Range()
+End Function
+
+Private Function testPosUpdateResultTable1()
+    Call setUp
+    Dim result as Boolean
+    Dim currentFilteredLenses as Collection
+    Dim currentRowRange as Range
+
+    Set currentFilteredLenses = New Collection
+    Call resultTable1.updateResultTable()
+
+    For each currentRowRange in resultTable1Range.rows
+        if(currentRowRange.columns(1).Text <> "") Then
+            currentFilteredLenses.Add CreateLensFromRow(currentRowRange)
+        End If
+    Next
+
+    result = collectionsAreEqual(getResultTable1FilteredLenses(), currentFilteredLenses)
+
+    Call printAndAssert("testPosUpdateResultTable1", result)
 End Function
