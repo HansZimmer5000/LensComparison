@@ -137,16 +137,16 @@ End Function
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Single FiltersTable Attributes from  the Sheet:
 '/////////////////////////////////////
-Function getMinMaxNumberFilter1Range() as Range
+Function getMinMaxNumberFilterTableRange() as Range
     Set getMinMaxNumberFilter1Range = Sheets("TestData").range("A20:C22")
+End Function
+
+Function getMultipleStringFilterTableRange() as Range
+    Set getMultipleStringFilter1Range = Sheets("TestData").range("E20:N23")
 End Function
 
 Function getFiltersTable1Range() as Range
     Set getFiltersTable1Range = Sheets("TestData").range("A2:L5")
-End Function
-
-Function getMultipleStringFilter1Range() as Range
-    Set getMultipleStringFilter1Range = Sheets("TestData").range("E20:N23")
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -154,7 +154,7 @@ End Function
 '/////////////////////////////////////
 
 Function getFiltersTable1() as RawDataTable
-    Set getFiltersTable1 = CreateFiltersTable(getMinMaxNumberFilter1Range, getMultipleStringFilter1Range)
+    Set getFiltersTable1 = CreateFiltersTable(getMinMaxNumberFilterTableRange, getMultipleStringFilterTableRange)
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -181,6 +181,18 @@ Function getMinMaxNumberFilter1MaxValueRange() as Range
     Set getMinMaxNumberFilter1MaxValueRange = Sheets("TestData").range("C20")
 End Function
 
+Function getMinMaxNumberFilter2NameRange() as Range
+    Set getMinMaxNumberFilter2NameRange = Sheets("TestData").range("A22")
+End Function
+
+Function getMinMaxNumberFilter2MinValueRange() as Range
+    Set getMinMaxNumberFilter2MinValueRange = Sheets("TestData").range("B22")
+End Function
+
+Function getMinMaxNumberFilter2MaxValueRange() as Range
+    Set getMinMaxNumberFilter2MaxValueRange = Sheets("TestData").range("C22")
+End Function
+
 Function getMultipleStringFilter1NameRange() as Range
     Set getMultipleStringFilter1NameRange = Sheets("TestData").range("E20")
 End Function
@@ -197,6 +209,12 @@ Function getMinMaxNumberFilter1() as MinMaxNumberFilter
     Set getMinMaxNumberFilter1 = CreateMinMaxNumberFilter(getMinMaxNumberFilter1NameRange, _
                                                             getMinMaxNumberFilter1MinValueRange, _
                                                             getMinMaxNumberFilter1MaxValueRange)
+End Function
+
+Function getMinMaxNumberFilter2() as MinMaxNumberFilter
+    Set getMinMaxNumberFilter2 = CreateMinMaxNumberFilter(getMinMaxNumberFilter2NameRange, _
+                                                            getMinMaxNumberFilter2MinValueRange, _
+                                                            getMinMaxNumberFilter2MaxValueRange)
 End Function
 
 Function getMultipleStringFilter1() as MultipleStringFilter

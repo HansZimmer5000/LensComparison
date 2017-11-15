@@ -14,6 +14,11 @@ Private minMaxNumberFilter1NameRange as Range
 Private minMaxNumberFilter1MinValueRange as Range
 Private minMaxnumberFilter1MaxValueRange as Range
 
+Private minMaxNumberFilter2 as MinMaxNumberFilter
+Private minMaxNumberFilter2NameRange as Range
+Private minMaxNumberFilter2MinValueRange as Range
+Private minMaxnumberFilter2MaxValueRange as Range
+
 Private minMaxNumberFilterMinDefaultValue as Double
 Private minMaxNumberfilterMaxDefaultValue as Double
 
@@ -31,8 +36,16 @@ Function testAllCases()
     Call testPosGetMinMaxNumberFilter1MaxValue
     Call testPosGetMinMaxNumberFilter1IsSet
     Call testNegGetMinMaxnumberFilter1IsSet
-    Call testPosGetMinMaxNumberFilter1LensMatchTheMinMaxFilter
-    Call testNegGetMinMaxNumberFilter1LensMatchTheMinMaxFilter
+    Call testPosGetMinMaxNumberFilter1LensMatchTheMinMaxFilterLens1
+    Call testNegGetMinMaxNumberFilter1LensMatchTheMinMaxFilterLens2
+
+    Call testPosGetMinMaxNumberFilter2Name
+    Call testPosGetMinMaxNumberFilter2MinValue
+    Call testPosGetMinMaxNumberFilter2MaxValue
+    Call testPosGetMinMaxNumberFilter2IsSet
+    Call testNegGetMinMaxnumberFilter2IsSet
+    Call testPosGetMinMaxNumberFilter2LensMatchTheMinMaxFilterLens1
+    Call testPosGetMinMaxNumberFilter2LensMatchTheMinMaxFilterLens2
 End Function
 
 Private Function setUp()
@@ -40,6 +53,11 @@ Private Function setUp()
     Set minMaxNumberFilter1NameRange = getMinMaxNumberFilter1NameRange
     Set minMaxNumberFilter1MinValueRange = getMinMaxNumberFilter1MinValueRange
     Set minMaxnumberFilter1MaxValueRange = getMinMaxNumberFilter1MaxValueRange
+
+    Set minMaxNumberFilter2 = getMinMaxNumberFilter2
+    Set minMaxNumberFilter2NameRange = getMinMaxNumberFilter2NameRange
+    Set minMaxNumberFilter2MinValueRange = getMinMaxNumberFilter2MinValueRange
+    Set minMaxnumberFilter2MaxValueRange = getMinMaxNumberFilter2MaxValueRange
 
     minMaxNumberFilterMinDefaultValue = getMinMaxNumberFilterMinDefaultValue
     minmaxNumberFilterMaxDefaultValue = getMinMaxNumberFilterMaxDefaultValue
@@ -88,18 +106,77 @@ Private Function testNegGetMinMaxNumberFilter1IsSet()
     Call printAndAssert("testNegGetMinMaxNumberFilter1IsSet", result)   
 End Function
 
-Private Function testPosGetMinMaxNumberFilter1LensMatchTheMinMaxFilter()
+Private Function testPosGetMinMaxNumberFilter1LensMatchTheMinMaxFilterLens1()
     Call setUp
     Dim result As Boolean
 
     result = minMaxNumberFilter1.lensMatchTheMinMaxFilter(lens1)
-    Call printAndAssert("testPosGetMinMaxNumberFilter1LensMatchTheMinMaxFilter", result)   
+    Call printAndAssert("testPosGetMinMaxNumberFilter1LensMatchTheMinMaxFilterLens1", result)   
 End Function
 
-Private Function testNegGetMinMaxNumberFilter1LensMatchTheMinMaxFilter()
+Private Function testNegGetMinMaxNumberFilter1LensMatchTheMinMaxFilterLens2()
     Call setUp
     Dim result As Boolean
 
     result = minMaxNumberFilter1.lensMatchTheMinMaxFilter(lens2)
-    Call printAndAssert("testNegGetMinMaxNumberFilter1LensMatchTheMinMaxFilter", result)   
+    Call printAndAssert("testNegGetMinMaxNumberFilter1LensMatchTheMinMaxFilterLens2", result)   
+End Function
+
+
+
+
+Private Function testPosGetMinMaxNumberFilter2Name()
+    Call setUp
+    Dim result As Boolean
+
+    result = StrComp(minMaxNumberFilter2NameRange.Text, minMaxNumberFilter2.getName) = 0
+    Call printAndAssert("testPosGetMinMaxNumberFilter2Name", result)
+End Function
+
+Private Function testPosGetMinMaxNumberFilter2MinValue()
+    Call setUp
+    Dim result As Boolean
+
+    result = getMinMaxNumberFilterMinDefaultValue = minMaxNumberFilter2.getMinValue
+    Call printAndAssert("testPosGetMinMaxNumberFilter2MinValue", result)
+End Function
+
+Private Function testPosGetMinMaxNumberFilter2MaxValue()
+    Call setUp
+    Dim result As Boolean
+
+    result = getMinMaxNumberFilterMaxDefaultValue = minMaxNumberFilter2.getMaxValue
+    Call printAndAssert("testPosGetMinMaxNumberFilter2MaxValue", result)
+End Function
+
+Private Function testPosGetMinMaxNumberFilter2IsSet()
+    Call setUp
+    Dim result As Boolean
+
+    result = Not(minMaxNumberFilter1.isSet())
+    Call printAndAssert("testPosGetMinMaxNumberFilter2IsSet", result)   
+End Function
+
+Private Function testNegGetMinMaxNumberFilter2IsSet()
+    Call setUp
+    Dim result As Boolean
+
+    result = minMaxNumberFilter2.isSet()
+    Call printAndAssert("testNegGetMinMaxNumberFilter2IsSet", result)   
+End Function
+
+Private Function testPosGetMinMaxNumberFilter2LensMatchTheMinMaxFilterLens1()
+    Call setUp
+    Dim result As Boolean
+
+    result = minMaxNumberFilter2.lensMatchTheMinMaxFilter(lens1)
+    Call printAndAssert("testPosGetMinMaxNumberFilter2LensMatchTheMinMaxFilterLens1", result)   
+End Function
+
+Private Function testPosGetMinMaxNumberFilter2LensMatchTheMinMaxFilterLens2()
+    Call setUp
+    Dim result As Boolean
+
+    result = minMaxNumberFilter2.lensMatchTheMinMaxFilter(lens2)
+    Call printAndAssert("testPosGetMinMaxNumberFilter2LensMatchTheMinMaxFilterLens2", result)   
 End Function
