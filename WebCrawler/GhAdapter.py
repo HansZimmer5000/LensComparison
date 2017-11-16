@@ -7,6 +7,7 @@ KEY_FOCAL_LENGTH = DataKeys.key_focal_length_as_gh
 KEY_APERTURE = DataKeys.key_aperture_as_gh
 KEY_FILTER = DataKeys.key_filter_as_gh
 KEY_MAGNIFICATION = DataKeys.key_magnification_as_gh
+KEY_MINIMALFOCUS = DataKeys.key_minimalfocus_as_gh
 KEY_MOUNT = DataKeys.key_mount_as_gh
 KEY_SENSORKOMPATIBILITÄT = DataKeys.key_sensor_compatibility_as_gh
 KEY_WEIGHT = DataKeys.key_weight_as_gh
@@ -63,6 +64,7 @@ def get_all_proddesc_attributes(prodDesc):
 		KEY_APERTURE: get_aperture(prodDesc),
 		KEY_FILTER: get_filter(prodDesc), 
 		KEY_MAGNIFICATION: get_magnification(prodDesc),
+		KEY_MINIMALFOCUS: get_minimalfocus(prodDesc),
 		KEY_MOUNT: get_mount(prodDesc),
 		KEY_SENSORKOMPATIBILITÄT: get_sensor(prodDesc),
 		KEY_WEIGHT: get_weight(prodDesc),
@@ -107,6 +109,9 @@ def get_magnification(prodDesc):
 	result = result.replace(" ","")
 	return result
 
+def get_minimalfocus(prodDesc):
+	return get_attribute_value(KEY_MINIMALFOCUS, prodDesc, " ")
+	
 def get_mount(prodDesc):
 	return get_attribute_value(KEY_MOUNT,prodDesc,"  ")
 	
