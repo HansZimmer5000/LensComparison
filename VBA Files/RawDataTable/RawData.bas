@@ -142,7 +142,7 @@ Function getMinimalFocus(minimalFocusInfo as String) as Double
         StrComp(minimalFocusInfo, "") = 0) Then
         resultStr = "0"
     Else
-        resultStr = minimalFocusInfo
+        resultStr = Replace(minimalFocusInfo,"m","")
     End If
 
     resultDbl = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(resultStr)
