@@ -113,3 +113,20 @@ Public Function lensMatchTheMinMaxFilter(lens As Lens) As Boolean
     End If
     
 End Function
+
+Private Function valueRangeIsBetweenMinMax(valueRangeStart As Double, valueRangeEnd As Double, min As Double, max As Double) As Boolean
+    If (singleValueIsBetweenMinMax(valueRangeStart, min, max) And _
+        singleValueIsBetweenMinMax(valueRangeEnd, min, max)) Then
+        valueRangeIsBetweenMinMax = True
+    Else
+        valueRangeIsBetweenMinMax = False
+    End If
+End Function
+
+Private Function singleValueIsBetweenMinMax(value As Double, min As Double, max As Double) As Boolean
+    If (value >= min And value <= max) Then
+        singleValueIsBetweenMinMax = True
+    Else
+        singleValueIsBetweenMinMax = False
+    End If
+End Function

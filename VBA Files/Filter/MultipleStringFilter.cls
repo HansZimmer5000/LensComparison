@@ -131,8 +131,17 @@ Private Function addHyperlinkToItself(unLinkedRange As range)
     unLinkedRange.Font.ColorIndex = 1
 End Function
 
+Private Function stringMatchesAtLeastOneValue(value As String, activeFilterValues As Collection) As Boolean
+    Dim currentFilterString As String
+    Dim currentIteration As Integer
+    
+    For currentIteration = 1 To activeFilterValues.Count
+        currentFilterString = activeFilterValues.Item(currentIteration)
 
-
-
-
-
+        If (InStr(value, currentFilterString) > 0) Then
+            stringMatchesAtLeastOneValue = True
+            Exit Function
+        End If
+    Next
+    stringMatchesAtLeastOneValue = False
+End Function

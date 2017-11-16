@@ -43,8 +43,7 @@ Private Function setAndFilterLenses(minMaxFilters As Collection, multipleFilters
     Const USE_FILERS As Boolean = True
     
     Dim currentLens As Lens
-
-    'Get all Lenses from RawDataTable, just do if no Data is there.
+    
     If (allLenses Is Nothing) Then
         Set allLenses = rawDataTable.getAllLenses
     End If
