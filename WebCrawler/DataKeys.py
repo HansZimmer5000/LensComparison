@@ -42,7 +42,7 @@ gh_keys_dict = {
     key_aperture_as_title: key_aperture_as_gh,
     key_filter_as_title: key_filter_as_gh,
     key_magnification_as_title: key_magnification_as_gh,
-    key_minimalfocus_as_title: key_minimalfocus_as_gh
+    key_minimalfocus_as_title: key_minimalfocus_as_gh,
     key_mount_as_title: key_mount_as_gh,
     key_sensor_compatibility_as_title: key_sensor_compatibility_as_gh,
     key_weight_as_title: key_weight_as_gh,
