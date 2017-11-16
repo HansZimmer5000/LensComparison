@@ -16,6 +16,7 @@ TESTDATA_DICT_WITHOUT_VALUES = {
 	'Lichtstärke: ': '', \
 	'Filterdurchmesser: ': "", \
 	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "", \
  	'Objektivbajonett: ': '', \
 	'Sensorkompatibilität: ': '', \
  	'Gewicht: ': '',\
@@ -28,6 +29,7 @@ TESTDATA_DICT_WITH_EVERYTHING1 = {
 	'Lichtstärke: ': '1:3.5-1:5.6', \
 	'Filterdurchmesser: ': "", \
 	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "0.20m", \
  	'Objektivbajonett: ': 'Nikon 1', \
 	'Sensorkompatibilität: ': 'Nikon CX', \
  	'Gewicht: ': '85g',\
@@ -39,6 +41,7 @@ TESTDATA_DICT_WITH_EVERYTHING2 = {
 	'Lichtstärke: ': '1:5.6', \
 	'Filterdurchmesser: ': '95mm', \
 	'Abbildungsmaßstab: ': '1:4.50', \
+	'Naheinstellgrenze: ': "2.20m", \
  	'Objektivbajonett: ': 'Nikon F', \
 	'Sensorkompatibilität: ': 'APS-C/ Kleinbild', \
  	'Gewicht: ': '2300g', \
@@ -51,6 +54,7 @@ TESTDATA_DICT_WITH_EVERYTHING3 = {
 	'Lichtstärke: ': '1:1.4', \
 	'Filterdurchmesser: ': '77mm', \
 	'Abbildungsmaßstab: ': '', \
+	'Naheinstellgrenze: ': "0.30m", \
  	'Objektivbajonett: ': 'Sony E', \
 	'Sensorkompatibilität: ': 'APS-C', \
  	'Gewicht: ': '660g', \
@@ -63,6 +67,7 @@ TESTDATA_DICT_WITH_MISSING_INFO1 = {
 	'Lichtstärke: ': '1:1.5', \
 	'Filterdurchmesser: ': "", \
 	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "", \
  	'Objektivbajonett: ': 'Canon EF', \
 	'Sensorkompatibilität: ': 'APS-C/ Kleinbild', \
  	'Gewicht: ': '',\
@@ -75,6 +80,7 @@ TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {
 	'Lichtstärke: ': '1:0.95', \
 	'Filterdurchmesser: ': "52mm", \
 	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "0.17m", \
  	'Objektivbajonett: ': 'Micro-Four-Thirds', \
 	'Sensorkompatibilität: ': 'Four-Thirds', \
  	'Gewicht: ': '410g',\
@@ -83,7 +89,7 @@ TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {
 	
 TESTDATA_DICT_VALUE_STRING_WITHOUT_VALUES = ";;;;;;;;"
 TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1 = \
-'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA);10-30mm;1:3.5-1:5.6;;;Nikon 1;Nikon CX;85g;58x28mm'
+'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA);10-30mm;1:3.5-1:5.6;;;"0.20m";Nikon 1;Nikon CX;85g;58x28mm'
 
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1   = TESTDATA_DICT_WITH_EVERYTHING1
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_RAW_WITHOUT_PRODIMG1
@@ -242,9 +248,6 @@ if __name__ == "__main__":
 	print("Print a certain Row from a certain file with 'printRowFromFile'.")
 	print("rowNumber = number")
 	print("File = fullpath (incl. filename) or:")
-	print("1 = rawResponseData 1-4")
-	print("2 = rawResponseData 5-7")
-	print("3 = rawResponseData 8-11")
 	print("4 = rawResponseData12-60")
 	print("You can import the fuction or type here 'file' (as string) and space and rownumber (as numer) or exit here with 'exit'")
 	
