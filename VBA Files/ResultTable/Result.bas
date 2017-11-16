@@ -13,7 +13,7 @@ Sub loadNewLensesAccordingToFilters()
     Set myRawDataTable = CreateRawDataTable(preparedDataSheet.range("A2", "M2"))
     Set myResultTable = CreateResultTable(overviewSheet.range("B17", "N999"), myRawDataTable, myFiltersTable)
 
-    myResultTable.updateResultTable()
+    Call myResultTable.updateResultTable()
 End Sub
 
 

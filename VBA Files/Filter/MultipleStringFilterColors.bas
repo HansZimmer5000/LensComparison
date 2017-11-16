@@ -38,3 +38,19 @@ Public Function interiorColorIsOrange(rangeInterior) As Boolean
         interiorColorIsOrange = False
     End If
 End Function
+
+Private Function filterValueIsActive(range As range) As Boolean
+    filterValueIsActive = (xlThemeColorAccent2 = range.Interior.ThemeColor)
+End Function
+
+Private Function deactivateFilterValue(range As range)
+    Call setInteriorColorOrange(range.Interior)
+End Function
+
+Private Function activateFilterValue(range As range)
+    If (range.row Mod 2 = 0) Then
+        Call setInteriorColorGrey(range.Interior)
+    Else
+        Call setInteriorColorWhite(range.Interior)
+    End If
+End Function

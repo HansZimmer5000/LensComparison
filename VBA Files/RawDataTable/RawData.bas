@@ -134,6 +134,21 @@ Function getMagnification(magnificationInfo As String) As Double
     getMagnification = resultDbl
 End Function
 
+Function getMinimalFocus(minimalFocusInfo as String) as Double
+    Dim resultDbl as Double
+    Dim resultStr as String
+
+    If (StrComp(minimalFocusInfo, "0") = 0 or _
+        StrComp(minimalFocusInfo, "") = 0) Then
+        resultStr = "0"
+    Else
+        resultStr = minimalFocusInfo
+    End If
+
+    resultDbl = convertNumberStringPointToNumberCommaAndCleanEmpySpaces(resultStr)
+    getMinimalFocus = resultDbl
+End Function
+
 Private Function getFocalLengthPart(focalLengthInfo As String, focalLengthStartIsNeeded As Boolean) As Double
     Const MINUS_ELEM As String = "-"
 
