@@ -16,6 +16,7 @@ Private apertureStart As Double
 Private apertureEnd As Double
 Private filtersize As Double
 Private magnification As Double
+Private minimalFocus as Double
 Private mount As String
 Private sensorCompatibiliy As String
 Private weight As Double
@@ -46,6 +47,9 @@ Public Property Get getFilterSize() As Double
 End Property
 Public Property Get getMagnification() As Double
     getMagnification = magnification
+End Property
+Public Property Get getMinimalFocus() as Double
+    getMinimalFocus = minimalFocus
 End Property
 Public Property Get getMount() As String
     getMount = mount
@@ -82,6 +86,7 @@ Public Function Init(newLensName As String, _
                         newApertureEnd As Double, _
                         newFilterSize As Double, _
                         newMagnification As Double, _
+                        newMinimalFocus As Double, _
                         newMount As String, _
                         newSensorCompatibiliy As String, _
                         newWeight As Double, _
@@ -94,6 +99,7 @@ Public Function Init(newLensName As String, _
     apertureEnd = newApertureEnd
     filtersize = newFilterSize
     magnification = newMagnification
+    minimalFocus = newMinimalFocus
     mount = newMount
     sensorCompatibiliy = newSensorCompatibiliy
     weight = newWeight
@@ -117,6 +123,7 @@ Function equals(obj as Variant) as Boolean
             Me.getApertureEnd() = obj.getApertureEnd() and _
             Me.getFilterSize() = obj.getFilterSize() and _
             Me.getMagnification() = obj.getMagnification() and _
+            Me.getMinimalFocus() = obj.getMinimalFocus() and _
             StrComp(Me.getMount(),obj.getMount()) = 0 and _
             StrComp(Me.getSensorCompatibility(), obj.getSensorCompatibility()) = 0 and _
             Me.getWeight() = obj.getWeight() and _

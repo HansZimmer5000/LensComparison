@@ -1,7 +1,7 @@
 Attribute VB_Name = "SheetAccess"
 
-Function getRawDataSheet() as Worksheet
-    Set getRawDataSheet = Sheets("RawData")
+Function getPreparedDataSheet() as Worksheet
+    Set getPreparedDataSheet = Sheets("PreparedData")
 End Function
 
 Function getOverviewSheet() as Worksheet

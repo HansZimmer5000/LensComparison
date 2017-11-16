@@ -41,6 +41,10 @@ Function getLensWithFullInfo1Magnification() As Double
     getLensWithFullInfo1Magnification = 3.23
 End Function
 
+Function getLenswithFullInfo1MinimalFocus() as Double
+    getLenswithFullInfo1MinimalFocus = 0.5
+End Function
+
 Function getLensWithFullInfo1Mount() As String
     getLensWithFullInfo1Mount = "Canon EF"
 End Function
@@ -74,9 +78,6 @@ Function getLensWithFullInfo1HasVR() as Boolean
 End Function
 
 
-
-
-
 Function getLensWithAllExceptMagnificationSensorInfo1Magnification() as Double
     getLensWithAllExceptMagnificationSensorInfo1Magnification = 0
 End Function
@@ -89,26 +90,26 @@ End Function
 ' Created Lenses from Raw Lensdata from the Sheet:
 '/////////////////////////////////////
 Function getLensWithFullInfo1() As lens
-    Set getLensWithFullInfo1 = CreateLensFromRow(Sheets("TestData").range("A2:L2"))
+    Set getLensWithFullInfo1 = CreateLensFromRow(Sheets("TestData").range("A2:Ms2"))
 End Function
 
 Function getLensWithAllExceptFilterInfo1() As lens
-    Set getLensWithAllExceptFilterInfo1 = CreateLensFromRow(Sheets("TestData").range("A3:L3"))
+    Set getLensWithAllExceptFilterInfo1 = CreateLensFromRow(Sheets("TestData").range("A3:M3"))
 End Function
 
 Function getLensWithAllExceptFilterMagnificationInfo1() As lens
-    Set getLensWithAllExceptFilterMagnificationInfo1 = CreateLensFromRow(Sheets("TestData").range("A4:L4"))
+    Set getLensWithAllExceptFilterMagnificationInfo1 = CreateLensFromRow(Sheets("TestData").range("A4:M4"))
 End Function
 
 Function getLensWithAllExceptMagnificationSensorInfo1() As lens
-    Set getLensWithAllExceptMagnificationSensorInfo1 = CreateLensFromRow(Sheets("TestData").range("A5:L5"))
+    Set getLensWithAllExceptMagnificationSensorInfo1 = CreateLensFromRow(Sheets("TestData").range("A5:M5"))
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ' Single RawDataTable Attributes from  the Sheet:
 '/////////////////////////////////////
 Function getRawDataTable1Range() as Range
-    Set getRawDataTable1Range = Sheets("TestData").range("A2:L5")
+    Set getRawDataTable1Range = Sheets("TestData").range("A2:M5")
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -116,7 +117,7 @@ End Function
 '/////////////////////////////////////
 
 Function getRawDataTable1() as RawDataTable
-    Set getRawDataTable1 = CreateRawDataTable(Sheets("TestData").range("A2:L2"))
+    Set getRawDataTable1 = CreateRawDataTable(Sheets("TestData").range("A2:M2"))
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -129,7 +130,7 @@ Function getResultTable1FilteredLenses() as Collection
 End Function
 
 Function getResultTable1Range() as Range
-    Set getResultTable1Range = Sheets("TestData").range("A28:L36")
+    Set getResultTable1Range = Sheets("TestData").range("A28:M36")
 End Function
 
 '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -144,7 +145,7 @@ End Function
 ' Single FiltersTable Attributes from  the Sheet:
 '/////////////////////////////////////
 Function getMinMaxNumberFilterTableRange() as Range
-    Set getMinMaxNumberFilterTableRange = Sheets("TestData").range("A20:C22")
+    Set getMinMaxNumberFilterTableRange = Sheets("TestData").range("A20:C23")
 End Function
 
 Function getMultipleStringFilterTableRange() as Range
@@ -195,6 +196,18 @@ Function getMinMaxNumberFilter3MaxValueRange() as Range
     Set getMinMaxNumberFilter3MaxValueRange = Sheets("TestData").range("C22")
 End Function
 
+Function getMinMaxNumberFilter4NameRange() as Range
+    Set getMinMaxNumberFilter4NameRange = Sheets("TestData").range("A23")
+End Function
+
+Function getMinMaxNumberFilter4MinValueRange() as Range
+    Set getMinMaxNumberFilter4MinValueRange = Sheets("TestData").range("B23")
+End Function
+
+Function getMinMaxNumberFilter4MaxValueRange() as Range
+    Set getMinMaxNumberFilter4MaxValueRange = Sheets("TestData").range("C23")
+End Function
+
 Function getMultipleStringFilter1NameRange() as Range
     Set getMultipleStringFilter1NameRange = Sheets("TestData").range("E20")
 End Function
@@ -217,6 +230,7 @@ Function getAllMinMaxNumberFilters() as Collection
     getAllMinMaxNumberFilters.Add getMinMaxNumberFilter1()
     getAllMinMaxNumberFilters.Add getMinMaxNumberFilter2()
     getAllMinMaxNumberFilters.Add getMinMaxNumberFilter3()
+    getAllMinMaxNumberFilters.Add getMinMaxNumberFilter4()
 End Function
 
 Function getAllMultipleStringFilters() as Collection
@@ -243,6 +257,12 @@ Function getMinMaxNumberFilter3() as MinMaxNumberFilter
     Set getMinMaxNumberFilter3 = CreateMinMaxNumberFilter(getMinMaxNumberFilter3NameRange, _
                                                             getMinMaxNumberFilter3MinValueRange, _
                                                             getMinMaxNumberFilter3MaxValueRange)
+End Function
+
+Function getMinMaxNumberFilter4() as MinMaxNumberFilter
+    Set getMinMaxNumberFilter4 = CreateMinMaxNumberFilter(getMinMaxNumberFilter4NameRange, _
+                                                            getMinMaxNumberFilter4MinValueRange, _
+                                                            getMinMaxNumberFilter4MaxValueRange)
 End Function
 
 Function getMultipleStringFilter1() as MultipleStringFilter

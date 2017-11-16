@@ -80,11 +80,12 @@ Private Function writeLenses()
             .Columns(5).value2 = currentLens.getApertureEnd
             .Columns(6).value2 = currentLens.getFilterSize
             .Columns(7).value2 = currentLens.getMagnification
-            .Columns(8).value2 = currentLens.getMount
-            .Columns(9).value2 = currentLens.getSensorCompatibility
-            .Columns(10).value2 = currentLens.getWeight
-            .Columns(11).value2 = currentLens.getDiameter
-            .Columns(12).value2 = currentLens.getLength
+            .Columns(8).value2 = currentLens.getMinimalFocus
+            .Columns(9).value2 = currentLens.getMount
+            .Columns(10).value2 = currentLens.getSensorCompatibility
+            .Columns(11).value2 = currentLens.getWeight
+            .Columns(12).value2 = currentLens.getDiameter
+            .Columns(13).value2 = currentLens.getLength
         End With
     Next
     

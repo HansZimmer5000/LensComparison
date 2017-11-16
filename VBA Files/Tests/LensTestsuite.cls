@@ -18,6 +18,7 @@ Private lensWithFullInfo1ApertureStart As Double
 Private lensWithFullInfo1ApertureEnd As Double
 Private lensWithFullInfo1Filter As Double
 Private lensWithFullInfo1Magnification As Double
+Private lenswithFullInfo1MinimalFocus As Double
 Private lensWithFullInfo1Mount As String
 Private lensWithFullInfo1Sensor As String
 Private lensWithFullInfo1Weight As Double
@@ -49,6 +50,7 @@ Function testAllCases()
     Call testPosGetFullInfo1ApertureEnd
     Call testPosGetFullInfo1Filter
     Call testPosGetFullInfo1Magnification
+    Call testPosGetFullInfo1MinimalFocus
     Call testPosGetFullInfo1Mount
     Call testPosGetFullInfo1Sensor
     Call testPosGetFullInfo1Weight
@@ -76,6 +78,7 @@ Private Function setUp()
     lensWithFullInfo1ApertureEnd = getLensWithFullInfo1ApertureEnd()
     lensWithFullInfo1Filter = getLensWithFullInfo1Filter()
     lensWithFullInfo1Magnification = getLensWithFullInfo1Magnification()
+    lenswithFullInfo1MinimalFocus = getLenswithFullInfo1MinimalFocus()
     lensWithFullInfo1Mount = getLensWithFullInfo1Mount()
     lensWithFullInfo1Sensor = getLensWithFullInfo1Sensor()
     lensWithFullInfo1Weight = getLensWithFullInfo1Weight()
@@ -149,6 +152,14 @@ Private Function testPosGetFullInfo1Magnification()
 
     result = lensWithFullInfo1Magnification = lensWithFullInfo1.getMagnification
     Call printAndAssert("testPosGetFullInfo1Magnification", result)
+End Function
+
+Private Function testPosGetFullInfo1MinimalFocus()
+    Call setUp
+    Dim result as Boolean
+
+    result = lensWithFullInfo1.getMinimalFocus() = lenswithFullInfo1MinimalFocus
+    Call printAndAssert("testPosGetFullInfo1MinimalFocus", result)
 End Function
 
 Private Function testPosGetFullInfo1Mount()

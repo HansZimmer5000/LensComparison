@@ -95,7 +95,11 @@ Public Function lensMatchTheMinMaxFilter(lens As Lens) As Boolean
     ElseIf (StrComp("Magnification (0,1)", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getMagnification, filterMinValue, filterMaxValue)) Then
             lensMatchTheMinMaxFilter = True
-    
+            
+    ElseIf (StrComp("Minimal Focus", filterName) = 0 And _
+        singleValueIsBetweenMinMax(lens.getMinimalFocus, filterMinValue, filterMaxValue)) Then
+            lensMatchTheMinMaxFilter = True
+
     ElseIf (StrComp("Weight", filterName) = 0 And _
         singleValueIsBetweenMinMax(lens.getWeight, filterMinValue, filterMaxValue)) Then
             lensMatchTheMinMaxFilter = True

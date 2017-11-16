@@ -38,6 +38,7 @@ Public Function CreateLens(newLensName As String, _
                                     newApertureEnd As Double, _
                                     newFilterSize As Double, _
                                     newMagnification As Double, _
+                                    newMinimalFocus as Double, _
                                     newMount As String, _
                                     newSensorCompatibiliy As String, _
                                     newWeight As Double, _
@@ -51,6 +52,7 @@ Public Function CreateLens(newLensName As String, _
                                     newApertureEnd, _
                                     newFilterSize, _
                                     newMagnification, _
+                                    newMinimalFocus, _
                                     newMount, _
                                     newSensorCompatibiliy, _
                                     newWeight, _
@@ -66,9 +68,10 @@ Function CreateLensFromRow(row as Range) as Lens
                                         row.Columns(5).value2, _
                                         row.Columns(6).value2, _
                                         row.Columns(7).value2, _
-                                        row.Columns(8).text, _
+                                        row.Columns(8).value2, _
                                         row.Columns(9).text, _
-                                        row.Columns(10).value2, _
+                                        row.Columns(10).text, _
                                         row.Columns(11).value2, _
-                                        row.Columns(12).value2)
+                                        row.Columns(12).value2, _
+                                        row.Columns(13).value2)
 End Function
