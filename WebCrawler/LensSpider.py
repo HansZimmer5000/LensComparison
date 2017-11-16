@@ -15,6 +15,7 @@ class LensSpider(scrapy.Spider):
 	start_urls = [GhAdapter.START_URL]
 
 	def parse_lens_page(self, response):
+		#TODO: Create functionalitiy to prove if some lens already is recorded, then add Mount / fill up missing data / ignore it.
 		if(self.__RUN_WITHOUT_SAVING):
 			pass
 		else:
