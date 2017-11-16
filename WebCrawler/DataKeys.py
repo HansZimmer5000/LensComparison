@@ -6,7 +6,7 @@ key_focal_length_as_title = "Focal Length"
 key_aperture_as_title ="Aperture"
 key_filter_as_title = "Filtersize"
 key_magnification_as_title = "Magnification"
-key_minimal_focus_as_title = "Min. Focus (meter)"
+key_minimalfocus_as_title = "Minimal Focus"
 key_mount_as_title = "Mount"
 key_sensor_compatibility_as_title = "Sensor compatibility"
 key_weight_as_title = "Weight"
@@ -30,6 +30,7 @@ key_focal_length_as_gh = "Brennweite: "
 key_aperture_as_gh = "Lichtstärke: "
 key_filter_as_gh = "Filterdurchmesser: "
 key_magnification_as_gh = "Abbildungsmaßstab: "
+key_minimalfocus_as_gh = "Naheinstellgrenze: "
 key_mount_as_gh = "Objektivbajonett: "
 key_sensor_compatibility_as_gh = "Sensorkompatibilität: "
 key_weight_as_gh = "Gewicht: "
@@ -41,6 +42,7 @@ gh_keys_dict = {
     key_aperture_as_title: key_aperture_as_gh,
     key_filter_as_title: key_filter_as_gh,
     key_magnification_as_title: key_magnification_as_gh,
+    key_minimalfocus_as_title: key_minimalfocus_as_gh
     key_mount_as_title: key_mount_as_gh,
     key_sensor_compatibility_as_title: key_sensor_compatibility_as_gh,
     key_weight_as_title: key_weight_as_gh,
