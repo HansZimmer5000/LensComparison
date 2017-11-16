@@ -4,13 +4,33 @@ Attribute VB_Name = "WebCrawler"
 ' Class is the mentioned WebCrawler Module in the UML Component Diagramm.
 
 Sub runAllPythonTests()
-	dim command as String
-	dim excelFilePath as String
+	Dim command as String
+	Dim excelFilePath as String
 
 	excelFilePath = ActiveWorkbook.Path
 	command = "python " + excelFilePath + "\WebCrawler\testall.py"
 	Call executeShellCommand(command, True, True)
 End Sub
+
+
+Private Function runSpider()
+	Dim command as String
+	Dim excelFilePath as String
+
+	excelFilePath = ActiveWorkbook.Path
+	command = "python" + " " + excelFilePath + "\WebCrawler\StartCrawling.py"
+	Call executeShellCommand(command, True, True)
+End Function
+
+Private Function getAllRawData()
+	'Todo:
+	'Open File
+	'Get all Lensinfos
+	'Copy everything to RawData shet in Alllenses.xlsm
+	'Set every row in PreparedData Sheet with right function with link to the rawdata Sheet
+	'Close Files
+End Function
+
 
 Private Function executeShellCommand(command, waitForReturn as Boolean, keepShellOpen as Boolean)
 	'From https://stackoverflow.com/a/17956816/8136274
