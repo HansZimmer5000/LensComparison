@@ -39,9 +39,6 @@ class CsvIntoRawDataTestSuite(unittest.TestCase):
 
         self.__class__.EMPTY_SET = set()
         self.__class__.RAWRESPONSE_FILES_FULLPATH_SET = {
-            #Deleted due to not using it. self.__class__.RAWRESPONSE_FILES_DIR + "rawResponseData 1-4.csv",
-            #Deleted due to not using it.self.__class__.RAWRESPONSE_FILES_DIR + "rawResponseData 5-7.csv",
-            #Deleted due to not using it. self.__class__.RAWRESPONSE_FILES_DIR + "rawResponseData 8-11.csv",
             self.__class__.RAWRESPONSE_FILES_DIR + "rawResponseData 12 - 60.csv"
         }
 
