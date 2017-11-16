@@ -4,12 +4,6 @@ Attribute VB_Name = "ModuleManager"
 '2. Click the Macro Settings tab, click to select the Trust access to the VBA project object model check box, and then click OK.
 '3. Click OK
 
-Sub printAllFiles(folder As Object)
-    For Each elem In folder.Files
-        Debug.Print elem.Path
-    Next
-End Sub
-
 Sub updateAllModules()
     Call deleteAllModulesExceptThisOne
     Call addAllModules
