@@ -1,8 +1,8 @@
 # Testsuite for CsvIntoRawData.py
 # Decided just to test the functions with a return value.
 
-from CsvIntoRawData import get_prodimg_from_raw_site
-from CsvIntoRawData import get_proddesc_from_raw_site
+from GhAdapter import get_prodimg_from_raw_site
+from GhAdapter import get_proddesc_from_raw_site
 import GhExamples
 import GhAdapter
 import unittest

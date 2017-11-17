@@ -204,3 +204,20 @@ def correct_weight_without_letter_g(weight_without_letter_g):
 			return str(corrected_gramm_weight_as_long)+"g"
 		else:
 			return weight_without_letter_g + "g"
+
+
+def get_prodimg_from_raw_site(raw_site):
+    index_of_prodimg_tag = raw_site.find("gh_prodImg")
+    if(index_of_prodimg_tag < 0):
+        return ""
+    else:
+        prodimg = raw_site[index_of_prodimg_tag+1:]
+        return prodimg
+
+def get_proddesc_from_raw_site(raw_site):
+    index_of_prodimg_tag = raw_site.find("gh_prodImg")
+    if(index_of_prodimg_tag < 0):
+        return raw_site
+    else:
+        proddesc = raw_site[:index_of_prodimg_tag]
+        return proddesc
