@@ -6,6 +6,8 @@
 # 5) Boundary Condition dataset: Dataset containing out of range data. Identify application boundary cases and prepare data set that will cover lower as well as upper boundary conditions.
 # 6) The dataset for performance, load and stress TESTDATAing: This data set should be large in volume.
 
+from CrawledLens import CrawledLens
+
 #\\\\\\\\\\\\\\\\\\\\\\\\\
 #	TESTDATA_DICT_FULLs
 #/////////////////////////
@@ -74,7 +76,7 @@ TESTDATA_DICT_WITH_MISSING_INFO1 = {
 	'Abmessungen (ØxL): ': ''		
 }
 
-TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {
+TESTDATA_DICT_WITHOUT_PRODIMG1 = {
 	'title=""': '', \
 	'Brennweite: ': '25mm', \
 	'Lichtstärke: ': '1:0.95', \
@@ -92,7 +94,7 @@ TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1 = \
 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom;10-30mm;1:3.5-1:5.6;;;0.20m;Nikon 1;Nikon CX;85g;58x28mm'
 
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1   = TESTDATA_DICT_WITH_EVERYTHING1
-TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_RAW_WITHOUT_PRODIMG1
+TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_WITHOUT_PRODIMG1
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_761 = TESTDATA_DICT_WITH_MISSING_INFO1
 TESTDATA_DICT_VALUE_STRING_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1 = TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1
 
@@ -256,4 +258,59 @@ if __name__ == "__main__":
 		file = userInput.split(" ")[0]
 		rowNumber = int(userInput.split(" ")[1])
 		printRowFromFile(file,rowNumber)
-	
+
+#\\\\\\\\\\\\\\\\\\\\\\\\\
+#	TESTDATA_CRAWLED_LENSES
+#/////////////////////////
+
+TESTDATA_CRAWLED_LENS1 = CrawledLens(TESTDATA_DICT_WITH_EVERYTHING1)
+TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = CrawledLens({
+	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Brennweite: ': '10-30mm', \
+	'Lichtstärke: ': '1:3.5-1:5.6', \
+	'Filterdurchmesser: ': "", \
+	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "0.20m", \
+ 	'Objektivbajonett: ': '', \
+	'Sensorkompatibilität: ': 'Nikon CX', \
+ 	'Gewicht: ': '',\
+	'Abmessungen (ØxL): ': '58x28mm'})
+TESTDATA_CRAWLED_LENS1_NEW_MOUNT = CrawledLens({
+	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Brennweite: ': '10-30mm', \
+	'Lichtstärke: ': '1:3.5-1:5.6', \
+	'Filterdurchmesser: ': "", \
+	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "0.20m", \
+ 	'Objektivbajonett: ': 'Canon EF', \
+	'Sensorkompatibilität: ': 'Nikon CX', \
+ 	'Gewicht: ': '85g',\
+	'Abmessungen (ØxL): ': '58x28mm'})
+TESTDATA_CRAWLED_LENS1_MOUNTS = "Nikon 1, Canon EF"
+
+TESTDATA_CRAWLED_LENS2 = CrawledLens(TESTDATA_DICT_WITH_MISSING_INFO1)
+TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR = CrawledLens({
+	'title=""': 'Canon Objektiv CN-E 35mm T1.5 L F', \
+	'Brennweite: ': '35mm', \
+	'Lichtstärke: ': '1:1.5', \
+	'Filterdurchmesser: ': "", \
+	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "", \
+ 	'Objektivbajonett: ': 'Canon EF', \
+	'Sensorkompatibilität: ': '', \
+ 	'Gewicht: ': '', \
+	'Abmessungen (ØxL): ': ''		
+})
+
+TESTDATA_CRAWLED_LENS3 = CrawledLens(TESTDATA_DICT_WITHOUT_PRODIMG1)
+
+TESTDATA_ALL_CRAWLED_LENSES_WITH_MISSING_INFO = {
+	'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom': TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT,
+	'Canon Objektiv CN-E 35mm T1.5 L F': TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR
+}
+
+TESTDATA_ALL_CRAWLED_LENSES_WITH_FULL_INFO = {
+	'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom': TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT,
+	'Canon Objektiv CN-E 35mm T1.5 L F': TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR,
+	'': TESTDATA_CRAWLED_LENS3
+}

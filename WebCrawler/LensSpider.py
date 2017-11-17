@@ -39,7 +39,7 @@ class LensSpider(scrapy.Spider):
 					clean_lens_name = RawDataAccess.clear_string(raw_lens_name)
 					new_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
 					new_crawled_lens = CrawledLens(new_lens_dict)
-					if(clean_lens_name in self.crawled_lenses):
+					if(clean_lens_name in self.crawled_lenses and clean_lens_name != ""):
 						old_crawled_lens = self.crawled_lenses[clean_lens_name]
 						old_crawled_lens.update(new_lens_dict)
 					else:

@@ -59,7 +59,8 @@ def check_if_data_is_valid(prodImg):
 
 def get_keys_with_missing_value(lens_dict):
 	result = []
-	for key, value in lens_dict:
+	for key in lens_dict:
+		value = lens_dict[key]
 		if(value == ""):
 			result.append(key)
 
@@ -88,7 +89,6 @@ def get_lens_name(raw_lensname):
 		lens_name = lens_name[:lens_name.find(" für")]
 	elif(lens_name != ""):
 		#Cut of the color
-		print("LensnamE!!!!" + lens_name)
 		if("(" in lens_name.rsplit(' ', 1)[1] and ")" in lens_name.rsplit(' ', 1)[1]):
 			lens_name = lens_name.rsplit(" ", 2)[0]
 		else:

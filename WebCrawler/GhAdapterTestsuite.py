@@ -28,7 +28,7 @@ class GhAdapterTestsuite(unittest.TestCase):
     TESTDATA_DICT_WITH_EVERYTHING2 = {}
     TESTDATA_DICT_WITH_EVERYTHING3 = {}
     TESTDATA_DICT_WITH_MISSING_INFO1 = {}
-    TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {}
+    TESTDATA_DICT_WITHOUT_PRODIMG1 = {}
 
     TESTDATA_TITLE_RAW1 = ""
     TESTDATA_TITLE_CLEAR1 = ""
@@ -53,7 +53,7 @@ class GhAdapterTestsuite(unittest.TestCase):
         self.__class__.TESTDATA_DICT_WITH_EVERYTHING2 = GhExamples.TESTDATA_DICT_WITH_EVERYTHING2
         self.__class__.TESTDATA_DICT_WITH_EVERYTHING3 = GhExamples.TESTDATA_DICT_WITH_EVERYTHING3
         self.__class__.TESTDATA_DICT_WITH_MISSING_INFO1 = GhExamples.TESTDATA_DICT_WITH_MISSING_INFO1
-        self.__class__.TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = GhExamples.TESTDATA_DICT_RAW_WITHOUT_PRODIMG1
+        self.__class__.TESTDATA_DICT_WITHOUT_PRODIMG1 = GhExamples.TESTDATA_DICT_WITHOUT_PRODIMG1
 
         self.__class__.TESTDATA_TITLE_RAW1 = GhExamples.TESTDATA_TITLE_RAW1
         self.__class__.TESTDATA_TITLE_CLEAR1 = GhExamples.TESTDATA_TITLE_CLEAR1
@@ -117,7 +117,7 @@ class GhAdapterTestsuite(unittest.TestCase):
 
         result_dict = GhAdapter.get_all_attributes(given_proddesc,given_prodimg)
 
-        self.assertEqual(self.__class__.TESTDATA_DICT_RAW_WITHOUT_PRODIMG1,result_dict)
+        self.assertEqual(self.__class__.TESTDATA_DICT_WITHOUT_PRODIMG1,result_dict)
 
     def test_pos_get_all_attributes_no_input(self):
         given_proddesc = ""

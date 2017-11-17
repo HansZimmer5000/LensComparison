@@ -2,12 +2,14 @@
 
 from CsvIntoRawDataTestsuite import CsvIntoRawDataTestSuite
 from GhAdapterTestsuite import GhAdapterTestsuite
+from CrawledLensTestsuite import CrawledLensTestsuite
 import unittest
 
 if __name__ == '__main__':
     testClassesToRun = [
         GhAdapterTestsuite, 
-        CsvIntoRawDataTestSuite
+        CsvIntoRawDataTestSuite,
+        CrawledLensTestsuite
     ]
 
     unittestLoader = unittest.TestLoader()
