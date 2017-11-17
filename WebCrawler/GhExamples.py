@@ -263,7 +263,18 @@ if __name__ == "__main__":
 #	TESTDATA_CRAWLED_LENSES
 #/////////////////////////
 
-TESTDATA_CRAWLED_LENS1 = CrawledLens(TESTDATA_DICT_WITH_EVERYTHING1)
+TESTDATA_CRAWLED_LENS1 = CrawledLens({
+	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Brennweite: ': '10-30mm', \
+	'Lichtstärke: ': '1:3.5-1:5.6', \
+	'Filterdurchmesser: ': "", \
+	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "0.20m", \
+ 	'Objektivbajonett: ': 'Nikon 1, Canon EF', \
+	'Sensorkompatibilität: ': 'Nikon CX', \
+ 	'Gewicht: ': '85g', \
+	'Abmessungen (ØxL): ': '58x28mm'})
+
 TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = CrawledLens({
 	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Brennweite: ': '10-30mm', \
@@ -273,8 +284,21 @@ TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = CrawledLens({
 	'Naheinstellgrenze: ': "0.20m", \
  	'Objektivbajonett: ': '', \
 	'Sensorkompatibilität: ': 'Nikon CX', \
- 	'Gewicht: ': '',\
+ 	'Gewicht: ': '', \
 	'Abmessungen (ØxL): ': '58x28mm'})
+
+TESTDATA_CRAWLED_LENS1_OLD_MOUNT = CrawledLens({
+	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Brennweite: ': '10-30mm', \
+	'Lichtstärke: ': '1:3.5-1:5.6', \
+	'Filterdurchmesser: ': "", \
+	'Abbildungsmaßstab: ': "", \
+	'Naheinstellgrenze: ': "0.20m", \
+ 	'Objektivbajonett: ': 'Nikon 1', \
+	'Sensorkompatibilität: ': 'Nikon CX', \
+ 	'Gewicht: ': '85g', \
+	'Abmessungen (ØxL): ': '58x28mm'})
+
 TESTDATA_CRAWLED_LENS1_NEW_MOUNT = CrawledLens({
 	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Brennweite: ': '10-30mm', \
@@ -284,9 +308,8 @@ TESTDATA_CRAWLED_LENS1_NEW_MOUNT = CrawledLens({
 	'Naheinstellgrenze: ': "0.20m", \
  	'Objektivbajonett: ': 'Canon EF', \
 	'Sensorkompatibilität: ': 'Nikon CX', \
- 	'Gewicht: ': '85g',\
+ 	'Gewicht: ': '85g', \
 	'Abmessungen (ØxL): ': '58x28mm'})
-TESTDATA_CRAWLED_LENS1_MOUNTS = "Nikon 1, Canon EF"
 
 TESTDATA_CRAWLED_LENS2 = CrawledLens(TESTDATA_DICT_WITH_MISSING_INFO1)
 TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR = CrawledLens({

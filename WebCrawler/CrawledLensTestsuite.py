@@ -17,8 +17,8 @@ class CrawledLensTestsuite(unittest.TestCase):
         
         self.__class__.CRAWLED_LENS1 = GhExamples.TESTDATA_CRAWLED_LENS1
         self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = GhExamples.TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT
+        self.__class__.CRAWLED_LENS1_WITH_OLD_MOUNT = GhExamples.TESTDATA_CRAWLED_LENS1_OLD_MOUNT
         self.__class__.CRAWLED_LENS1_WITH_NEW_MOUNT = GhExamples.TESTDATA_CRAWLED_LENS1_NEW_MOUNT
-        self.__class__.CRAWLED_LENS1_MOUNTS = GhExamples.TESTDATA_CRAWLED_LENS1_MOUNTS
 
         self.__class__.CRAWLED_LENS2 = GhExamples.TESTDATA_CRAWLED_LENS2
         self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR = GhExamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR
@@ -56,6 +56,5 @@ class CrawledLensTestsuite(unittest.TestCase):
         self.assertTrue(self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR.equals(self.__class__.CRAWLED_LENS2))
 
     def test_pos_lens_data_exists_update_but_nothing_new_to_add(self):
-        self.__class__.CRAWLED_LENS1.update(self.__class__.CRAWLED_LENS1_WITH_NEW_MOUNT.lens_dict)
-        self.assertEqual(self.__class__.CRAWLED_LENS1_MOUNTS, \
-                        self.__class__.CRAWLED_LENS1.lens_dict[DataKeys.key_mount_as_gh])
+        self.__class__.CRAWLED_LENS1_WITH_OLD_MOUNT.update(self.__class__.CRAWLED_LENS1_WITH_NEW_MOUNT.lens_dict)
+        self.assertTrue(self.__class__.CRAWLED_LENS1.equals(self.__class__.CRAWLED_LENS1_WITH_OLD_MOUNT))
