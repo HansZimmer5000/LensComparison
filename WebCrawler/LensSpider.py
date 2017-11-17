@@ -22,6 +22,7 @@ class LensSpider(scrapy.Spider):
 		if(self.__RUN_WITHOUT_SAVING):
 			pass
 		else:
+			#TODO: Add elif cases to support not just Geizhals.de but other websites too.
 			if(self.__SAVE_FULL_LENS_PAGE_ONLY):
 				RawDataAccess.append_raw_lens_page_to_rawdata(response.body_as_unicode())
 			else:
