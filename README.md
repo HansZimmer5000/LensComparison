@@ -35,10 +35,10 @@ Entry                 Description of data (example)
 - [x] \(Must-Have)----Got all necessary data from the most lenses
 - [x] \(Must-Have)----Made a nice GUI for filtering and comparing the lenses (perhaps something like on "geizhals.de") 
 - [x] \(Must-Have)----RawData will be shown in the Result Table, if they match the selected / active filters.
-- [ ] \(Should-Have)--Create or find Key, so Data about the same lens comes together and so doesn`t creates multiple entries.
+- [x] \(Should-Have)--Create or find Key, so Data about the same lens comes together and so doesn`t creates multiple entries.
 - [ ] \(Should-Have)--Got all necessary data from all lenses
 - [ ] \(Should-Have)--Data of Autofocus (AF,AF-S,MF) (Not finished yet)
-- [x] \(Should-Have)--Data of Vibration Reduction
+- [ ] \(Should-Have)--Data of Vibration Reduction (Not finished yet)
 - [x] \(Should-Have)--Data of Brand
 - [ ] \(Should-Have)--A Sheet with a Table where you can compare (from the ResultTable) selected lenses.
 - [ ] \(NiceTo-Have)--Move from Excel to a real database (e.g. Wide-Column?)
