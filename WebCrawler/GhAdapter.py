@@ -57,6 +57,13 @@ def check_if_data_is_valid(prodImg):
 
 	return True
 
+def get_keys_with_missing_value(lens_dict):
+	result = []
+	for key, value in lens_dict:
+		if(value == ""):
+			result.append(key)
+
+	return result
 
 def get_all_proddesc_attributes(prodDesc):
 	return {
@@ -73,9 +80,20 @@ def get_all_proddesc_attributes(prodDesc):
 
 def get_lens_name(raw_lensname):
 	if("<title>" in raw_lensname):
-		return get_lens_name_from_title(raw_lensname)
+		lens_name = get_lens_name_from_title(raw_lensname)
 	else:
-		return get_lens_name_from_prodimg(raw_lensname)
+		lens_name = get_lens_name_from_prodimg(raw_lensname)
+	if(" für" in lens_name):
+		#Cut all after "für", plus cut also the empty space before "für", so thats why " für".
+		lens_name = lens_name[:lens_name.find(" für")]
+	elif(lens_name != ""):
+		#Cut of the color
+		print("LensnamE!!!!" + lens_name)
+		if("(" in lens_name.rsplit(' ', 1)[1] and ")" in lens_name.rsplit(' ', 1)[1]):
+			lens_name = lens_name.rsplit(" ", 2)[0]
+		else:
+			lens_name = lens_name.rsplit(" ", 1)[0]
+	return lens_name
 
 def get_lens_name_from_title(title):
 	return get_attribute_value("<title>",title," Preisvergleich")

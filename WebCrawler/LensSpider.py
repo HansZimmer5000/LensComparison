@@ -5,6 +5,7 @@ import scrapy
 import GhAdapter
 import RawDataAccess
 import os
+from CrawledLens import CrawledLens
 
 class LensSpider(scrapy.Spider):
 	__RUN_WITHOUT_SAVING = False
@@ -14,12 +15,14 @@ class LensSpider(scrapy.Spider):
 	name = 'lensSpider' 
 	start_urls = [GhAdapter.START_URL]
 
+	crawled_lenses = {}
+
 	def parse_lens_page(self, response):
 		#TODO: Create functionalitiy to prove if some lens already is recorded, then add Mount / fill up missing data / ignore it.
 		#Idea1: Have a Dictionary with LensName (Key) and List (Value) with known Mounts for that lens + Boolean if all Data is there.
 		#Idea2: Have a Dictionary with Lensname (Key) and KeyEntry (Value) instance, KeyEntry has Lensname, known Mounts, Boolean if data is missing and row number in the RawData.csv
 		#Have everyting in Memory? I don't need the performance, but its maybe easier without thousands of file accesses
-		
+
 		if(self.__RUN_WITHOUT_SAVING):
 			pass
 		else:
@@ -34,12 +37,18 @@ class LensSpider(scrapy.Spider):
 				else:
 					clean_lens_info = RawDataAccess.clear_string(raw_lens_info)
 					clean_lens_name = RawDataAccess.clear_string(raw_lens_name)
-					RawDataAccess.append_clean_lensdata_dict_to_rawdata(GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name))
+					new_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
+					new_crawled_lens = CrawledLens(new_lens_dict)
+					if(clean_lens_name in self.crawled_lenses):
+						old_crawled_lens = self.crawled_lenses[clean_lens_name]
+						old_crawled_lens.update(new_lens_dict)
+					else:
+						self.crawled_lenses.update({clean_lens_name: new_crawled_lens})
+					RawDataAccess.append_clean_lensdata_dict_to_rawdata(new_lens_dict)
 
 	def create_lens_page_requests(self,response):
 		response_url = response.urljoin("")
 		link_tag = "" 
-		#TODO: Make extra Function for that + own UrlNotKnownError Exception?
 
 		if("geizhals" in response_url):
 			link_tag = GhAdapter.LINK_TAG_TO_LENS_IN_OVERVIEW_PAGE
@@ -53,7 +62,6 @@ class LensSpider(scrapy.Spider):
 	def create_overview_page_request(self, response):
 		response_url = response.urljoin("")
 		next_page_url = None 
-		#TODO: Make extra Function for that + own UrlNotKnownError Exception?
 
 		if("geizhals" in response_url):
 			next_page_raw_url = response.xpath(GhAdapter.LINK_TAG_TO_NEXT_OVERVIEW_PAGE_IN_OVERVIEW_PAGE).extract_first()[3:80]

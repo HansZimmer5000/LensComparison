@@ -24,7 +24,7 @@ TESTDATA_DICT_WITHOUT_VALUES = {
 }
 
 TESTDATA_DICT_WITH_EVERYTHING1 = {
-	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA)', \
+	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Brennweite: ': '10-30mm', \
 	'Lichtstärke: ': '1:3.5-1:5.6', \
 	'Filterdurchmesser: ': "", \
@@ -36,7 +36,7 @@ TESTDATA_DICT_WITH_EVERYTHING1 = {
 	'Abmessungen (ØxL): ': '58x28mm'}
 
 TESTDATA_DICT_WITH_EVERYTHING2 = {
-	'title=""': 'Nikon AF-S VR 200-500mm 5.6E ED schwarz (JAA822DA)', \
+	'title=""': 'Nikon AF-S VR 200-500mm 5.6E ED', \
 	'Brennweite: ': '200-500mm', \
 	'Lichtstärke: ': '1:5.6', \
 	'Filterdurchmesser: ': '95mm', \
@@ -49,7 +49,7 @@ TESTDATA_DICT_WITH_EVERYTHING2 = {
 }
 
 TESTDATA_DICT_WITH_EVERYTHING3 = {
-	'title=""': 'Samyang 35mm 1.4 AS UMC für Sony E schwarz', \
+	'title=""': 'Samyang 35mm 1.4 AS UMC', \
 	'Brennweite: ': '35mm', \
 	'Lichtstärke: ': '1:1.4', \
 	'Filterdurchmesser: ': '77mm', \
@@ -62,7 +62,7 @@ TESTDATA_DICT_WITH_EVERYTHING3 = {
 }
 
 TESTDATA_DICT_WITH_MISSING_INFO1 = {
-	'title=""': 'Canon Objektiv CN-E 35mm T1.5 L F schwarz (9139B001)', \
+	'title=""': 'Canon Objektiv CN-E 35mm T1.5 L F', \
 	'Brennweite: ': '35mm', \
 	'Lichtstärke: ': '1:1.5', \
 	'Filterdurchmesser: ': "", \
@@ -89,7 +89,7 @@ TESTDATA_DICT_RAW_WITHOUT_PRODIMG1 = {
 	
 TESTDATA_DICT_VALUE_STRING_WITHOUT_VALUES = ";;;;;;;;;"
 TESTDATA_DICT_VALUE_STRING_WITH_EVERYTHING1 = \
-'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom schwarz (JVA707DA);10-30mm;1:3.5-1:5.6;;;0.20m;Nikon 1;Nikon CX;85g;58x28mm'
+'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom;10-30mm;1:3.5-1:5.6;;;0.20m;Nikon 1;Nikon CX;85g;58x28mm'
 
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_1   = TESTDATA_DICT_WITH_EVERYTHING1
 TESTDATA_DICT_RAWRESPONSE_TWELVE_SIXTY_ENTRY_269 = TESTDATA_DICT_RAW_WITHOUT_PRODIMG1
