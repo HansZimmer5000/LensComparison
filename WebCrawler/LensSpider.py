@@ -3,6 +3,7 @@
 
 import scrapy
 import GhAdapter
+import DataKeys
 import RawDataAccess
 import os
 from CrawledLens import CrawledLens
@@ -18,11 +19,6 @@ class LensSpider(scrapy.Spider):
 	crawled_lenses = {}
 
 	def parse_lens_page(self, response):
-		#TODO: Create functionalitiy to prove if some lens already is recorded, then add Mount / fill up missing data / ignore it.
-		#Idea1: Have a Dictionary with LensName (Key) and List (Value) with known Mounts for that lens + Boolean if all Data is there.
-		#Idea2: Have a Dictionary with Lensname (Key) and KeyEntry (Value) instance, KeyEntry has Lensname, known Mounts, Boolean if data is missing and row number in the RawData.csv
-		#Have everyting in Memory? I don't need the performance, but its maybe easier without thousands of file accesses
-
 		if(self.__RUN_WITHOUT_SAVING):
 			pass
 		else:
@@ -37,7 +33,8 @@ class LensSpider(scrapy.Spider):
 				else:
 					clean_lens_info = RawDataAccess.clear_string(raw_lens_info)
 					clean_lens_name = RawDataAccess.clear_string(raw_lens_name)
-					new_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
+					new_gh_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
+					new_lens_dict = self.__create_lens_dict_from_gh_lens_dict(new_gh_lens_dict)
 					new_crawled_lens = CrawledLens(new_lens_dict)
 					if(clean_lens_name in self.crawled_lenses and clean_lens_name != ""):
 						old_crawled_lens = self.crawled_lenses[clean_lens_name]
@@ -82,3 +79,11 @@ class LensSpider(scrapy.Spider):
 	def parse(self, response):
 		print("Started Parsing!")
 		return self.parse_overview_page(response)
+
+	def __create_lens_dict_from_gh_lens_dict(self, gh_lens_dict):
+		new_lens_dict = {}
+		for key_as_title in DataKeys.gh_keys_dict:
+			key_as_gh = DataKeys.gh_keys_dict[key_as_title]
+			gh_value = gh_lens_dict[key_as_gh]
+			new_lens_dict.update({key_as_title, gh_value})
+		return new_lens_dict

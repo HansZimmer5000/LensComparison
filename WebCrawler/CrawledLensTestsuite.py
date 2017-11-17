@@ -1,6 +1,5 @@
 import unittest
 import GhExamples
-import DataKeys
 from CrawledLens import CrawledLens
 
 class CrawledLensTestsuite(unittest.TestCase):

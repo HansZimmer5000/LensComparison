@@ -1,17 +1,29 @@
-import GhAdapter
+import DataKeys
 
 class CrawledLens:
 
+    KEY_MOUNT = DataKeys.key_mount_as_title
+    KEY_NAME = DataKeys.key_lensname_as_title
+
     def __init__(self, lens_dict):
-        self.lens_name = lens_dict[GhAdapter.KEY_LENSNAME]
+        self.lens_name = lens_dict[self.KEY_NAME]
         self.lens_dict = lens_dict
-        self.keys_with_missing_value = GhAdapter.get_keys_with_missing_value(lens_dict)    
+        self.keys_with_missing_value = self.__get_keys_with_missing_value(lens_dict)    
+
+    def __get_keys_with_missing_value(self, lens_dict):
+        result = []
+        for key in lens_dict:
+            value = lens_dict[key]
+            if(value == ""):
+                result.append(key)
+        return result
+
 
     def __add_new_mount(self, new_lens_dict):
-        new_mount = new_lens_dict[GhAdapter.KEY_MOUNT]
-        old_mounts = self.lens_dict[GhAdapter.KEY_MOUNT]
+        new_mount = new_lens_dict[self.KEY_MOUNT]
+        old_mounts = self.lens_dict[self.KEY_MOUNT]
         if((new_mount != "") and not(new_mount in old_mounts)):
-            self.lens_dict.update({GhAdapter.KEY_MOUNT: old_mounts + ", " + new_mount})
+            self.lens_dict.update({self.KEY_MOUNT: old_mounts + ", " + new_mount})
 
     def __add_new_value(self, new_lens_dict):
         #keys have to be copied, otherwise deletion in if makes problems! Like running (for) but then the floor gets pulled away (remove in if)

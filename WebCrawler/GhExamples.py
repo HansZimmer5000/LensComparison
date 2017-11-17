@@ -264,68 +264,90 @@ if __name__ == "__main__":
 #/////////////////////////
 
 TESTDATA_CRAWLED_LENS1 = CrawledLens({
-	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
-	'Brennweite: ': '10-30mm', \
-	'Lichtstärke: ': '1:3.5-1:5.6', \
-	'Filterdurchmesser: ': "", \
-	'Abbildungsmaßstab: ': "", \
-	'Naheinstellgrenze: ': "0.20m", \
- 	'Objektivbajonett: ': 'Nikon 1, Canon EF', \
-	'Sensorkompatibilität: ': 'Nikon CX', \
- 	'Gewicht: ': '85g', \
-	'Abmessungen (ØxL): ': '58x28mm'})
+	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Focal Length': '10-30mm', \
+	'Aperture': '1:3.5-1:5.6', \
+	'Filtersize': "", \
+	'Magnification': "", \
+	'Minimal Focus': "0.20m", \
+ 	'Mount': 'Nikon 1, Canon EF', \
+	'Sensor compatibility': 'Nikon CX', \
+ 	'Weight': '85g', \
+	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = CrawledLens({
-	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
-	'Brennweite: ': '10-30mm', \
-	'Lichtstärke: ': '1:3.5-1:5.6', \
-	'Filterdurchmesser: ': "", \
-	'Abbildungsmaßstab: ': "", \
-	'Naheinstellgrenze: ': "0.20m", \
- 	'Objektivbajonett: ': '', \
-	'Sensorkompatibilität: ': 'Nikon CX', \
- 	'Gewicht: ': '', \
-	'Abmessungen (ØxL): ': '58x28mm'})
+	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Focal Length': '10-30mm', \
+	'Aperture': '1:3.5-1:5.6', \
+	'Filtersize': "", \
+	'Magnification': "", \
+	'Minimal Focus': "0.20m", \
+ 	'Mount': '', \
+	'Sensor compatibility': 'Nikon CX', \
+ 	'Weight': '', \
+	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS1_OLD_MOUNT = CrawledLens({
-	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
-	'Brennweite: ': '10-30mm', \
-	'Lichtstärke: ': '1:3.5-1:5.6', \
-	'Filterdurchmesser: ': "", \
-	'Abbildungsmaßstab: ': "", \
-	'Naheinstellgrenze: ': "0.20m", \
- 	'Objektivbajonett: ': 'Nikon 1', \
-	'Sensorkompatibilität: ': 'Nikon CX', \
- 	'Gewicht: ': '85g', \
-	'Abmessungen (ØxL): ': '58x28mm'})
+	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Focal Length': '10-30mm', \
+	'Aperture': '1:3.5-1:5.6', \
+	'Filtersize': "", \
+	'Magnification': "", \
+	'Minimal Focus': "0.20m", \
+ 	'Mount': 'Nikon 1', \
+	'Sensor compatibility': 'Nikon CX', \
+ 	'Weight': '85g', \
+	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS1_NEW_MOUNT = CrawledLens({
-	'title=""': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
-	'Brennweite: ': '10-30mm', \
-	'Lichtstärke: ': '1:3.5-1:5.6', \
-	'Filterdurchmesser: ': "", \
-	'Abbildungsmaßstab: ': "", \
-	'Naheinstellgrenze: ': "0.20m", \
- 	'Objektivbajonett: ': 'Canon EF', \
-	'Sensorkompatibilität: ': 'Nikon CX', \
- 	'Gewicht: ': '85g', \
-	'Abmessungen (ØxL): ': '58x28mm'})
+	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'Focal Length': '10-30mm', \
+	'Aperture': '1:3.5-1:5.6', \
+	'Filtersize': "", \
+	'Magnification': "", \
+	'Minimal Focus': "0.20m", \
+ 	'Mount': 'Canon EF', \
+	'Sensor compatibility': 'Nikon CX', \
+ 	'Weight': '85g', \
+	'Size': '58x28mm'})
 
-TESTDATA_CRAWLED_LENS2 = CrawledLens(TESTDATA_DICT_WITH_MISSING_INFO1)
+TESTDATA_CRAWLED_LENS2 = CrawledLens({
+	'Lensname': 'Canon Objektiv CN-E 35mm T1.5 L F', \
+	'Focal Length': '35mm', \
+	'Aperture': '1:1.5', \
+	'Filtersize': "", \
+	'Magnification': "", \
+	'Minimal Focus': "", \
+ 	'Mount': 'Canon EF', \
+	'Sensor compatibility': 'APS-C/ Kleinbild', \
+ 	'Weight': '', \
+	'Size': ''		
+})
 TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR = CrawledLens({
-	'title=""': 'Canon Objektiv CN-E 35mm T1.5 L F', \
-	'Brennweite: ': '35mm', \
-	'Lichtstärke: ': '1:1.5', \
-	'Filterdurchmesser: ': "", \
-	'Abbildungsmaßstab: ': "", \
-	'Naheinstellgrenze: ': "", \
- 	'Objektivbajonett: ': 'Canon EF', \
-	'Sensorkompatibilität: ': '', \
- 	'Gewicht: ': '', \
-	'Abmessungen (ØxL): ': ''		
+	'Lensname': 'Canon Objektiv CN-E 35mm T1.5 L F', \
+	'Focal Length': '35mm', \
+	'Aperture': '1:1.5', \
+	'Filtersize': "", \
+	'Magnification': "", \
+	'Minimal Focus': "", \
+ 	'Mount': 'Canon EF', \
+	'Sensor compatibility': '', \
+ 	'Weight': '', \
+	'Size': ''		
 })
 
-TESTDATA_CRAWLED_LENS3 = CrawledLens(TESTDATA_DICT_WITHOUT_PRODIMG1)
+TESTDATA_CRAWLED_LENS3 = CrawledLens({
+	'Lensname': '', \
+	'Focal Length': '25mm', \
+	'Aperture': '1:0.95', \
+	'Filtersize': "52mm", \
+	'Magnification': "", \
+	'Minimal Focus': "0.17m", \
+ 	'Mount': 'Micro-Four-Thirds', \
+	'Sensor compatibility': 'Four-Thirds', \
+ 	'Weight': '410g',\
+	'Size': '58.4x70mm'
+})
 
 TESTDATA_ALL_CRAWLED_LENSES_WITH_MISSING_INFO = {
 	'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom': TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT,

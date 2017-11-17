@@ -57,15 +57,6 @@ def check_if_data_is_valid(prodImg):
 
 	return True
 
-def get_keys_with_missing_value(lens_dict):
-	result = []
-	for key in lens_dict:
-		value = lens_dict[key]
-		if(value == ""):
-			result.append(key)
-
-	return result
-
 def get_all_proddesc_attributes(prodDesc):
 	return {
 		KEY_FOCAL_LENGTH: get_focal_length(prodDesc), 
