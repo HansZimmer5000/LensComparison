@@ -16,5 +16,5 @@ def start_spider_within_python():
     process.start() 
 
 if __name__ == "__main__":
-	RawData.clean_rawdata_file_and_write_titles()
+	RawDataAccess.clean_rawdata_file_and_write_titles()
 	start_spider_within_python()

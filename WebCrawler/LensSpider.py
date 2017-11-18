@@ -5,6 +5,7 @@ import scrapy
 import GhAdapter
 import DataKeys
 import RawDataAccess
+import datetime
 import os
 from CrawledLens import CrawledLens
 
@@ -45,6 +46,7 @@ class LensSpider(scrapy.Spider):
 					RawDataAccess.append_clean_lensdata_dict_to_rawdata(new_lens_dict)
 
 	def create_lens_page_requests(self,response):
+		print("Requesting Lens got at: " + str(datetime.datetime.now()))
 		response_url = response.urljoin("")
 		link_tag = "" 
 
@@ -71,6 +73,7 @@ class LensSpider(scrapy.Spider):
 			yield scrapy.Request(next_page_url, callback=self.parse_overview_page)
 
 	def parse_overview_page(self,response):
+		print("Requesting Lens at: " + str(datetime.datetime.now()))
 		for lens_page_request in self.create_lens_page_requests(response):
 			yield lens_page_request
 

@@ -4,7 +4,7 @@
 # CSV can handle a maximum of 32759 characters in one cells
 import DataKeys
 
-__full_path_of_rawdata_file = "C:/Users/Michael/IdeaProjects/NikonLensComparison/WebCrawler/rawData.csv"
+__full_path_of_rawdata_file = "C:/Users/Michael/IdeaProjects/LensComparison/WebCrawler/rawData.csv"
 
 def clean_rawdata_file_and_write_titles():
     #clean
