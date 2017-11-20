@@ -7,6 +7,11 @@
 
 import scrapy
 
+class QuoteItem(scrapy.Item):
+    text = scrapy.Field()
+    author = scrapy.Field()
+    tags = scrapy.Field()
+
 
 class LensItem(scrapy.Item):
     lensname = scrapy.Field()
