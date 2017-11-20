@@ -7,9 +7,14 @@ import RawDataAccess
 
 def start_spider_within_python():
     custom_settings = {
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+        'CONCURRENT_REQUESTS_PER_IP': 0, #If this >0 then CONCURRENT_REQUESTS_PER_DOMAIN would be ignored 
+        
         'DOWNLOAD_DELAY': 7,
 		'RANDOMIZE_DOWNLOAD_DELAY': False, #from 0.5*DELAY till 1.5*DELAY
-		'COOKIES_ENABLED': False
+		'COOKIES_ENABLED': False,
+
+        'DEFAULT_TIME_CLASS': "Lens"
     }
     process = CrawlerProcess(custom_settings)
     process.crawl(LensSpider)

@@ -20,6 +20,7 @@ class LensSpider(scrapy.Spider):
 	crawled_lenses = {}
 
 	def parse_lens_page(self, response):
+		print("Lens parsing at: " + str(datetime.datetime.now()))
 		if(self.__RUN_WITHOUT_SAVING):
 			pass
 		else:
@@ -44,6 +45,7 @@ class LensSpider(scrapy.Spider):
 					else:
 						self.crawled_lenses.update({clean_lens_name: new_crawled_lens})
 					RawDataAccess.append_clean_lensdata_dict_to_rawdata(new_lens_dict)
+					print("Lens finished at: " + str(datetime.datetime.now()))
 
 	def create_lens_page_requests(self,response):
 		print("Requesting Lens got at: " + str(datetime.datetime.now()))
@@ -89,5 +91,5 @@ class LensSpider(scrapy.Spider):
 		for key_as_title in DataKeys.gh_keys_dict:
 			key_as_gh = DataKeys.gh_keys_dict[key_as_title]
 			gh_value = gh_lens_dict[key_as_gh]
-			new_lens_dict.update({key_as_title, gh_value})
+			new_lens_dict.update({key_as_title: gh_value})
 		return new_lens_dict
