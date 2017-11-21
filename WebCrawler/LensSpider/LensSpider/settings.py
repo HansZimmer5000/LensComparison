@@ -27,7 +27,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 7 #7 for Geizhals.de to avoid Error 403
+#DOWNLOAD_DELAY = 7 
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 1
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -65,7 +65,7 @@ TELNETCONSOLE_ENABLED = False
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'LensSpider.pipelines.LensspiderPipeline': 300,
+    'LensSpider.pipelines.LensPipeline': 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
