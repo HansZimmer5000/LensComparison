@@ -12,7 +12,7 @@ class CrawledLenses:
         self.mongo_access.start_mongo_server()
         self.lenses = self.mongo_access.find_all_lenses()
 
-    def new_lens(self, lens_dict):
+    def new_lens_dict(self, lens_dict):
         lens_name = lens_dict[DataKeys.key_lensname_as_title]
         if(self.__lens_exists(lens_name)):
             old_crawled_lens = self.lenses[lens_name]
