@@ -3,10 +3,8 @@ import DataKeys
 class CrawledLens:
 
     KEY_MOUNT = DataKeys.key_mount_as_title
-    KEY_NAME = DataKeys.key_lensname_as_title
 
     def __init__(self, lens_dict):
-        self.lens_name = lens_dict[self.KEY_NAME]
         self.lens_dict = lens_dict
         self.keys_with_missing_value = self.__get_keys_with_missing_value(lens_dict)    
 
@@ -44,8 +42,7 @@ class CrawledLens:
 
     def equals(self, other):
         if(type(self) == type(other)):
-            return self.lens_name == other.lens_name and \
-                    self.lens_dict == other.lens_dict and \
+            return self.lens_dict == other.lens_dict and \
                     self.keys_with_missing_value == other.keys_with_missing_value
         else:
             return False
