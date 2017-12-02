@@ -46,7 +46,19 @@ class CrawledLensesTestsuite(unittest.TestCase):
         self.assertTrue(self.__class__.CRAWLED_LENS2_NAME in self.__class__.CRAWLED_LENSES.lenses)
 
     def test_pos_lens_is_new(self):
-        pass
+        lens2_dict = self.__class__.CRAWLED_LENS2.lens_dict.copy()
+        length_before = len(self.__class__.CRAWLED_LENSES.lenses)
+        self.__class__.CRAWLED_LENSES.new_lens_dict(lens2_dict)
+        length_after = len(self.__class__.CRAWLED_LENSES.lenses)
+        added_lens = self.__class__.CRAWLED_LENSES.lenses[self.__class__.CRAWLED_LENS2_NAME]
+        self.assertTrue(self.__class__.CRAWLED_LENS2.equals(added_lens))
 
     def test_pos_lens_has_new_data(self):
-        pass
+        lens2_dict = self.__class__.CRAWLED_LENS2.lens_dict.copy()
+        lens2_without_sensor_dict = self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR.lens_dict.copy()
+        self.__class__.CRAWLED_LENSES.new_lens_dict(lens2_without_sensor_dict)
+        length_before = len(self.__class__.CRAWLED_LENSES.lenses)
+        self.__class__.CRAWLED_LENSES.new_lens_dict(lens2_dict)
+        length_after = len(self.__class__.CRAWLED_LENSES.lenses)
+        updated_lens = self.__class__.CRAWLED_LENSES.lenses[self.__class__.CRAWLED_LENS2_NAME]
+        self.assertTrue(self.__class__.CRAWLED_LENS2.equals(updated_lens))

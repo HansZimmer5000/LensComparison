@@ -22,7 +22,6 @@ class CrawledLenses:
             self.lenses.update({lens_name: crawled_lens})
             self.mongo_access.add_lens(lens_dict)
 
-
     def __lens_exists(self, lens_name):
         try:
             self.lenses[lens_name]
