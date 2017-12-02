@@ -9,7 +9,6 @@ class CrawledLenses:
     
     def __init__(self, collection_name):
         self.mongo_access = MongoAccess(collection_name)
-        self.mongo_access.start_mongo_server()
         self.lenses = self.mongo_access.find_all_lenses()
 
     def new_lens_dict(self, lens_dict):
@@ -21,7 +20,7 @@ class CrawledLenses:
         else:
             crawled_lens = CrawledLens(lens_dict)
             self.lenses.update({lens_name: crawled_lens})
-            self.mongo_access.add_lens(lens_name, lens_dict)
+            self.mongo_access.add_lens(lens_dict)
 
 
     def __lens_exists(self, lens_name):
@@ -30,4 +29,3 @@ class CrawledLenses:
             return True
         except:
             return False
-    

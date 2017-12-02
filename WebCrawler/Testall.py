@@ -8,9 +8,9 @@ import unittest
 
 if __name__ == '__main__':
     testClassesToRun = [
-        #GhAdapterTestsuite,
-        #CrawledLensTestsuite,
-        #CrawledLensesTestsuite,
+        GhAdapterTestsuite,
+        CrawledLensTestsuite,
+        CrawledLensesTestsuite,
         MongoAccessTestsuite
     ]
 

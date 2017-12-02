@@ -41,12 +41,12 @@ class CrawledLensTestsuite(unittest.TestCase):
 
     def test_pos_lens_data_exists_update_mount_and_weight(self):
         self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT.update(self.__class__.CRAWLED_LENS1.lens_dict)
-
         self.assertTrue(self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT.equals(self.__class__.CRAWLED_LENS1))
 
     def test_pos_lens_data_exists_update_sensor(self):
-        self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR.update(self.__class__.CRAWLED_LENS2.lens_dict)
-        self.assertTrue(self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR.equals(self.__class__.CRAWLED_LENS2))
+        lens_to_be_updated = CrawledLens(self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR.lens_dict.copy())
+        lens_to_be_updated.update(self.__class__.CRAWLED_LENS2.lens_dict)
+        self.assertTrue(lens_to_be_updated.equals(self.__class__.CRAWLED_LENS2))
 
     def test_pos_lens_data_exists_update_but_nothing_new_to_add(self):
         self.__class__.CRAWLED_LENS1_WITH_OLD_MOUNT.update(self.__class__.CRAWLED_LENS1_WITH_NEW_MOUNT.lens_dict)

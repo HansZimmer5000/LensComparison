@@ -5,7 +5,7 @@ from CrawledLens import CrawledLens
 #/////////////////////////
 
 TESTDATA_CRAWLED_LENS1 = CrawledLens({
-	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'_id': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Focal Length': '10-30mm', \
 	'Aperture': '1:3.5-1:5.6', \
 	'Filtersize': "", \
@@ -17,7 +17,7 @@ TESTDATA_CRAWLED_LENS1 = CrawledLens({
 	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = CrawledLens({
-	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'_id': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Focal Length': '10-30mm', \
 	'Aperture': '1:3.5-1:5.6', \
 	'Filtersize': "", \
@@ -29,7 +29,7 @@ TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = CrawledLens({
 	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS1_OLD_MOUNT = CrawledLens({
-	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'_id': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Focal Length': '10-30mm', \
 	'Aperture': '1:3.5-1:5.6', \
 	'Filtersize': "", \
@@ -41,7 +41,7 @@ TESTDATA_CRAWLED_LENS1_OLD_MOUNT = CrawledLens({
 	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS1_NEW_MOUNT = CrawledLens({
-	'Lensname': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
+	'_id': 'Nikon 1 NIKKOR VR 10-30mm 3.5-5.6 PD-Zoom', \
 	'Focal Length': '10-30mm', \
 	'Aperture': '1:3.5-1:5.6', \
 	'Filtersize': "", \
@@ -53,7 +53,7 @@ TESTDATA_CRAWLED_LENS1_NEW_MOUNT = CrawledLens({
 	'Size': '58x28mm'})
 
 TESTDATA_CRAWLED_LENS2 = CrawledLens({
-	'Lensname': 'Canon Objektiv CN-E 35mm T1.5 L F', \
+	'_id': 'Canon Objektiv CN-E 35mm T1.5 L F', \
 	'Focal Length': '35mm', \
 	'Aperture': '1:1.5', \
 	'Filtersize': "", \
@@ -64,8 +64,9 @@ TESTDATA_CRAWLED_LENS2 = CrawledLens({
  	'Weight': '', \
 	'Size': ''		
 })
+
 TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR = CrawledLens({
-	'Lensname': 'Canon Objektiv CN-E 35mm T1.5 L F', \
+	'_id': 'Canon Objektiv CN-E 35mm T1.5 L F', \
 	'Focal Length': '35mm', \
 	'Aperture': '1:1.5', \
 	'Filtersize': "", \
@@ -77,8 +78,11 @@ TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR = CrawledLens({
 	'Size': ''		
 })
 
+print(TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR.lens_dict)
+print(TESTDATA_CRAWLED_LENS2.lens_dict)
+
 TESTDATA_CRAWLED_LENS3 = CrawledLens({
-	'Lensname': '', \
+	'_id': '', \
 	'Focal Length': '25mm', \
 	'Aperture': '1:0.95', \
 	'Filtersize': "52mm", \

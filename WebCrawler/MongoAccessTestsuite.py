@@ -10,6 +10,7 @@ class MongoAccessTestsuite(unittest.TestCase):
 
     def setUp(self):
         self.__class__.MONGO_ACCESS = MongoAccess("mongoaccess_testsuite_collection")
+        self.__class__.MONGO_ACCESS.delete_all_lenses()
 
         self.__class__.CRAWLED_LENS1 = GeneralExamples.TESTDATA_CRAWLED_LENS1
         self.__class__.CRAWLED_LENS2 = GeneralExamples.TESTDATA_CRAWLED_LENS2
@@ -32,19 +33,23 @@ class MongoAccessTestsuite(unittest.TestCase):
     # Test cases
     #////////////
 
-    def test_pos_add_lens(self):
-        crawled_lens2_as_only_lens = {self.__class__.CRAWLED_LENS2_NAME: self.__class__.CRAWLED_LENS2}
-        self.__class__.MONGO_ACCESS.add_lens(self.__class__.CRAWLED_LENS2_NAME, self.__class__.CRAWLED_LENS2)
+    def test_pos_add_and_find_lens(self):
+        self.__class__.MONGO_ACCESS.add_lens(self.__class__.CRAWLED_LENS2.lens_dict)
+        self.assertEqual(self.__class__.MONGO_ACCESS.get_lens_count(), 1)
         lenses = self.__class__.MONGO_ACCESS.find_all_lenses()
-        self.assertEqual(lenses, crawled_lens2_as_only_lens)
+        for key in lenses.keys():
+            lens = lenses[key]
+
+        self.assertTrue(self.__class__.CRAWLED_LENS2.equals(lens))
 
     def test_pos_update_lens(self):
-        #self.__class__.MONGO_ACCESS.add_lens(lens)
-        self.assertTrue(False)
+        self.__class__.MONGO_ACCESS.add_lens(self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR.lens_dict)
+        result = self.__class__.MONGO_ACCESS.update_lens(self.__class__.CRAWLED_LENS2.lens_dict)
+        lenses = self.__class__.MONGO_ACCESS.find_all_lenses()
+        for key in lenses.keys():
+            lens = lenses[key]
 
-    def test_pos_find_all_lenses(self):
-        #lens_count = self.__class__.MONGO_ACCESS.find_all_lenses()
-        self.assertTrue(False)
+        self.assertTrue(self.__class__.CRAWLED_LENS2.equals(lens))
 
     def test_pos_get_lens_count(self):
         lens_count = self.__class__.MONGO_ACCESS.get_lens_count()
