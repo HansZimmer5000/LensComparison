@@ -39,12 +39,6 @@ class CrawledLensTestsuite(unittest.TestCase):
     # Test cases
     #////////////
 
-    def test_neg_lens_data_exists(self):
-        self.assertFalse(self.__class__.CRAWLED_LENS3.lens_name in self.__class__.ALL_CRAWLED_LENSES_WITH_MISSING_INFO)
-
-    def test_pos_lens_data_exists(self):
-        self.assertTrue(self.__class__.CRAWLED_LENS1.lens_name in self.__class__.ALL_CRAWLED_LENSES_WITH_MISSING_INFO)
-
     def test_pos_lens_data_exists_update_mount_and_weight(self):
         self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT.update(self.__class__.CRAWLED_LENS1.lens_dict)
 

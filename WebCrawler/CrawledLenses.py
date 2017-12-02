@@ -21,7 +21,8 @@ class CrawledLenses:
         else:
             crawled_lens = CrawledLens(lens_dict)
             self.lenses.update({lens_name: crawled_lens})
-            self.mongo_access.add_lens(lens_dict)
+            self.mongo_access.add_lens(lens_name, lens_dict)
+
 
     def __lens_exists(self, lens_name):
         try:
@@ -29,5 +30,4 @@ class CrawledLenses:
             return True
         except:
             return False
-
     
