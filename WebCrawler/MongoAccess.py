@@ -5,9 +5,13 @@ import DataKeys
 
 class MongoAccess:
 
+    __DB_PATH = "C:/Users/Michael/AppData/Local/MongoDB/LensComparison"
+    __MONGO_BIN = "C://Program Files//MongoDB//Server//3.4//bin//mongod"
+
     __KEY_LENSNAME = DataKeys.key_lensname_as_title
 
     def __init__(self, collection_name):
+        print("Mongod active? Start with 'mongod --dbpath 'C:/Users/Michael/AppData/Local/MongoDB/LensComparison' in a seperate Shell!")
         self.__collection_name = collection_name
         self.client = pymongo.MongoClient()
         self.collection = self.client["lens_db"][self.__collection_name]
