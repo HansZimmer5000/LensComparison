@@ -1,6 +1,5 @@
 
 import pymongo
-import subprocess
 import DataKeys
 from CrawledLens import CrawledLens
 
@@ -9,17 +8,13 @@ from CrawledLens import CrawledLens
 
 class MongoAccess:
 
-    __DB_PATH = "C:/Users/Michael/AppData/Local/MongoDB/LensComparison"
-    __MONGO_BIN = "C://Program Files//MongoDB//Server//3.4//bin//mongod"
-
     __KEY_LENSNAME = DataKeys.key_lensname_as_title
     __KEY_LENSDICT = "lens_dict"
 
-    def __init__(self, collection_name):
+    def __init__(self, db_name, collection_name):
         #print("Mongod active? Start with 'mongod --dbpath C:/Users/Michael/AppData/Local/MongoDB/LensComparison' in a seperate Shell!")
-        self.__collection_name = collection_name
         self.client = pymongo.MongoClient()
-        self.collection = self.client["lens_db"][self.__collection_name]
+        self.collection = self.client[db_name][collection_name]
 
     def add_lens(self, lens_dict):
         lens_name = lens_dict[self.__KEY_LENSNAME]

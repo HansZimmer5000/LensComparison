@@ -7,8 +7,8 @@ import DataKeys
 
 class CrawledLenses:
     
-    def __init__(self, collection_name):
-        self.mongo_access = MongoAccess(collection_name)
+    def __init__(self, db_name, collection_name):
+        self.mongo_access = MongoAccess(db_name, collection_name)
         self.lenses = self.mongo_access.find_all_lenses()
 
     def new_lens_dict(self, lens_dict):

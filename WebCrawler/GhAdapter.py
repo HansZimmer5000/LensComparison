@@ -164,23 +164,25 @@ def create_next_gh_overview_page(next_page_raw_url):
 	return result
 
 def convert_dict_to_csv_value_string(dict):
+	#TODO: Ist das noch aktuell hier? - Weil ist nicht mehr wirklich nurfür GhAdapter sondern auch für MongoToCsv Wichtig
+	keys = list(dict.keys())
 	current_value = ""
 	current_key = ""
 	current_index = 0
 	result = ""
 
-	while(current_index < len(ALL_KEYS)):
-		current_key = ALL_KEYS[current_index]
+	while(current_index < len(keys)):
+		current_key = keys[current_index]
 		try:
 			current_value = dict[current_key]
 
 			result += current_value
-			if(current_index != len(ALL_KEYS)-1):
+			if(current_index != len(keys)-1):
 				result += ";"
 			current_index += 1
 		except KeyError:
 			result = convert_dict_to_csv_value_string(create_empty_dict)
-			current_index = len(ALL_KEYS)
+			current_index = len(keys)
 
 
 	return result

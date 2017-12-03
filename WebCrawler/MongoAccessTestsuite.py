@@ -9,7 +9,7 @@ class MongoAccessTestsuite(unittest.TestCase):
     #////////////
 
     def setUp(self):
-        self.__class__.MONGO_ACCESS = MongoAccess("mongoaccess_testsuite_collection")
+        self.__class__.MONGO_ACCESS = MongoAccess("test_db", "mongoaccess_testsuite_coll")
         self.__class__.MONGO_ACCESS.delete_all_lenses()
 
         self.__class__.CRAWLED_LENS1 = GeneralExamples.TESTDATA_CRAWLED_LENS1

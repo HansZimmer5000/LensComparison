@@ -9,7 +9,7 @@ class CrawledLensesTestsuite(unittest.TestCase):
     #////////////
 
     def setUp(self):
-        self.__class__.CRAWLED_LENSES = CrawledLenses("crawled_lenses_tellsuite_coll")
+        self.__class__.CRAWLED_LENSES = CrawledLenses("test_db", "crawled_lenses_testsuite_coll")
 
         self.__class__.CRAWLED_LENS1 = GeneralExamples.TESTDATA_CRAWLED_LENS1
         self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT = GeneralExamples.TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT

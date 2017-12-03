@@ -18,7 +18,7 @@ class LensSpider(scrapy.Spider):
 	name = 'lensSpider' 
 	start_urls = [GhAdapter.START_URL]
 
-	crawled_lenses = CrawledLenses("geizhals_lens_coll")
+	crawled_lenses = CrawledLenses("lens_db","geizhals_lens_coll")
 
 	def parse_lens_page(self, response):
 		if(self.__RUN_WITHOUT_SAVING):
