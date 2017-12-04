@@ -30,3 +30,9 @@ class LensIntegrationTestsuite(unittest.TestCase):
         integrated_lens = lens_integration.integrate()
 
         self.assertEqual(self.LENS2_DICT, integrated_lens)
+
+    def test_pos_integrate_reversed(self):
+        lens_integration = LensIntegration([self.LENS2_DICT_WITHOUT_SENSOR, self.LENS2_DICT])
+        integrated_lens = lens_integration.integrate()
+
+        self.assertEqual(self.LENS2_DICT, integrated_lens)
