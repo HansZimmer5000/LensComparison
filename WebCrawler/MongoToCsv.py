@@ -1,6 +1,8 @@
 from MongoAccess import MongoAccess
 import pymongo
 import GhAdapter
+import DataKeys
+import LensIntegration
 
 def get_all_collection_names():
     client = pymongo.MongoClient()
@@ -14,13 +16,8 @@ def gather_all_lens_dicts_of_each_domain(collection_names):
         domain_lens_dicts_list.append(MongoAccess("lens_db", collection_name).find_all_lenses())
     return domain_lens_dicts_list
 
-def __unite_different_lenses_to_one(lenses):
-    result_lens = {}
-
-    for lens in lenses:
-        #TODO: Implement
-        result_lens = lens
-
+def __intergrate_different_lenses_to_one(lenses):
+    result_lens = LensIntegration.integrate(lenses)
     return result_lens
 
 def combine_all_lens_dicts_of_each_domain(domain_lens_dicts_list):
@@ -28,7 +25,7 @@ def combine_all_lens_dicts_of_each_domain(domain_lens_dicts_list):
     # new key set
     # get all keys of all dicts -> add to key set
     #   for each key get dataset of each dict
-    #   try to unite datasets -> add to result dict
+    #   try to intergrate datasets -> add to result dict
     # If all keys are done -> return result dict
     result_list = []
     key_set = set()
@@ -46,7 +43,7 @@ def combine_all_lens_dicts_of_each_domain(domain_lens_dicts_list):
                 datasets.append(domain_lens_dict[key].lens_dict)
             except:
                 pass
-        result = __unite_different_lenses_to_one(datasets)
+        result = __intergrate_different_lenses_to_one(datasets)
         result_list.append(result)
     print("")
     return result_list        
