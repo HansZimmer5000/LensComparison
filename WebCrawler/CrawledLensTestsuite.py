@@ -3,10 +3,6 @@ import GeneralExamples
 from CrawledLens import CrawledLens
 
 class CrawledLensTestsuite(unittest.TestCase):
-    
-    #\\\\\\\\\\\\
-    # Class Variables
-    #////////////
 
     #\\\\\\\\\\\\
     # setUp & tearDown
