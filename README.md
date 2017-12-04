@@ -41,7 +41,7 @@ Entry                 Description of data (example)
 - [ ] \(Should-Have)--Data of Vibration Reduction (Not finished yet)
 - [x] \(Should-Have)--Data of Brand
 - [ ] \(Should-Have)--A Sheet with a Table where you can compare (from the ResultTable) selected lenses.
-- [ ] \(NiceTo-Have)--Move from Excel to a real database (e.g. Wide-Column?)
+- [x] \(NiceTo-Have)--Use database instead of csv file to save lenses
 - [ ] \(NiceTo-Have)--Complete standalone program.
 - [ ] \(NiceTo-Have)--When Selecting a certain mount, show also the lenses compatible with an adapter.
 - [ ] \(NiceTo-Have)--Sheet with a Table with alle the lenses someone ownes, to see how much you can do with them and if you really need a new lens.
