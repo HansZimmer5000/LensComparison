@@ -2,10 +2,8 @@
 
 def integrate(lenses):
     #TODO: Make better!
-    default_lens = lenses[0]
+    default_lens = lenses.pop(0)
     keys = lenses[0].keys()
-
-    lenses.remove(default_lens)
 
     if(len(lenses) != 0):
         for key in keys:
