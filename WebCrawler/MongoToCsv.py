@@ -2,7 +2,7 @@ from MongoAccess import MongoAccess
 import pymongo
 import GhAdapter
 import DataKeys
-import LensIntegration
+from LensIntegration import LensIntegration
 
 class MongoToCsv():
 
@@ -11,62 +11,63 @@ class MongoToCsv():
 
     def __get_all_collection_names(self):
         client = pymongo.MongoClient()
-        collection_names = client[self.mongo_db_name].collection_names()
-        return collection_names
+        self.collection_names = client[self.mongo_db_name].collection_names()
 
-    def __gather_all_lens_dicts_of_each_domain(self, collection_names): 
-        domain_lens_dicts_list = []
-        for collection_name in collection_names:
+    def __gather_all_lens_dicts_of_each_domain(self): 
+        self.domain_lens_dicts_list = []
+        for collection_name in self.collection_names:
             print("Collecting from: " + collection_name)
-            domain_lens_dicts_list.append(MongoAccess("lens_db", collection_name).find_all_lenses())
-        return domain_lens_dicts_list
+            self.domain_lens_dicts_list.append(MongoAccess("lens_db", collection_name).find_all_lenses())
 
-    def __combine_all_lens_dicts_of_each_domain(self, domain_lens_dicts_list):
+    def __combine_all_lens_dicts_of_each_domain(self):
         # new result dict
         # new key set
         # get all keys of all dicts -> add to key set
         #   for each key get dataset of each dict
         #   try to intergrate datasets -> add to result dict
         # If all keys are done -> return result dict
-        result_list = []
+        self.all_integrated_lenses = []
         key_set = set()
 
-        for domain_lens_dict in domain_lens_dicts_list:
+        for domain_lens_dict in self.domain_lens_dicts_list:
             for key in domain_lens_dict.keys():
                 key_set.add(key)
         
         print("Gathering Data:")
         for key in key_set:
             datasets = []
-            for domain_lens_dict in domain_lens_dicts_list:
+            for domain_lens_dict in self.domain_lens_dicts_list:
                 print(".", end="")
                 try:
                     datasets.append(domain_lens_dict[key].lens_dict)
                 except KeyError:
                     print("Unknown Key: " + key + " in: " + str(domain_lens_dict))
-            result = LensIntegration.integrate(datasets)
-            result_list.append(result)
-        print("")
-        return result_list        
+            lens_integration = LensIntegration(datasets)
+            tmp_result = lens_integration.integrate()
+            self.all_integrated_lenses.append(tmp_result)
+        print("")      
 
-    def __write_to_csv(self, lens_dicts):
+    def __write_to_csv(self):
         file_name = "mongoRawData.csv"
         file = open(file_name, "w")
         print("Writing Data: ")
-        for lens_dict in lens_dicts:
+        for lens_dict in self.all_integrated_lenses:
             string = GhAdapter.convert_dict_to_csv_value_string(lens_dict)
             print(".", end="")
             file.write(string + "\n")
         print("")
         file.close()
 
-def export_all_lenses(self):
-    COLLECTION_NAMES = self.__get_all_collection_names()
-    for name in COLLECTION_NAMES:
-        print("Collection: " + name)
-    ALL_LENS_DICTS = self.__gather_all_lens_dicts_of_each_domain(COLLECTION_NAMES)
-    for tmp_dict in ALL_LENS_DICTS:
-        print("Size: " + str(len(tmp_dict)) + " Items")
-    ALL_LENSES_INTEGRATED = self.__combine_all_lens_dicts_of_each_domain(ALL_LENS_DICTS)
-    print("end size: " + str(len(ALL_LENSES_INTEGRATED)))
-    self.__write_to_csv(ALL_LENSES_INTEGRATED)
+
+    def export_all_lenses(self):
+        self.__get_all_collection_names()
+        for name in self.collection_names:
+            print("Collection: " + name)
+
+        self.__gather_all_lens_dicts_of_each_domain()
+        for tmp_dict in self.domain_lens_dicts_list:
+            print("Size: " + str(len(tmp_dict)) + " Items")
+
+        self.__combine_all_lens_dicts_of_each_domain()
+        print("end size: " + str(len(self.all_integrated_lenses)))
+        self.__write_to_csv()
