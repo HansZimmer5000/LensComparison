@@ -4,6 +4,7 @@ from GhAdapterTestsuite import GhAdapterTestsuite
 from CrawledLensTestsuite import CrawledLensTestsuite
 from CrawledLensesTestsuite import CrawledLensesTestsuite
 from MongoAccessTestsuite import MongoAccessTestsuite
+from LensIntegrationTestsuite import LensIntegrationTestsuite
 import unittest
 
 if __name__ == '__main__':
@@ -11,7 +12,8 @@ if __name__ == '__main__':
         GhAdapterTestsuite,
         CrawledLensTestsuite,
         CrawledLensesTestsuite,
-        MongoAccessTestsuite
+        MongoAccessTestsuite,
+        LensIntegrationTestsuite
     ]
 
     unittestLoader = unittest.TestLoader()
