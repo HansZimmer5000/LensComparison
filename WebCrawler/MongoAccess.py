@@ -12,7 +12,6 @@ class MongoAccess:
     __KEY_LENSDICT = "lens_dict"
 
     def __init__(self, db_name, collection_name):
-        #print("Mongod active? Start with 'mongod --dbpath C:/Users/Michael/AppData/Local/MongoDB/LensComparison' in a seperate Shell!")
         self.client = pymongo.MongoClient()
         self.collection = self.client[db_name][collection_name]
 

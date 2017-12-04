@@ -1,4 +1,5 @@
 
+#Own Module since this could get very complicated.
 
 def integrate(lenses):
     #TODO: Make better!
