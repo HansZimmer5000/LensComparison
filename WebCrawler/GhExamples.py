@@ -220,39 +220,3 @@ TESTDATA_TITLE_RAW1 = "<title>Nikon AF-S 28mm 1.4E ED schwarz Preisvergleich | G
 #/////////////////////////
 
 TESTDATA_TITLE_CLEAR1 = "Nikon AF-S 28mm 1.4E ED schwarz"
-
-
-def printRowFromFile(file,rowNumber):
-	file = str(file)
-	if(file == "1"):
-		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 1 - 4.csv'
-	elif (file == "2"):
-		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 5 - 7.csv'
-	elif(file == "3"):
-		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 8 - 11.csv'
-	elif(file == "4"):
-		file = 'C:\\Users\\Michael\\IdeaProjects\\NikonLensComparison\\WebCrawler\\rawResponseData 12 - 60.csv'
-
-	openFile = open(file,'r')
-	rows = openFile.readlines()
-	rowDiff = len(rows) - rowNumber
-	if(rowDiff < 0):
-		print("Rownumber is " + rowDiff + " too high.")
-	else:
-		print(rows[rowNumber-1])
-
-
-
-
-if __name__ == "__main__":
-	print("Print a certain Row from a certain file with 'printRowFromFile'.")
-	print("rowNumber = number")
-	print("File = fullpath (incl. filename) or:")
-	print("4 = rawResponseData12-60")
-	print("You can import the fuction or type here 'file' (as string) and space and rownumber (as numer) or exit here with 'exit'")
-	
-	userInput = input()
-	if(userInput != "exit"):
-		file = userInput.split(" ")[0]
-		rowNumber = int(userInput.split(" ")[1])
-		printRowFromFile(file,rowNumber)
