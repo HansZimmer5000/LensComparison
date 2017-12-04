@@ -41,6 +41,17 @@ class MongoToCsv():
         # If all keys are done -> return result dict
         self.__gather_all_domain_lens_dict_keys()
         self.__gather_and_integrate_sources_per_lens()
+
+    def __write_to_csv(self):
+        file_name = "mongoRawData.csv"
+        file = open(file_name, "w")
+        print("Writing Data: ")
+        for lens_dict in self.all_integrated_lenses:
+            string = GhAdapter.convert_dict_to_csv_value_string(lens_dict)
+            print(".", end="")
+            file.write(string + "\n")
+        print("")
+        file.close()
          
 
     def __gather_all_domain_lens_dict_keys(self):
@@ -76,14 +87,3 @@ class MongoToCsv():
     def __integrate_dataset(self, dataset):
         lens_integration = LensIntegration(dataset)
         return lens_integration.integrate()
-
-    def __write_to_csv(self):
-        file_name = "mongoRawData.csv"
-        file = open(file_name, "w")
-        print("Writing Data: ")
-        for lens_dict in self.all_integrated_lenses:
-            string = GhAdapter.convert_dict_to_csv_value_string(lens_dict)
-            print(".", end="")
-            file.write(string + "\n")
-        print("")
-        file.close()
