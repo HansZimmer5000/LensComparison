@@ -38,23 +38,6 @@ def append_raw_lens_page_to_rawdata(raw_lenspage):
     rawdata_file.write(cleared_raw_lenspage)
     rawdata_file.close()
 
-def clear_string(string_to_clear):
-
-    if(string_to_clear is None):
-        return ""
-
-    forbidden_strings = [
-        "\x95",
-        "\u200b",
-        "\n"
-    ]
-    replacement_letter = " "
-    cleared_string = string_to_clear
-    for current_forbidden_string in forbidden_strings:
-        cleared_string = cleared_string.replace(current_forbidden_string,replacement_letter)
-    
-    return cleared_string
-
 if __name__ == "__main__":
     rawdata_file = open(__full_path_of_rawdata_file,"r")
     all_lines = rawdata_file.readlines()

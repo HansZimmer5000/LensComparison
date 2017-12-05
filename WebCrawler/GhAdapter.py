@@ -28,6 +28,23 @@ LINK_TAG_TO_NEXT_OVERVIEW_PAGE_IN_OVERVIEW_PAGE = '//a[@class = "gh_pag_i only--
 LENS_INFO_TAG = '//div[@id="gh_proddesc"]'
 LENS_NAME_TAG = '//title'
 
+def clear_string(string_to_clear):
+
+    if(string_to_clear is None):
+        return ""
+
+    forbidden_strings = [
+        "\x95",
+        "\u200b",
+        "\n"
+    ]
+    replacement_letter = " "
+    cleared_string = string_to_clear
+    for current_forbidden_string in forbidden_strings:
+        cleared_string = cleared_string.replace(current_forbidden_string,replacement_letter)
+    
+    return cleared_string
+
 def get_all_attributes(prodDesc,prodImg):
 	
 	result_dict = {

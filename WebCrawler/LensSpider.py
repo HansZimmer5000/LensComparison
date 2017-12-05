@@ -4,16 +4,11 @@
 import scrapy
 import GhAdapter
 import DataKeys
-import RawDataAccess
 import datetime
 import os
 from CrawledLenses import CrawledLenses
 
 class LensSpider(scrapy.Spider):
-	__RUN_WITHOUT_SAVING = False
-	__SAVE_FULL_LENS_PAGE_ONLY = False
-	__SAVE_RAW_WITHOUT_TRANSFORMING = False
-	__SAVE_TRANSFORMED_AND_UNIQUE_LENSES_TO_MONGODB = True
 
 	name = 'lensSpider' 
 	start_urls = [GhAdapter.START_URL]
@@ -21,26 +16,16 @@ class LensSpider(scrapy.Spider):
 	crawled_lenses = CrawledLenses("lens_db","geizhals_lens_coll")
 
 	def parse_lens_page(self, response):
-		if(self.__RUN_WITHOUT_SAVING):
-			pass
-		else:
-			if(self.__SAVE_FULL_LENS_PAGE_ONLY):
-				RawDataAccess.append_raw_lens_page_to_rawdata(response.body_as_unicode())
-			else:
-				raw_lens_info = response.xpath(GhAdapter.LENS_INFO_TAG).extract_first()
-				raw_lens_name = response.xpath(GhAdapter.LENS_NAME_TAG).extract_first() 
+		raw_lens_info = response.xpath(GhAdapter.LENS_INFO_TAG).extract_first()
+		raw_lens_name = response.xpath(GhAdapter.LENS_NAME_TAG).extract_first() 
 
-				if(self.__SAVE_RAW_WITHOUT_TRANSFORMING):
-					RawDataAccess.append_raw_desc_raw_lens_name_to_rawdata(raw_lens_info,raw_lens_name)
-				else:
-					clean_lens_info = RawDataAccess.clear_string(raw_lens_info)
-					clean_lens_name = RawDataAccess.clear_string(raw_lens_name)
-					new_gh_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
-					new_lens_dict = self.__create_lens_dict_from_gh_lens_dict(new_gh_lens_dict)
-					if(self.__SAVE_TRANSFORMED_AND_UNIQUE_LENSES_TO_MONGODB):
-						self.crawled_lenses.new_lens_dict(new_lens_dict)
-					else:
-						RawDataAccess.append_clean_lensdata_dict_to_rawdata(new_lens_dict)
+		clean_lens_info = GhAdapter.clear_string(raw_lens_info)
+		clean_lens_name = GhAdapter.clear_string(raw_lens_name)
+
+		new_gh_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
+		new_lens_dict = self.__create_lens_dict_from_gh_lens_dict(new_gh_lens_dict)
+		
+		self.crawled_lenses.new_lens_dict(new_lens_dict)
 
 	def create_lens_page_requests(self,response):
 		response_url = response.urljoin("")
