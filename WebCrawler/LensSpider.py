@@ -3,7 +3,6 @@
 
 import scrapy
 import GhAdapter
-import DataKeys
 import datetime
 import os
 from CrawledLenses import CrawledLenses
@@ -23,7 +22,7 @@ class LensSpider(scrapy.Spider):
 		clean_lens_name = GhAdapter.clear_string(raw_lens_name)
 
 		new_gh_lens_dict = GhAdapter.get_all_attributes(clean_lens_info,clean_lens_name)
-		new_lens_dict = self.__create_lens_dict_from_gh_lens_dict(new_gh_lens_dict)
+		new_lens_dict = GhAdapter.transform_gh_dict_to_general_dict(new_gh_lens_dict)
 		
 		self.crawled_lenses.new_lens_dict(new_lens_dict)
 
@@ -62,11 +61,3 @@ class LensSpider(scrapy.Spider):
 
 	def parse(self, response):
 		return self.parse_overview_page(response)
-
-	def __create_lens_dict_from_gh_lens_dict(self, gh_lens_dict):
-		new_lens_dict = {}
-		for key_as_title in DataKeys.gh_keys_dict:
-			key_as_gh = DataKeys.gh_keys_dict[key_as_title]
-			gh_value = gh_lens_dict[key_as_gh]
-			new_lens_dict.update({key_as_title: gh_value})
-		return new_lens_dict

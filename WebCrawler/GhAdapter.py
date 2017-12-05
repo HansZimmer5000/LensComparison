@@ -28,6 +28,14 @@ LINK_TAG_TO_NEXT_OVERVIEW_PAGE_IN_OVERVIEW_PAGE = '//a[@class = "gh_pag_i only--
 LENS_INFO_TAG = '//div[@id="gh_proddesc"]'
 LENS_NAME_TAG = '//title'
 
+def transform_gh_dict_to_general_dict(gh_lens_dict):
+	new_lens_dict = {}
+	for key_as_title in DataKeys.gh_keys_dict:
+		key_as_gh = DataKeys.gh_keys_dict[key_as_title]
+		gh_value = gh_lens_dict[key_as_gh]
+		new_lens_dict.update({key_as_title: gh_value})
+	return new_lens_dict
+
 def clear_string(string_to_clear):
 
     if(string_to_clear is None):
