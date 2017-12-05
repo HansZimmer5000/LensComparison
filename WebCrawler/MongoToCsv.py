@@ -1,8 +1,11 @@
 from MongoAccess import MongoAccess
+from LensIntegration import LensIntegration
 import pymongo
 import GhAdapter
 import DataKeys
-from LensIntegration import LensIntegration
+import RawDataAccess
+
+
 
 class MongoToCsv():
 
@@ -37,15 +40,13 @@ class MongoToCsv():
         self.__gather_and_integrate_sources_per_lens()
 
     def __write_to_csv(self):
-        file_name = "mongoRawData.csv"
-        file = open(file_name, "w")
+        RawDataAccess.clean_rawdata_file_and_write_titles()
+
         print("Writing Data: ")
         for lens_dict in self.__all_integrated_lenses:
-            string = GhAdapter.convert_dict_to_csv_value_string(lens_dict)
+            RawDataAccess.append_clean_lensdata_dict_to_rawdata(lens_dict)
             print(".", end="")
-            file.write(string + "\n")
         print("")
-        file.close()
          
 
     def __gather_all_domain_lens_dict_keys(self):

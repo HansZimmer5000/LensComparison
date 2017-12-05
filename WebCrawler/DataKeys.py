@@ -18,6 +18,7 @@ all_keys_as_titles_in_order = [
     key_aperture_as_title,
     key_filter_as_title,
     key_magnification_as_title,
+    key_minimalfocus_as_title,
     key_mount_as_title,
     key_sensor_compatibility_as_title,
     key_weight_as_title,
