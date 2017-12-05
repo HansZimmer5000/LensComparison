@@ -11,8 +11,13 @@ class MongoAccess:
     __KEY_LENSNAME = DataKeys.key_lensname_as_title
     __KEY_LENSDICT = "lens_dict"
 
-    def __init__(self, db_name, collection_name):
+    def __init__(self):
         self.client = pymongo.MongoClient()
+
+    def get_collection_names_of_db(self, db_name):
+        return self.client[db_name].collection_names()
+
+    def connect_to_db_and_collection(self, db_name, collection_name):
         self.collection = self.client[db_name][collection_name]
 
     def add_lens(self, lens_dict):

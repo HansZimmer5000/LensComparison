@@ -1,6 +1,5 @@
 from MongoAccess import MongoAccess
 from LensIntegration import LensIntegration
-import pymongo
 import RawDataAccess
 
 
@@ -8,6 +7,7 @@ class MongoToCsv():
 
     def __init__(self, mongo_db_name):
         self.__mongo_db_name = mongo_db_name
+        self.__mongo_access = MongoAccess()
 
     def export_all_lenses(self):
         self.__get_all_collection_names()
@@ -23,14 +23,14 @@ class MongoToCsv():
         self.__write_to_csv()
 
     def __get_all_collection_names(self):
-        client = pymongo.MongoClient()
-        self.collection_names = client[self.__mongo_db_name].collection_names()
+        self.collection_names = self.__mongo_access.get_collection_names_of_db("lens_db")
 
     def __gather_all_lens_dicts_of_each_domain(self): 
         self.__domain_lens_dicts_list = []
         for collection_name in self.collection_names:
             print("Collecting from: " + collection_name)
-            self.__domain_lens_dicts_list.append(MongoAccess("lens_db", collection_name).find_all_lenses())
+            self.__mongo_access.connect_to_db_and_collection("lens_db", collection_name)
+            self.__domain_lens_dicts_list.append(self.__mongo_access.find_all_lenses())
 
     def __combine_all_lens_dicts_of_each_domain(self):
         self.__gather_all_domain_lens_dict_keys()
