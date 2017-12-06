@@ -10,8 +10,8 @@ class LensIntegrationTestsuite(unittest.TestCase):
     #////////////
 
     def setUp(self):
-        self.LENS2_DICT_WITHOUT_SENSOR = GeneralExamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR.lens_dict
-        self.LENS2_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS2.lens_dict
+        self.LENS2_DICT_WITHOUT_SENSOR = GeneralExamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT
+        self.LENS2_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS2_LENS_DICT
 
         print("\n\nsetup Done\n" + self._testMethodName)
     #End of setUp
