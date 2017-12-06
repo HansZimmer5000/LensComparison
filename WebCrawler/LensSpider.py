@@ -3,8 +3,6 @@
 
 import scrapy
 import GhAdapter
-import datetime
-import os
 from CrawledLenses import CrawledLenses
 
 class LensSpider(scrapy.Spider):
