@@ -10,7 +10,14 @@ class CrawledLenses:
     def __init__(self, db_name, collection_name):
         self.mongo_access = MongoAccess()
         self.mongo_access.connect_to_db_and_collection(db_name, collection_name)
-        self.lenses = self.mongo_access.find_all_lenses()
+        self.lenses = {}
+        self.__get_all_saved_crawled_lenses()
+
+    def __get_all_saved_crawled_lenses(self):
+        for lens_dict in self.mongo_access.find_all_lenses_into_one_dict():
+            for key in lens_dict.keys():
+                lens_dict = lens_dict[key]
+                self.lenses.update({key: CrawledLens(lens_dict)})
 
     def new_lens_dict(self, lens_dict):
         lens_name = lens_dict[DataKeys.key_lensname_as_title]

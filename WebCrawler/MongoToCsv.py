@@ -26,11 +26,16 @@ class MongoToCsv():
         self.collection_names = self.__mongo_access.get_collection_names_of_db("lens_db")
 
     def __gather_all_lens_dicts_of_each_domain(self): 
+        #__domain_lens_dicts_list has each index a list, one per domain
+        # In these lists are all the lenses we got from a certain domain.
+        # the dicts are: Lensname(Key) to Lensdict (Value). 
+        #TODO: Map / Reduce in MongoAccess?
         self.__domain_lens_dicts_list = []
         for collection_name in self.collection_names:
             print("Collecting from: " + collection_name)
             self.__mongo_access.connect_to_db_and_collection("lens_db", collection_name)
-            self.__domain_lens_dicts_list.append(self.__mongo_access.find_all_lenses())
+            domain_dict = self.__mongo_access.find_all_lenses_into_one_dict()
+            self.__domain_lens_dicts_list.append(domain_dict)
 
     def __combine_all_lens_dicts_of_each_domain(self):
         self.__gather_all_domain_lens_dict_keys()
@@ -50,8 +55,7 @@ class MongoToCsv():
         self.key_set = set()
 
         for domain_lens_dict in self.__domain_lens_dicts_list:
-            for key in domain_lens_dict.keys():
-                self.key_set.add(key)
+            self.key_set.update(domain_lens_dict.keys()) 
 
     def __gather_and_integrate_sources_per_lens(self):
         self.__all_integrated_lenses = []
@@ -71,7 +75,7 @@ class MongoToCsv():
         for domain_lens_dict in self.__domain_lens_dicts_list:
             print(".", end="")
             try:
-                dataset.append(domain_lens_dict[key].lens_dict)
+                dataset.append(domain_lens_dict[key])
             except KeyError:
                 print("Unknown Key: " + key + " in: " + str(domain_lens_dict))
         return dataset
