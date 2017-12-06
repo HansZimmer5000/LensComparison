@@ -8,9 +8,9 @@ class MongoToCsv():
     def __init__(self, mongo_db_name):
         self.__mongo_db_name = mongo_db_name
         self.__mongo_access = MongoAccess()
-
-    def collect_integrate_export_all_lenses(self):
         self.__get_all_collection_names()
+
+    def gather_integrate_export_all_lenses(self):
         for name in self.collection_names:
             print("Collection: " + name)
 
