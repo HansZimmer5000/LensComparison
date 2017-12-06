@@ -8,6 +8,7 @@ import DataKeys
 class MongoAccess:
 
     __KEY_LENSNAME = DataKeys.key_lensname_as_title
+    __KEY_MONGO_ID = __KEY_LENSNAME
     __KEY_LENSDICT = "lens_dict"
 
     def __init__(self):
@@ -22,13 +23,13 @@ class MongoAccess:
     def add_lens(self, lens_dict):
         lens_name = lens_dict[self.__KEY_LENSNAME]
         lens_name = lens_name.replace(".","aAa")
-        lens = {self.__KEY_LENSNAME: lens_name, self.__KEY_LENSDICT: lens_dict}
+        lens = {self.__KEY_MONGO_ID: lens_name, self.__KEY_LENSDICT: lens_dict}
         return self.collection.insert_one(lens)
 
     def update_lens(self, lens_dict):
         lens_name = lens_dict[self.__KEY_LENSNAME]
         lens_name = lens_name.replace(".","aAa")
-        return self.collection.update_one({self.__KEY_LENSNAME: lens_name}, {'$set': {self.__KEY_LENSDICT: lens_dict}}) 
+        return self.collection.update_one({self.__KEY_MONGO_ID: lens_name}, {'$set': {self.__KEY_LENSDICT: lens_dict}}) 
 
     def find_all_lenses_into_one_dict(self):
         result = {}
