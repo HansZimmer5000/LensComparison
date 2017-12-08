@@ -1,15 +1,25 @@
 from abc import ABC
 from abc import abstractmethod
+from .. import DataKeys
 
 class CrawledLens(ABC):
 
     def __init__(self):
         self.keys_with_missing_value = self.__gather_keys_with_missing_value(self.lens_dict)
+        self.key_lens_name = DataKeys.key_name_as_title
+        self.key_focal_length = DataKeys.key_focal_length_as_title
+        self.key_aperture = DataKeys.key_aperture_as_title
+        self.key_filter = DataKeys.key_filter_as_title
+        self.key_magnification = DataKeys.key_magnification_as_title
+        self.key_minimalfocus = DataKeys.key_minimalfocus_as_title
+        self.key_mount = DataKeys.key_mount_as_title
+        self.key_sensor = DataKeys.key_sensor_as_title
+        self.key_weight = DataKeys.key_weight_as_title
+        self.key_size = DataKeys.key_size_as_title
 
     @property
     def get_lens_name(self):
         return self.lens_name
-
     @get_lens_name.setter
     def set_lens_name(self, new_lens_name):
         self.lens_name = new_lens_name
@@ -17,26 +27,9 @@ class CrawledLens(ABC):
     @property
     def get_lens_dict(self):
         return self.lens_dict
-
     @get_lens_dict.setter
     def set_lens_dict(self, new_lens_dict):
         self.lens_dict = new_lens_dict
-
-    @property
-    def __get_key_mount(self):
-        return self.key_mount
-
-    @__get_key_mount.setter
-    def __set_key_mount(self, new_key_mount):
-        self.key_mount = new_key_mount
-
-    @property
-    def __get_keys_with_missing_value(self):
-        return self.keys_with_missing_value
-
-    @__get_keys_with_missing_value.setter
-    def __set_keys_with_missing_value(self, new_keys_with_missing_value):
-        self.keys_with_missing_value = new_keys_with_missing_value
 
 
     def __gather_keys_with_missing_value(self, lens_dict):
