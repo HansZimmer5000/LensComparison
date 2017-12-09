@@ -7,7 +7,7 @@ import DataKeys
 
 class MongoAccess:
 
-    __KEY_LENSNAME = DataKeys.key_lensname_as_title
+    __KEY_LENSNAME = DataKeys.key_name_as_title
     __KEY_MONGO_ID = __KEY_LENSNAME
     __KEY_LENSDICT = "lens_dict"
 

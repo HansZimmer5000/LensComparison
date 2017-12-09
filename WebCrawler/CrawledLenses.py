@@ -14,13 +14,13 @@ class CrawledLenses:
         self.__get_all_saved_crawled_lenses()
 
     def __get_all_saved_crawled_lenses(self):
-        for lens_dict in self.mongo_access.find_all_lenses_into_one_dict():
-            for key in lens_dict.keys():
-                lens_dict = lens_dict[key]
-                self.lenses.update({key: CrawledLens(lens_dict)})
+        big_lens_dict = self.mongo_access.find_all_lenses_into_one_dict()
+        for key in big_lens_dict.keys():
+            lens_dict = big_lens_dict[key]
+            self.lenses.update({key: CrawledLens(lens_dict)})
 
     def new_lens_dict(self, lens_dict):
-        lens_name = lens_dict[DataKeys.key_lensname_as_title]
+        lens_name = lens_dict[DataKeys.key_name_as_title]
         if(self.__lens_exists(lens_name)):
             old_crawled_lens = self.lenses[lens_name]
             old_crawled_lens.update(lens_dict) #TODO: Does this really also update our crawledlens in dict?

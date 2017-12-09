@@ -2,7 +2,7 @@
 
 import DataKeys
 
-KEY_LENSNAME = DataKeys.key_lensname_as_gh
+KEY_LENSNAME = DataKeys.key_name_as_gh
 KEY_FOCAL_LENGTH = DataKeys.key_focal_length_as_gh
 KEY_APERTURE = DataKeys.key_aperture_as_gh
 KEY_FILTER = DataKeys.key_filter_as_gh

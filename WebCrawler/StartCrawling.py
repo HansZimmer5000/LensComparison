@@ -13,10 +13,17 @@ def start_spider_within_python():
 		'RANDOMIZE_DOWNLOAD_DELAY': False, #from 0.5*DELAY till 1.5*DELAY
 		'COOKIES_ENABLED': False,
 
-        'DEFAULT_TIME_CLASS': "Lens"
+        'DEFAULT_TIME_CLASS': "Lens",
+
+        'ITEM_PIPELINES': {
+            'ghitempipeline.GhItemPipeline': 300
+        }
     }
+    
     process = CrawlerProcess(custom_settings)
     process.crawl(LensSpider)
+    #process.crawls(OtherSpiderClass)
+    #process.crawl(SomeSpider, start_urls=["http://www.example.com"]) Needed for upcoming changed in code
     process.start() 
 
 if __name__ == "__main__":
