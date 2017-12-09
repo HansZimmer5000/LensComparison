@@ -1,6 +1,6 @@
 # Starts all testsuite available.
 
-from GhAdapterTestsuite import GhAdapterTestsuite
+from ghitempipelinetestsuite import GhItemPipelineTestsuite
 from CrawledLensTestsuite import CrawledLensTestsuite
 from CrawledLensesTestsuite import CrawledLensesTestsuite
 from MongoAccessTestsuite import MongoAccessTestsuite
@@ -9,7 +9,7 @@ import unittest
 
 if __name__ == '__main__':
     testClassesToRun = [
-        GhAdapterTestsuite,
+        GhItemPipelineTestsuite,
         CrawledLensTestsuite,
         CrawledLensesTestsuite,
         MongoAccessTestsuite,

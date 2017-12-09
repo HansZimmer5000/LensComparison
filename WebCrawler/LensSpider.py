@@ -2,11 +2,11 @@
 # Its a generell web crawler, but the import and use of GhAdapter makes it usefull for geizhals.de sites.
 
 import scrapy
-from spiderghadapter import SpiderGhAdapter
+import spiderghadapter
 
 class LensSpider(scrapy.Spider):
 
-	adapter = SpiderGhAdapter()
+	adapter = spiderghadapter
 
 	name = 'lensSpider' 
 	start_urls = [adapter.START_URL]
