@@ -16,7 +16,7 @@ def start_spider_within_python():
         'DEFAULT_TIME_CLASS': "Lens",
 
         'ITEM_PIPELINES': {
-            'ghitempipeline.GhItemPipeline': 300
+            'webcrawler.itempipelines.ghitempipeline.GhItemPipeline': 300
         }
     }
     

@@ -44,11 +44,11 @@ class MongoToCsv():
         self.__gather_and_integrate_sources_per_lens()
 
     def __write_to_csv(self):
-        RawDataAccess.clean_rawdata_file_and_write_titles()
+        rawdataaccess.clean_rawdata_file_and_write_titles()
 
         print("Writing Data: ")
         for lens_dict in self.__all_integrated_lenses:
-            RawDataAccess.append_clean_lensdata_dict_to_rawdata(lens_dict)
+            rawdataaccess.append_clean_lensdata_dict_to_rawdata(lens_dict)
             print(".", end="")
         print("")
          
