@@ -1,7 +1,9 @@
 # Start the LensSpider and let it crawl.
 # start_urls and name is set in LensSpider class.
 
-from webcrawler.spiders.lensspider import LensSpider
+#from webcrawler.spiders.lensspider import LensSpider
+from webcrawler.spiders.ghlensspider import GhLensSpider
+from webcrawler.spiders import spiderghadapter
 from scrapy.crawler import CrawlerProcess
 
 def start_spider_within_python():
@@ -11,17 +13,13 @@ def start_spider_within_python():
         
         'DOWNLOAD_DELAY': 7,
 		'RANDOMIZE_DOWNLOAD_DELAY': False, #from 0.5*DELAY till 1.5*DELAY
-		'COOKIES_ENABLED': False,
+		'COOKIES_ENABLED': False
 
-        'DEFAULT_TIME_CLASS': "Lens",
-
-        'ITEM_PIPELINES': {
-            'webcrawler.itempipelines.ghitempipeline.GhItemPipeline': 300
-        }
+        
     }
     
     process = CrawlerProcess(custom_settings)
-    process.crawl(LensSpider)
+    process.crawl(GhLensSpider)
     #process.crawls(OtherSpiderClass)
     #process.crawl(SomeSpider, start_urls=["http://www.example.com"]) Needed for upcoming changed in code
     process.start() 

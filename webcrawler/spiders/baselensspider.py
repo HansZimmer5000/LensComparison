@@ -2,14 +2,15 @@
 # Its a generell web crawler, but the import and use of GhAdapter makes it usefull for geizhals.de sites.
 
 import scrapy
-from webcrawler.spiders import spiderghadapter
+from abc import ABC, abstractmethod
 
-class LensSpider(scrapy.Spider):
+class BaseLensSpider(scrapy.Spider, ABC):
 
-	adapter = spiderghadapter
+	@property
+	@abstractmethod
+	def adapter(self):
+		raise NotImplementedError()
 
-	name = 'lensSpider' 
-	start_urls = [adapter.START_URL]
 
 	def parse_lens_page(self, response):
 		raw_lens_info = response.xpath(self.adapter.LENS_INFO_TAG).extract_first()
