@@ -18,6 +18,15 @@ class GhLensSpider(BaseLensSpider):
     def adapter(self):
         return spiderghadapter
 
+    def parse_lens_page(self, response):
+        raw_lens_info = response.xpath(self.adapter.LENS_INFO_TAG).extract_first()
+        raw_lens_name = response.xpath(self.adapter.LENS_NAME_TAG).extract_first() 
+    
+        yield {
+            "name": raw_lens_name,
+            "info": raw_lens_info
+        }
+
     def create_lens_page_requests(self, response):
         link_tag = self.adapter.LINK_TAG_TO_LENS_IN_OVERVIEW_PAGE
         for lens_page in response.xpath(link_tag):

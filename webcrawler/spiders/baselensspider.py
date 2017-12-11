@@ -11,15 +11,11 @@ class BaseLensSpider(scrapy.Spider, ABC):
 	def adapter(self):
 		raise NotImplementedError()
 
+	
 
+	@abstractmethod
 	def parse_lens_page(self, response):
-		raw_lens_info = response.xpath(self.adapter.LENS_INFO_TAG).extract_first()
-		raw_lens_name = response.xpath(self.adapter.LENS_NAME_TAG).extract_first() 
-
-		yield {
-			"name": raw_lens_name,
-			"info": raw_lens_info
-		}
+		raise NotImplementedError()
 
 	@abstractmethod
 	def create_lens_page_requests(self,response):
