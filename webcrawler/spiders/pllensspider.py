@@ -16,3 +16,9 @@ class PlLensSpider(BaseLensSpider):
     def adapter(self):
         return spiderpladapter
 
+    def create_lens_page_requests(self, response):
+        pass
+
+    def create_overview_page_request(self, response):
+        pass
+

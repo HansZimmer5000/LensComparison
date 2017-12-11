@@ -19,7 +19,7 @@ def start_spider_within_python():
     
     process = CrawlerProcess(custom_settings)
     process.crawl(GhLensSpider)
-    process.crawl(PlLensSpider)
+    #process.crawl(PlLensSpider)
     process.start() 
 
 if __name__ == "__main__":
