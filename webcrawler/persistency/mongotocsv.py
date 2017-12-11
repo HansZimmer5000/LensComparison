@@ -1,6 +1,8 @@
-from MongoAccess import MongoAccess
-from LensIntegration import LensIntegration
-import RawDataAccess
+
+
+from webcrawler.persistency.mongoaccess import MongoAccess
+from webcrawler.persistency.lensintegration import LensIntegration
+from webcrawler.persistency import rawdataaccess
 
 
 class MongoToCsv():

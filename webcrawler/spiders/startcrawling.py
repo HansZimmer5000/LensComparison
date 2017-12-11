@@ -1,7 +1,7 @@
 # Start the LensSpider and let it crawl.
 # start_urls and name is set in LensSpider class.
 
-from LensSpider import LensSpider
+from webcrawler.spiders.lensspider import LensSpider
 from scrapy.crawler import CrawlerProcess
 
 def start_spider_within_python():

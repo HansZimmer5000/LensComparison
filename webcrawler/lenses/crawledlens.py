@@ -1,8 +1,9 @@
-import DataKeys
+
+from webcrawler.lenses import datakeys
 
 class CrawledLens:
 
-    KEY_MOUNT = DataKeys.key_mount_as_title
+    KEY_MOUNT = datakeys.key_mount_as_title
 
     def __init__(self, lens_dict):
         self.lens_dict = lens_dict

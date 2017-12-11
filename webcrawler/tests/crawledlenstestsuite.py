@@ -1,6 +1,6 @@
 import unittest
-import GeneralExamples
-from CrawledLens import CrawledLens
+from webcrawler.tests.testdata import generalexamples
+from webcrawler.lenses.crawledlens import CrawledLens
 
 class CrawledLensTestsuite(unittest.TestCase):
 
@@ -10,18 +10,18 @@ class CrawledLensTestsuite(unittest.TestCase):
 
     def setUp(self):
         
-        self.__class__.CRAWLED_LENS1_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS1_LENS_DICT
-        self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT_LENS_DICT
-        self.__class__.CRAWLED_LENS1_WITH_OLD_MOUNT_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS1_OLD_MOUNT_LENS_DICT
-        self.__class__.CRAWLED_LENS1_WITH_NEW_MOUNT_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS1_NEW_MOUNT_LENS_DICT
+        self.__class__.CRAWLED_LENS1_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS1_LENS_DICT
+        self.__class__.CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS1_WITHOUT_MOUNT_AND_WEIGHT_LENS_DICT
+        self.__class__.CRAWLED_LENS1_WITH_OLD_MOUNT_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS1_OLD_MOUNT_LENS_DICT
+        self.__class__.CRAWLED_LENS1_WITH_NEW_MOUNT_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS1_NEW_MOUNT_LENS_DICT
 
-        self.__class__.CRAWLED_LENS2_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS2_LENS_DICT
-        self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT
+        self.__class__.CRAWLED_LENS2_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS2_LENS_DICT
+        self.__class__.CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT
         
-        self.__class__.CRAWLED_LENS3_LENS_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS3_LENS_DICT
+        self.__class__.CRAWLED_LENS3_LENS_DICT = generalexamples.TESTDATA_CRAWLED_LENS3_LENS_DICT
 
-        self.__class__.ALL_CRAWLED_LENSES_WITH_MISSING_INFO_LENS_DICTS = GeneralExamples.TESTDATA_ALL_CRAWLED_LENSES_WITH_MISSING_INFO_LENS_DICTS
-        self.__class__.ALL_CRAWLED_LENSES_WITH_FULL_INFO_LENS_DICTS = GeneralExamples.TESTDATA_ALL_CRAWLED_LENSES_WITH_FULL_INFO_LENS_DICTS
+        self.__class__.ALL_CRAWLED_LENSES_WITH_MISSING_INFO_LENS_DICTS = generalexamples.TESTDATA_ALL_CRAWLED_LENSES_WITH_MISSING_INFO_LENS_DICTS
+        self.__class__.ALL_CRAWLED_LENSES_WITH_FULL_INFO_LENS_DICTS = generalexamples.TESTDATA_ALL_CRAWLED_LENSES_WITH_FULL_INFO_LENS_DICTS
 
 
         self.__class__.CRAWLED_LENS1 = CrawledLens(self.__class__.CRAWLED_LENS1_LENS_DICT)

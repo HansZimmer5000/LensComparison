@@ -2,7 +2,7 @@
 # Its here to unclutter the other files and sperate the concerns
 
 # CSV can handle a maximum of 32759 characters in one cells
-import DataKeys
+from webcrawler.lenses import datakeys
 
 __full_path_of_rawdata_file = "C:/Users/Michael/IdeaProjects/LensComparison/WebCrawler/rawData.csv"
 
@@ -10,7 +10,7 @@ def clean_rawdata_file_and_write_titles():
     #clean
     rawdata_file = open(__full_path_of_rawdata_file, 'w') 
     #write titles
-    for current_key in DataKeys.all_keys_as_titles_in_order:
+    for current_key in datakeys.all_keys_as_titles_in_order:
         rawdata_file.write(current_key+";")
     rawdata_file.write("\n")
     rawdata_file.close()

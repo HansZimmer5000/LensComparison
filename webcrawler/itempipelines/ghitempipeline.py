@@ -1,23 +1,23 @@
 
 #from .baseitempipeline import BaseItemPipeline
-import DataKeys
-from CrawledLenses import CrawledLenses
+from webcrawler.lenses import datakeys
+from webcrawler.lenses.crawledlenses import CrawledLenses
 
 
 class GhItemPipeline(object):
     
-    KEY_LENSNAME = DataKeys.key_name_as_gh
-    KEY_FOCAL_LENGTH = DataKeys.key_focal_length_as_gh
-    KEY_APERTURE = DataKeys.key_aperture_as_gh
-    KEY_FILTER = DataKeys.key_filter_as_gh
-    KEY_MAGNIFICATION = DataKeys.key_magnification_as_gh
-    KEY_MINIMALFOCUS = DataKeys.key_minimalfocus_as_gh
-    KEY_MOUNT = DataKeys.key_mount_as_gh
-    KEY_SENSORKOMPATIBILITÄT = DataKeys.key_sensor_compatibility_as_gh
-    KEY_WEIGHT = DataKeys.key_weight_as_gh
-    KEY_SIZE = DataKeys.key_size_as_gh
+    KEY_LENSNAME = datakeys.key_name_as_gh
+    KEY_FOCAL_LENGTH = datakeys.key_focal_length_as_gh
+    KEY_APERTURE = datakeys.key_aperture_as_gh
+    KEY_FILTER = datakeys.key_filter_as_gh
+    KEY_MAGNIFICATION = datakeys.key_magnification_as_gh
+    KEY_MINIMALFOCUS = datakeys.key_minimalfocus_as_gh
+    KEY_MOUNT = datakeys.key_mount_as_gh
+    KEY_SENSORKOMPATIBILITÄT = datakeys.key_sensor_compatibility_as_gh
+    KEY_WEIGHT = datakeys.key_weight_as_gh
+    KEY_SIZE = datakeys.key_size_as_gh
 
-    ALL_KEYS = list(DataKeys.gh_keys_dict.values())
+    ALL_KEYS = list(datakeys.gh_keys_dict.values())
 
     SORT_OUT_STRINGS_FOR_TITLE=[
         "verschiedene Modelle",
@@ -42,8 +42,8 @@ class GhItemPipeline(object):
 
     def transform_gh_dict_to_general_dict(self, gh_lens_dict):
         new_lens_dict = {}
-        for key_as_title in DataKeys.gh_keys_dict:
-            key_as_gh = DataKeys.gh_keys_dict[key_as_title]
+        for key_as_title in datakeys.gh_keys_dict:
+            key_as_gh = datakeys.gh_keys_dict[key_as_title]
             gh_value = gh_lens_dict[key_as_gh]
             new_lens_dict.update({key_as_title: gh_value})
         return new_lens_dict

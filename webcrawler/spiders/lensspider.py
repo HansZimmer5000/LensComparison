@@ -2,7 +2,7 @@
 # Its a generell web crawler, but the import and use of GhAdapter makes it usefull for geizhals.de sites.
 
 import scrapy
-import spiderghadapter
+from webcrawler.spiders import spiderghadapter
 
 class LensSpider(scrapy.Spider):
 

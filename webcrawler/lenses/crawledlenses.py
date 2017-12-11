@@ -1,6 +1,6 @@
-from CrawledLens import CrawledLens
-from MongoAccess import MongoAccess
-import DataKeys
+from webcrawler.lenses.crawledlens import CrawledLens
+from webcrawler.persistency.mongoaccess import MongoAccess
+from webcrawler.lenses import datakeys
 
 #Data looks like:
 # {lensname: CrawledLens, lensname2: CrawledLens2, ...}
@@ -20,7 +20,7 @@ class CrawledLenses:
             self.lenses.update({key: CrawledLens(lens_dict)})
 
     def new_lens_dict(self, lens_dict):
-        lens_name = lens_dict[DataKeys.key_name_as_title]
+        lens_name = lens_dict[datakeys.key_name_as_title]
         if(self.__lens_exists(lens_name)):
             old_crawled_lens = self.lenses[lens_name]
             old_crawled_lens.update(lens_dict) #TODO: Does this really also update our crawledlens in dict?

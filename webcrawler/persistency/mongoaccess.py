@@ -1,13 +1,13 @@
 
 import pymongo
-import DataKeys
+from webcrawler.lenses import datakeys
 
 #Data looks like:
 # {lensname: CrawledLens, lensname2: CrawledLens2, ...}
 
 class MongoAccess:
 
-    __KEY_LENSNAME = DataKeys.key_name_as_title
+    __KEY_LENSNAME = datakeys.key_name_as_title
     __KEY_MONGO_ID = __KEY_LENSNAME
     __KEY_LENSDICT = "lens_dict"
 

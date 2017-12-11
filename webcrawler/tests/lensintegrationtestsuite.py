@@ -1,6 +1,7 @@
+
 import unittest
-import GeneralExamples
-from LensIntegration import LensIntegration
+from webcrawler.tests.testdata import generalexamples
+from webcrawler.persistency.lensintegration import LensIntegration
 
 class LensIntegrationTestsuite(unittest.TestCase):
 
@@ -10,8 +11,8 @@ class LensIntegrationTestsuite(unittest.TestCase):
     #////////////
 
     def setUp(self):
-        self.LENS2_DICT_WITHOUT_SENSOR = GeneralExamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT
-        self.LENS2_DICT = GeneralExamples.TESTDATA_CRAWLED_LENS2_LENS_DICT
+        self.LENS2_DICT_WITHOUT_SENSOR = generalexamples.TESTDATA_CRAWLED_LENS2_WITHOUT_SENSOR_LENS_DICT
+        self.LENS2_DICT = generalexamples.TESTDATA_CRAWLED_LENS2_LENS_DICT
 
         print("\n\nsetup Done\n" + self._testMethodName)
     #End of setUp
