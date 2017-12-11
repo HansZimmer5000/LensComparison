@@ -49,3 +49,28 @@ gh_keys_dict = {
     key_weight_as_title: key_weight_as_gh,
     key_size_as_title: key_size_as_gh
 }
+
+#Translation from normal Key to Geizhals Keys
+key_name_as_pl = 'Name'
+key_focal_length_as_pl = "Focal Length"
+key_aperture_as_pl = "Maximum Aperture"
+key_filter_as_pl = "Filter Size"
+key_magnification_as_pl = "Maximum Reproduction Ratio"
+key_minimalfocus_as_pl = "Minimum Focus Distance"
+key_mount_as_pl = "Mount Type"
+key_sensor_compatibility_as_pl = "Format"
+key_weight_as_pl = "Weight"
+key_size_as_pl = "Dimensions"
+
+pl_keys_dict = {
+    key_name_as_title: key_name_as_pl,
+    key_focal_length_as_title: key_focal_length_as_pl,
+    key_aperture_as_title: key_aperture_as_pl,
+    key_filter_as_title: key_filter_as_pl,
+    key_magnification_as_title: key_magnification_as_pl,
+    key_minimalfocus_as_title: key_minimalfocus_as_pl,
+    key_mount_as_title: key_mount_as_pl,
+    key_sensor_compatibility_as_title: key_sensor_compatibility_as_pl,
+    key_weight_as_title: key_weight_as_pl,
+    key_size_as_title: key_size_as_pl
+}

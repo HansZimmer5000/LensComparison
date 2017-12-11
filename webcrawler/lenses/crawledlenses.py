@@ -35,5 +35,5 @@ class CrawledLenses:
         try:
             self.lenses[lens_name]
             return True
-        except:
+        except KeyError:
             return False

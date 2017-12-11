@@ -3,6 +3,7 @@
 
 #from webcrawler.spiders.lensspider import LensSpider
 from webcrawler.spiders.ghlensspider import GhLensSpider
+from webcrawler.spiders.pllensspider import PlLensSpider
 from webcrawler.spiders import spiderghadapter
 from scrapy.crawler import CrawlerProcess
 
@@ -14,14 +15,11 @@ def start_spider_within_python():
         'DOWNLOAD_DELAY': 7,
 		'RANDOMIZE_DOWNLOAD_DELAY': False, #from 0.5*DELAY till 1.5*DELAY
 		'COOKIES_ENABLED': False
-
-        
     }
     
     process = CrawlerProcess(custom_settings)
     process.crawl(GhLensSpider)
-    #process.crawls(OtherSpiderClass)
-    #process.crawl(SomeSpider, start_urls=["http://www.example.com"]) Needed for upcoming changed in code
+    process.crawl(PlLensSpider)
     process.start() 
 
 if __name__ == "__main__":

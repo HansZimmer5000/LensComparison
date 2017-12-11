@@ -12,6 +12,9 @@ from webcrawler.tests import testall
 from webcrawler.persistency.mongotocsv import MongoToCsv
 from webcrawler.persistency import mongoservercontrol
 
+from webcrawler.spiders.pllensspider import PlLensSpider
+from scrapy.crawler import CrawlerProcess
+
 def run_spiders():
     startcrawling.start_spider_within_python()
 
@@ -47,3 +50,15 @@ if __name__ == "__main__":
         __start_mongo_do_work_stop_mongo(run_spiders)
     elif(user_input == "3"):
         __start_mongo_do_work_stop_mongo(export_lenses_to_csv)
+    elif(user_input == "4"):
+        custom_settings = {
+            'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+            'CONCURRENT_REQUESTS_PER_IP': 0, #If this >0 then CONCURRENT_REQUESTS_PER_DOMAIN would be ignored 
+            
+            'DOWNLOAD_DELAY': 7,
+            'RANDOMIZE_DOWNLOAD_DELAY': False, #from 0.5*DELAY till 1.5*DELAY
+            'COOKIES_ENABLED': False
+        }
+        process = CrawlerProcess(custom_settings)
+        process.crawl(PlLensSpider)
+        process.start() 
