@@ -1,0 +1,6 @@
+
+from .lensintegrationtestsuite import LensIntegrationTestsuite
+from .ghitempipelinetestsuite import GhItemPipelineTestsuite
+from .crawledlensestestsuite import CrawledLensesTestsuite
+from .mongoaccesstestsuite import MongoAccessTestsuite
+from .crawledlenstestsuite import CrawledLensTestsuite
