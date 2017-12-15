@@ -1,6 +1,4 @@
-/WebCrawler/__pycache__
-/WebCrawler/AppStartPoints/__pycache__
-/WebCrawler/Lenses/__pycache__
+__pycache__/
 /.vscode
 /PersonalNotes.txt
 /LOC.py
