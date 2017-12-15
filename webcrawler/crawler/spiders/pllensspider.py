@@ -1,22 +1,23 @@
 
-from webcrawler.spiders.baselensspider import BaseLensSpider
-from webcrawler.spiders import spiderpladapter
+from webcrawler.crawler.spiders.baselensspider import BaseLensSpider
+from webcrawler.crawler.adapter import pladapter
 
 class PlLensSpider(BaseLensSpider):
 
     name = "PlLensSpider"
-    start_urls = [spiderpladapter.START_URL]
+    start_urls = [pladapter.START_URL]
     custom_settings = {
         'ITEM_PIPELINES' : {
-            'webcrawler.itempipelines.plitempipeline.PlItemPipeline': 300
+            'webcrawler.crawler.itempipelines.plitempipeline.PlItemPipeline': 300
         }
     }
 
     @property
     def adapter(self):
-        return spiderpladapter
+        return pladapter
 
     def parse_lens_page(self, response):
+        #TODO: Spider only here for getting the data, not edit it.
         data_dict = self.get_dict_from_table(response)
         name_dict = self.get_lens_name(response)
         data_dict.update(name_dict)
@@ -74,8 +75,8 @@ class PlLensSpider(BaseLensSpider):
         return found_links
 
     def get_next_overview_page(self, response):
-        first = True
         for elem in response.xpath("//link"):
             current_link = elem.extract()
             if("next" in current_link):
                 return current_link
+

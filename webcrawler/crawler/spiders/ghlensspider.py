@@ -1,22 +1,21 @@
 
-from webcrawler.spiders.baselensspider import BaseLensSpider
-from webcrawler.spiders import spiderghadapter
-from abc import abstractmethod
+from webcrawler.crawler.spiders.baselensspider import BaseLensSpider
+from webcrawler.crawler.adapter import ghadapter
 import scrapy
 
 class GhLensSpider(BaseLensSpider):
 
     name = "GhLensSpider"
-    start_urls = [spiderghadapter.START_URL]
+    start_urls = [ghadapter.START_URL]
     custom_settings = {
         'ITEM_PIPELINES' : {
-            'webcrawler.itempipelines.ghitempipeline.GhItemPipeline': 300
+            'webcrawler.crawler.itempiplines.ghitempipeline.GhItemPipeline': 300
         }
     }
 
     @property
     def adapter(self):
-        return spiderghadapter
+        return ghadapter
 
     def parse_lens_page(self, response):
         raw_lens_info = response.xpath(self.adapter.LENS_INFO_TAG).extract_first()

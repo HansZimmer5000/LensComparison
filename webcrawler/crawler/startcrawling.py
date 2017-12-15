@@ -2,9 +2,8 @@
 # start_urls and name is set in LensSpider class.
 
 #from webcrawler.spiders.lensspider import LensSpider
-from webcrawler.spiders.ghlensspider import GhLensSpider
-from webcrawler.spiders.pllensspider import PlLensSpider
-from webcrawler.spiders import spiderghadapter
+from webcrawler.crawler.spiders.ghlensspider import GhLensSpider
+from webcrawler.crawler.spiders.pllensspider import PlLensSpider
 from scrapy.crawler import CrawlerProcess
 
 def start_spider_within_python():

@@ -6,6 +6,8 @@
 # 5) Boundary Condition dataset: Dataset containing out of range data. Identify application boundary cases and prepare data set that will cover lower as well as upper boundary conditions.
 # 6) The dataset for performance, load and stress TESTDATAing: This data set should be large in volume.
 
+#TODO: SOC -> Datakeys importieren?
+
 #\\\\\\\\\\\\\\\\\\\\\\\\\
 #	TESTDATA_DICT_FULLs
 #/////////////////////////

@@ -7,12 +7,12 @@ from threading import Thread
 current_dir = os.getcwd()
 sys.path.append(current_dir + '')
 
-from webcrawler.spiders import startcrawling
+from webcrawler.crawler import startcrawling
 from webcrawler.tests import testall
 from webcrawler.persistency.mongotocsv import MongoToCsv
 from webcrawler.persistency import mongoservercontrol
 
-from webcrawler.spiders.pllensspider import PlLensSpider
+from webcrawler.crawler.spiders.pllensspider import PlLensSpider
 from scrapy.crawler import CrawlerProcess
 
 def run_spiders():
