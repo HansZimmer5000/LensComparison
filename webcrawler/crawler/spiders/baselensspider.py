@@ -1,8 +1,8 @@
 # This module is about my webcrawler with the use of scrapy.
 # Its a generell web crawler, but the import and use of GhAdapter makes it usefull for geizhals.de sites.
 
-import scrapy
 from abc import ABC, abstractmethod
+import scrapy
 
 class BaseLensSpider(scrapy.Spider, ABC):
 
@@ -11,6 +11,7 @@ class BaseLensSpider(scrapy.Spider, ABC):
 	def adapter(self):
 		raise NotImplementedError()
 
+	#TODO: make the start_url thing abstract and initialliy with a call to adapter.START_URLS
 	
 
 	@abstractmethod

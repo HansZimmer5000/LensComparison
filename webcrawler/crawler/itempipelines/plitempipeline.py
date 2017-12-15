@@ -25,14 +25,42 @@ class PlItemPipeline(object):
     ]
 
     def open_spider(self, spider):
-        pass
-        #self.crawled_lenses = CrawledLenses("lens_db","photolife_lens_coll")
+        self.crawled_lenses = CrawledLenses("raw_lens_db","photolife_lens_coll")
 
     def process_item(self, item, spider):
-        new_pl_lens_dict = self.clean_dict(item)
-        new_lens_dict = self.transform_pl_dict_to_general_dict(new_pl_lens_dict)
+        raw_lens_name = item["name"]
+        raw_lens_data = item["data"]
+
+        clean_name_dict = self.create_name_dict_from_h3(raw_lens_name)
+        clean_data_dict = self.create_data_dict_from_table(raw_lens_data)
+
+        new_lens_dict = self.transform_pl_dict_to_general_dict(clean_data_dict.update(clean_name_dict))
+
+        self.crawled_lenses.new_lens_dict(new_lens_dict)
         return new_lens_dict
-        #self.crawled_lenses.new_lens_dict(new_lens_dict)
+        
+
+    def create_name_dict_from_h3(self, h3):
+        pos_of_spec = h3.find("Spec")
+        return {"Name": h3[4:pos_of_spec]}
+    
+
+    def create_data_dict_from_table(self, response):
+        table = response.xpath("//table").extract_first()
+        pos_first_td = table.find("<td>")
+        pos_last_end_td = table.rfind("</td>")
+        table = table[pos_first_td:pos_last_end_td]
+        rows = table.split("<tr>")
+
+        raw_data_dict = {}
+        for row in rows:
+            if("</td><td>" in row):
+                row = row.replace("</tr>","")
+                head = row.split("</td><td>")[0].replace("</td>","").replace("<td>", "")
+                data = row.split("</td><td>")[1].replace("</td>","").replace("<td>", "")
+                raw_data_dict.update({head: data})
+        clean_data_dict = raw_data_dict #self.clean_data_dict(raw_data_dict)
+        return clean_data_dict
 
 
     def transform_pl_dict_to_general_dict(self, pl_lens_dict):
@@ -44,9 +72,8 @@ class PlItemPipeline(object):
         return new_lens_dict
 
     
-    def clean_dict(self, lens_dict):
+    def clean_data_dict(self, lens_dict):
         return {
-            self.KEY_LENSNAME: lens_dict[self.KEY_LENSNAME],
             self.KEY_FOCAL_LENGTH: self.__clean_focal_length(lens_dict[self.KEY_FOCAL_LENGTH]),
             self.KEY_APERTURE: self.__clean_aperture(lens_dict[self.KEY_APERTURE]),
             self.KEY_FILTER: self.__clean_filtersize(lens_dict[self.KEY_FILTER]),
