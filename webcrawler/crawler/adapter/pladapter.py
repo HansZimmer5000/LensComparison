@@ -4,7 +4,18 @@ SORT_OUT_STRINGS_FOR_TITLE=[
 "Pro Set"
 ]
 
-START_URL = 'https://photographylife.com/lenses/page/1'
+def get_40_sites():
+    result = []
+    site = 'https://photographylife.com/lenses/page/'
+    i = 2
+    while(i <= 40):
+        result.append(site + str(i))
+        i = i + 1
+    return result
+
+START_URL = 'https://photographylife.com/lenses/page/2'
+
+
 
 
 def get_href_value(link):
@@ -28,4 +39,4 @@ def get_next_overview_page(response):
     for elem in response.xpath("//link"):
         current_link = elem.extract()
         if("next" in current_link):
-            return current_link
+            return get_href_value(current_link)

@@ -66,7 +66,7 @@ Optical Information</th></tr><tr><td>Lens Elements</td><td>14</td></tr><tr><td>L
 </td></tr><tr><th scope="col" colspan="2">Other Information</th></tr><tr><td>Available in Colors</td> \
 <td>Black</td></tr></tbody></table>"'
 
-TESTDATA_DICT_FULL2 = ' \
+TESTDATA_RAW_HTML_TABLE_STRING_FULL2 = ' \
 <table width="100%" id="rounded-corner" summary="Pentax HD PENTAX-DA 21mm f/3.2 AL Limited"> \
 <thead><tr><th scope="col" class="rounded-header" width="60%">Lens Specifications</th> \
 <th scope="col" align="center"  width="40%" class="rounded-right"></th></tr></thead><tfoot><tr> \
@@ -91,7 +91,7 @@ TESTDATA_DICT_FULL2 = ' \
 <td>63.50 x 25.40mm</td></tr><tr><td>Weight</td><td>119g</td></tr><tr><th scope="col" colspan="2">Other Information</th> \
 </tr><tr><td>Available in Colors</td><td>Black</td></tr></tbody></table>'
 
-TESTDATA_DICT_FULL3 = ' \
+TESTDATA_RAW_HTML_TABLE_STRING_FULL3 = ' \
 <table width="100%" id="rounded-corner" summary="Fujifilm XF 50mm f/2 R WR"><thead><tr> \
 <th scope="col" class="rounded-header" width="60%">Lens Specifications</th> \
 <th scope="col" align="center"  width="40%" class="rounded-right"></th></tr></thead><tfoot><tr> \
@@ -115,7 +115,7 @@ TESTDATA_DICT_FULL3 = ' \
 <td>200g</td></tr><tr><th scope="col" colspan="2">Other Information</th></tr><tr><td>Available in Colors</td><td>Black</td> \
 </tr></tbody></table>'
 
-TESTDATA_DICT_FULL4 = ' \
+TESTDATA_RAW_HTML_TABLE_STRING_FULL4 = ' \
 <table width="100%" id="rounded-corner" summary="Sony FE 100-400mm f/4.5-5.6 GM OSS"><thead> \
 <tr><th scope="col" class="rounded-header" width="60%">Lens Specifications</th> \
 <th scope="col" align="center"  width="40%" class="rounded-right"></th></tr></thead><tfoot> \
@@ -146,7 +146,7 @@ TESTDATA_DICT_FULL4 = ' \
 </tr></tbody></table>'
 
 
-TESTDATA_DICT_FULL5 = ' \
+TESTDATA_RAW_HTML_TABLE_STRING_FULL5 = ' \
 <table width="100%" id="rounded-corner" summary="Sigma 14mm f/1.8 DG HSM Art"><thead><tr> \
 <th scope="col" class="rounded-header" width="60%">Lens Specifications</th> \
 <th scope="col" align="center"  width="40%" class="rounded-right"></th></tr></thead><tfoot><tr> \
@@ -171,3 +171,30 @@ TESTDATA_DICT_FULL5 = ' \
 <tr><td>Tripod Collar</td><td>No</td></tr><tr><td>Dimensions</td><td>95.4mm x 126mm/9.5in. x 5.0in.</td> \
 </tr><tr><td>Weight</td><td>1,170g/41.3oz.</td></tr><tr><th scope="col" colspan="2">Other Information</th> \
 </tr><tr><td>Available in Colors</td><td>Black</td></tr></tbody></table>'
+
+
+#\\\\\\\\\\\\\\\\\\\\\\\\\
+#	TESTDATA_DICTs
+#/////////////////////////
+
+TESTDATA_RAW_DICT_1 = {'_id': 'Tamron 10-24mm f/3.5-4.5 Di II VC HLD ', 'Focal Length': '10-24mm', 'Aperture': 'f/3.5-4.5', 'Filtersize': '77mm', 'Magnification': '1:5.3', 'Minimal Focus': '9.4', 'Mount': 'Canon EF, Nikon F', 'Sensor compatibility': 'APS-C / DX', 'Weight': '15.5 oz (439 g)', 'Size': 'Approx. 3.29 x 3.2'}
+TESTDATA_RAW_DICT_2 = {'_id': 'Fujifilm GF 32-64mm f/4 R LM WR ', 'Focal Length': '32-64mm', 'Aperture': 'f/4', 'Filtersize': '77mm', 'Magnification': '0.12x', 'Minimal Focus': '50cm - ∞(Wide), 60cm - ∞(Telephoto)', 'Mount': 'Fujifilm G', 'Sensor compatibility': 'Medium Format', 'Weight': '875g', 'Size': '92.6mm×116mm(Wide)/145.5mm(Telephoto)'}
+TESTDATA_RAW_DICT_3 = {'_id': 'Nikon AF-P NIKKOR 70-300mm f/4.5-5.6E ED VR ', 'Focal Length': '70-300mm', 'Aperture': 'f/4.5-5.6', 'Filtersize': '67mm', 'Magnification': '0.25x', 'Minimal Focus': '3.94 ft. (1.2 m)', 'Mount': 'Nikon F', 'Sensor compatibility': 'Full Frame / FX', 'Weight': '24 oz. (680 g)', 'Size': '3.2 in. (80.5 mm) x 5.7 in. (146 mm)'}
+TESTDATA_RAW_DICT_4 = {'_id': 'Nikon AF-P DX NIKKOR 10-20mm f/4.5-5.6G VR ', 'Focal Length': '10-20mm', 'Aperture': 'f/4.5', 'Filtersize': '72mm', 'Magnification': '0.17x', 'Minimal Focus': '0.8 ft. (0.22 m)', 'Mount': 'Nikon F', 'Sensor compatibility': 'APS-C / DX', 'Weight': '8.2 oz. (230 g)', 'Size': '3.0 in. (77mm) x 2.8 in. (73 mm)'}
+TESTDATA_RAW_DICT_5 = {'_id': 'Fujifilm GF 110mm f/2 R LM WR ', 'Focal Length': '110mm', 'Aperture': 'f/2', 'Filtersize': '77mm', 'Magnification': '0.16x', 'Minimal Focus': "2.95' (90 cm)", 'Mount': 'Fujifilm G', 'Sensor compatibility': 'Medium Format', 'Weight': '2.22 lb (1010 g)', 'Size': 'Approx. 3.71 x 4.94" (94.3 x 125.5 mm)'}
+TESTDATA_RAW_DICT_6 = {'_id': 'Tamron SP 70-200mm f/2.8 Di VC USD G2 ', 'Focal Length': '70-200mm', 'Aperture': 'f/2.8', 'Filtersize': '77mm', 'Magnification': '1:6.1', 'Minimal Focus': "3.12' (95 cm)", 'Mount': 'Canon EF, Nikon F', 'Sensor compatibility': 'Full Frame / FX', 'Weight': '3.28 lb (1.49 kg)', 'Size': 'Approx. 3.46 x 7.5'}
+TESTDATA_RAW_DICT_7 = {'_id': 'Nikon AF-S Fisheye NIKKOR 8-15mm f/3.5-4.5E ED ', 'Focal Length': '8-15mm', 'Aperture': 'f/3.5-4.5', 'Filtersize': 'N/A', 'Magnification': '0.34x', 'Minimal Focus': '0.5 ft. (0.16 m)', 'Mount': 'Nikon F', 'Sensor compatibility': 'Full Frame / FX', 'Weight': '17.2 oz. (485 g)', 'Size': '3.0 in. (77.5 mm) x 3.2 in. (83 mm)'}
+TESTDATA_RAW_DICT_8 = {'_id': 'Sony FE 85mm f/1.8 ', 'Focal Length': '85mm', 'Aperture': 'f/1.8', 'Filtersize': '67mm', 'Magnification': '0.13x', 'Minimal Focus': "2.62' (80 cm)", 'Mount': 'Sony FE', 'Sensor compatibility': 'Full Frame / FX', 'Weight': '13.09 oz (371 g)', 'Size': 'Approx. 3.07 x 3.23" (78 x 82 mm)'}
+TESTDATA_RAW_DICT_9 = {'_id': 'Sigma 100-400mm f/5-6.3 DG OS HSM C ', 'Focal Length': '100-400mm', 'Aperture': 'f/5-6.3', 'Filtersize': '67mm', 'Magnification': '1:3.8', 'Minimal Focus': '160mm./6.3in.', 'Mount': 'Canon EF, Nikon F, Sigma SA', 'Sensor compatibility': 'Full Frame / FX', 'Weight': '1,160g/ 40.9oz.', 'Size': '86.4mm x 182.3mm/3.4in. x 7.2in.'}
+TESTDATA_RAW_DICT_10 = {'_id': 'Sigma 14mm f/1.8 DG HSM Art ', 'Focal Length': '14mm', 'Aperture': 'f/1.8', 'Filtersize': 'N/A', 'Magnification': '1:9.8', 'Minimal Focus': '0.27 m (10.63″)', 'Mount': 'Canon EF, Nikon F, Sigma SA', 'Sensor compatibility': 'Full Frame / FX', 'Weight': '1,170g/41.3oz.', 'Size': '95.4mm x 126mm/9.5in. x 5.0in.'}
+
+TESTDATA_CLEAN_DICT_1 = {'_id': 'Tamron 10-24mm f/3.5-4.5 Di II VC HLD', 'Focal Length': '10-24mm', 'Aperture': '1:3.5-4.5', 'Filtersize': '77mm', 'Magnification': '1:5.3', 'Minimal Focus': '', 'Mount': 'Canon EF, Nikon F', 'Sensor compatibility': 'APS-C', 'Weight': '439g', 'Size': ''}
+TESTDATA_CLEAN_DICT_2 = {'_id': 'Fujifilm GF 32-64mm f/4 R LM WR', 'Focal Length': '32-64mm', 'Aperture': '1:4', 'Filtersize': '77mm', 'Magnification': '1:8.33', 'Minimal Focus': '0.5m', 'Mount': 'Fujifilm G', 'Sensor compatibility': 'Medium Format', 'Weight': '875g', 'Size': '92.6 x 116mm'}
+TESTDATA_CLEAN_DICT_3 = {'_id': 'Nikon AF-P NIKKOR 70-300mm f/4.5-5.6E ED VR', 'Focal Length': '70-300mm', 'Aperture': '1:4.5-5.6', 'Filtersize': '67mm', 'Magnification': '1:4.0', 'Minimal Focus': '1.2m', 'Mount': 'Nikon F', 'Sensor compatibility': 'APS-C/ Kleinbild', 'Weight': '680g', 'Size': '80.5 x 146mm'}
+TESTDATA_CLEAN_DICT_4 = {'_id': 'Nikon AF-P DX NIKKOR 10-20mm f/4.5-5.6G VR', 'Focal Length': '10-20mm', 'Aperture': '1:4.5', 'Filtersize': '72mm', 'Magnification': '1:5.88', 'Minimal Focus': '0.22m', 'Mount': 'Nikon F', 'Sensor compatibility': 'APS-C', 'Weight': '230g', 'Size': '77 x 73mm'}
+TESTDATA_CLEAN_DICT_5 = {'_id': 'Fujifilm GF 110mm f/2 R LM WR', 'Focal Length': '110mm', 'Aperture': '1:2', 'Filtersize': '77mm', 'Magnification': '1:6.25', 'Minimal Focus': "0.9m", 'Mount': 'Fujifilm G', 'Sensor compatibility': 'Medium Format', 'Weight': '1010g', 'Size': '94.3 x 125.5mm'}
+TESTDATA_CLEAN_DICT_6 = {'_id': 'Tamron SP 70-200mm f/2.8 Di VC USD G2', 'Focal Length': '70-200mm', 'Aperture': '1:2.8', 'Filtersize': '77mm', 'Magnification': '1:6.1', 'Minimal Focus': "0.95m", 'Mount': 'Canon EF, Nikon F', 'Sensor compatibility': 'APS-C/ Kleinbild', 'Weight': '1490g', 'Size': ""}
+TESTDATA_CLEAN_DICT_7 = {'_id': 'Nikon AF-S Fisheye NIKKOR 8-15mm f/3.5-4.5E ED', 'Focal Length': '8-15mm', 'Aperture': '1:3.5-4.5', 'Filtersize': '', 'Magnification': '1:2.94', 'Minimal Focus': '0.16m', 'Mount': 'Nikon F', 'Sensor compatibility': 'APS-C/ Kleinbild', 'Weight': '485g', 'Size': '77.5 x 83mm'}
+TESTDATA_CLEAN_DICT_8 = {'_id': 'Sony FE 85mm f/1.8', 'Focal Length': '85mm', 'Aperture': '1:1.8', 'Filtersize': '67mm', 'Magnification': '1:7.69', 'Minimal Focus': "0.8m", 'Mount': 'Sony FE', 'Sensor compatibility': 'APS-C/ Kleinbild', 'Weight': '371g', 'Size': '78 x 82mm'}
+TESTDATA_CLEAN_DICT_9 = {'_id': 'Sigma 100-400mm f/5-6.3 DG OS HSM C', 'Focal Length': '100-400mm', 'Aperture': '1:5-6.3', 'Filtersize': '67mm', 'Magnification': '1:3.8', 'Minimal Focus': '0.16m', 'Mount': 'Canon EF, Nikon F, Sigma SA', 'Sensor compatibility': 'APS-C/ Kleinbild', 'Weight': '1.160g', 'Size': '86.4 x 182.3mm'}
+TESTDATA_CLEAN_DICT_10 = {'_id': 'Sigma 14mm f/1.8 DG HSM Art', 'Focal Length': '14mm', 'Aperture': '1:1.8', 'Filtersize': '', 'Magnification': '1:9.8', 'Minimal Focus': '0.27m', 'Mount': 'Canon EF, Nikon F, Sigma SA', 'Sensor compatibility': 'APS-C/ Kleinbild', 'Weight': '1.170g', 'Size': '95.4 x 126mm'}

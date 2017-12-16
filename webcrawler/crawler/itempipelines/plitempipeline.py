@@ -34,7 +34,10 @@ class PlItemPipeline(object):
         clean_name_dict = self.create_name_dict_from_h3(raw_lens_name)
         clean_data_dict = self.create_data_dict_from_table(raw_lens_data)
 
-        new_lens_dict = self.transform_pl_dict_to_general_dict(clean_data_dict.update(clean_name_dict))
+        complete_dict = clean_data_dict
+        complete_dict.update(clean_name_dict)
+
+        new_lens_dict = self.transform_pl_dict_to_general_dict(complete_dict)
 
         self.crawled_lenses.new_lens_dict(new_lens_dict)
         return new_lens_dict
@@ -42,11 +45,10 @@ class PlItemPipeline(object):
 
     def create_name_dict_from_h3(self, h3):
         pos_of_spec = h3.find("Spec")
-        return {"Name": h3[4:pos_of_spec]}
+        return {"Name": h3[4:pos_of_spec]} #TODO pos_of_spec - 1: This will delete a unecessary space in th end.
     
 
-    def create_data_dict_from_table(self, response):
-        table = response.xpath("//table").extract_first()
+    def create_data_dict_from_table(self, table):
         pos_first_td = table.find("<td>")
         pos_last_end_td = table.rfind("</td>")
         table = table[pos_first_td:pos_last_end_td]
@@ -67,7 +69,10 @@ class PlItemPipeline(object):
         new_lens_dict = {}
         for key_as_title in datakeys.pl_keys_dict:
             key_as_pl = datakeys.pl_keys_dict[key_as_title]
-            pl_value = pl_lens_dict[key_as_pl]
+            try:
+                pl_value = pl_lens_dict[key_as_pl]
+            except KeyError:
+                pl_value = ""
             new_lens_dict.update({key_as_title: pl_value})
         return new_lens_dict
 
@@ -124,4 +129,3 @@ class PlItemPipeline(object):
         #'Approx. 3.46 x 7.5'
         return value
 
-    

@@ -6,6 +6,7 @@ from webcrawler.tests.crawledlenstestsuite import CrawledLensTestsuite
 from webcrawler.tests.crawledlensestestsuite import CrawledLensesTestsuite
 from webcrawler.tests.mongoaccesstestsuite import MongoAccessTestsuite
 from webcrawler.tests.lensintegrationtestsuite import LensIntegrationTestsuite
+from webcrawler.tests.plrawdatacleanertestsuite import PlRawDataCleanerTestsuite
 
 def run_all_tests():
     test_classes_to_run = [
@@ -13,7 +14,8 @@ def run_all_tests():
         CrawledLensTestsuite,
         CrawledLensesTestsuite,
         MongoAccessTestsuite,
-        LensIntegrationTestsuite
+        LensIntegrationTestsuite,
+        PlRawDataCleanerTestsuite
     ]
 
     unit_test_loader = unittest.TestLoader()
